@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  tools {
+  nodejs 'NodeJS'
+}
+
   environment {
     BASE_URL = 'https://devhis.sancyberhad.com'
     NODE_TLS_REJECT_UNAUTHORIZED = '0'
