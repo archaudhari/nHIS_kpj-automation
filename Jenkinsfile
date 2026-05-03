@@ -9,10 +9,10 @@ pipeline {
   stages {
 
     stage('Checkout Code') {
-      steps {
-        git branch: 'main', url: 'https://your-repo-url.git'
-      }
-    }
+  steps {
+    git branch: 'main', url: 'https://github.com/archaudhari/nHIS_kpj-automation.git'
+  }
+}
 
     stage('Install Dependencies') {
       steps {
