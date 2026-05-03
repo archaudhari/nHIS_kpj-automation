@@ -9,26 +9,26 @@ pipeline {
   stages {
 
     stage('Checkout Code') {
-  steps {
-    git branch: 'main', url: 'https://github.com/archaudhari/nHIS_kpj-automation.git'
-  }
-}
+      steps {
+        git branch: 'main', url: 'https://github.com/archaudhari/nHIS_kpj-automation.git'
+      }
+    }
 
     stage('Install Dependencies') {
       steps {
-        sh 'npm install'
+        bat 'npm install'
       }
     }
 
     stage('Install Playwright Browsers') {
       steps {
-        sh 'npx playwright install --with-deps'
+        bat 'npx playwright install'
       }
     }
 
     stage('Run Tests') {
       steps {
-        sh 'npx playwright test'
+        bat 'npx playwright test'
       }
     }
 
