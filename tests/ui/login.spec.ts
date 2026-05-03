@@ -1,0 +1,14 @@
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../../pages/LoginPage';
+import { ENV } from '../../utils/env';
+
+test('KPJ Login UI Test', async ({ page }) => {
+  await page.goto('/Account/Login/');
+
+  await page.fill('input[placeholder="Login Name"]', ENV.USERNAME);
+  await page.fill('input[type="Password"]', ENV.PASSWORD);
+
+  await page.click('button:has-text("LOGIN")');
+
+  await expect(page).toHaveURL('https://devhis.sancyberhad.com/Account/Login/');
+});
