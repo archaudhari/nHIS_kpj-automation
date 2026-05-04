@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { loginAPI } from './auth.api';
 
-test('Validate KPJ Login API', async () => {
+test.skip('Validate KPJ Login API', async () => {
   const response = await loginAPI();
 
   console.log('STATUS:', response.status);

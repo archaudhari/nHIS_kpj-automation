@@ -35,7 +35,11 @@ pipeline {
         bat 'npx playwright test'
       }
     }
-
+    stage('Run Tests') {
+  steps {
+    bat 'npx playwright test tests/ui'
+  }
+}
   }
 
   post {

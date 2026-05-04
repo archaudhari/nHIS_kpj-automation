@@ -8,7 +8,7 @@ export async function loginAPI() {
   });
 
   const response = await axios.post(
-    `${ENV.BASE_URL}/Account/Login`,  // <-- FIXED endpoint
+    `${ENV.BASE_URL}/Account/Login`,
     {
       username: ENV.USERNAME,
       password: ENV.PASSWORD
