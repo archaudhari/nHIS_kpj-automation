@@ -1,0 +1,68 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui\op-registration.spec.ts >> KPJ OP Registration Flow
+- Location: tests\ui\op-registration.spec.ts:7:5
+
+# Error details
+
+```
+Test timeout of 100000ms exceeded.
+```
+
+```
+Error: locator.click: Test timeout of 100000ms exceeded.
+Call log:
+  - waiting for getByRole('link', { name: 'OP' })
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e9]:
+    - heading "Sign in to continue" [level=5] [ref=e11]
+    - generic [ref=e12]:
+      - generic [ref=e15]:
+        - generic [ref=e17]: 
+        - textbox "Login Name" [ref=e18]
+      - generic [ref=e21]:
+        - generic [ref=e23]: 
+        - textbox "Password" [ref=e24]
+      - text:  
+      - generic [ref=e26]:
+        - button "Login" [ref=e27] [cursor=pointer]
+        - link "Forgot Password?" [ref=e29] [cursor=pointer]:
+          - /url: /Account/ForgotPassword
+  - contentinfo [ref=e32]:
+    - paragraph [ref=e34]: "E-mail : info@sancyberhad.com | All Rights Reserved © SANCY BERHAD. 2024"
+```
+
+# Test source
+
+```ts
+  1  | import { Page } from '@playwright/test';
+  2  | 
+  3  | export class OPPage {
+  4  |   constructor(private page: Page) {}
+  5  | 
+  6  |   async openRegistration() {
+  7  |     // Click OP menu
+> 8  |     await this.page.getByRole('link', { name: 'OP' }).click(); 
+     |                                                       ^ Error: locator.click: Test timeout of 100000ms exceeded.
+  9  |     await this.page.getByRole('link', { name: 'Registration' }).click();
+  10 | 
+  11 |     // Click Registration
+  12 |     // await this.page.locator('#li1iPatientRegistration a').click();
+  13 | 
+  14 |     // Ensure page loaded
+  15 |     await this.page.waitForSelector('text=Patient Information');
+  16 |   }
+  17 | }
+```

@@ -3,8 +3,9 @@ import { LoginPage } from '../../pages/LoginPage';
 import { ENV } from '../../utils/env';
 
 test('KPJ Login UI Test', async ({ page }) => {
-  await page.goto(`${ENV.BASE_URL}/Account/Login/`);
-
+  await page.goto(`${ENV.BASE_URL}/Account/Login/`, { 
+  waitUntil: 'domcontentloaded' 
+});
   await page.fill('input[placeholder="Login Name"]', ENV.USERNAME);
   await page.fill('input[type="Password"]', ENV.PASSWORD);
 
@@ -12,5 +13,5 @@ test('KPJ Login UI Test', async ({ page }) => {
   await page.waitForTimeout(2000);
   await page.click('button:has-text("LOGIN")');
 
-  await expect(page).toHaveURL(/PatientDashboard/);
+  await page.waitForURL('**/PatientDashboard');
 });
