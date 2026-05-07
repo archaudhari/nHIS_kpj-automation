@@ -1,0 +1,2529 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui\op-registration.spec.ts >> KPJ OP Registration Flow
+- Location: tests\ui\op-registration.spec.ts:10:5
+
+# Error details
+
+```
+Test timeout of 100000ms exceeded.
+```
+
+```
+Error: locator.fill: Test timeout of 100000ms exceeded.
+Call log:
+  - waiting for locator('input[name="PatientName"], input[placeholder="Full Name"], input[name="Name"], input[placeholder="Name"]')
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner:
+      - text:  
+      - navigation [ref=e3]:
+        - generic [ref=e4]:
+          - heading "Registration" [level=1] [ref=e6]
+          - list [ref=e8]:
+            - listitem [ref=e9]:
+              - generic [ref=e10]: "Welcome: Employee 1338:(KPJ)"
+            - listitem [ref=e11]:
+              - generic [ref=e12]: "Last Login : 07/05/2026 03:26:15"
+            - listitem [ref=e13]:
+              - link " 244" [ref=e15] [cursor=pointer]:
+                - /url: "#/InternalMessaging"
+                - generic [ref=e16]: 
+                - generic [ref=e17]: "244"
+              - button "Mic On/Off" [ref=e19] [cursor=pointer]
+              - img "Change Password" [ref=e22]
+              - generic "Logout" [ref=e24]:
+                - generic [ref=e25]: 
+    - navigation [ref=e26]:
+      - list [ref=e31]:
+        - listitem [ref=e32]:
+          - link [ref=e33] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e34]:
+          - link "Home" [ref=e35] [cursor=pointer]:
+            - /url: "#/home"
+            - generic [ref=e36]: Home
+        - listitem [ref=e37]:
+          - link "IP" [ref=e38] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e39]: IP
+        - listitem [ref=e40]:
+          - link "Emergency" [ref=e41] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e42]: Emergency
+        - listitem [ref=e43]:
+          - link "OP" [ref=e44] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e45]: OP
+          - text:                
+        - listitem [ref=e46]:
+          - link "Finance" [ref=e47] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e48]: Finance
+        - listitem [ref=e49]:
+          - link "Billing" [ref=e50] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e51]: Billing
+        - listitem [ref=e52]:
+          - link "Investigation" [ref=e53] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e54]: Investigation
+        - listitem [ref=e55]:
+          - link "Nursing Station" [ref=e56] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e57]: Nursing Station
+        - listitem [ref=e58]:
+          - link "OT" [ref=e59] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e60]: OT
+        - listitem [ref=e61]:
+          - link "Inventory" [ref=e62] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e63]: Inventory
+        - listitem [ref=e64]:
+          - link "Ancillary Services" [ref=e65] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e66]: Ancillary Services
+        - listitem [ref=e67]:
+          - link "Report" [ref=e68] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e69]: Report
+        - listitem [ref=e70]:
+          - link "System Configuration" [ref=e71] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e72]: System Configuration
+        - listitem [ref=e73]:
+          - link "Application Configuration" [ref=e74] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e75]: Application Configuration
+        - listitem [ref=e76]:
+          - link "Telemedicine" [ref=e77] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e78]: Telemedicine
+    - generic [ref=e85]:
+      - generic [ref=e87]:
+        - tablist [ref=e88]:
+          - generic [ref=e89]:
+            - tab "Patient Information" [ref=e90]:
+              - button "Patient Information" [ref=e91] [cursor=pointer]
+              - button
+            - tabpanel "Patient Information" [ref=e92]:
+              - generic [ref=e93]:
+                - generic [ref=e94]:
+                  - generic [ref=e96]:
+                    - generic [ref=e97]: Reg. Date
+                    - textbox "dd/mm/yyyy" [disabled] [ref=e100]: 07/05/2026
+                  - generic [ref=e102]:
+                    - generic [ref=e103]: Reg. Type
+                    - combobox "Reg. Type" [ref=e105]:
+                      - option "--Select--"
+                      - option "New" [selected]
+                      - option "Registered"
+                  - generic [ref=e108]:
+                    - generic [ref=e109] [cursor=pointer]:
+                      - checkbox "Staff" [ref=e110]
+                      - text: Staff
+                    - generic [ref=e111] [cursor=pointer]:
+                      - radio "MRN No." [checked] [ref=e112]
+                      - text: MRN No.
+                    - generic [ref=e113] [cursor=pointer]:
+                      - radio "NRIC" [ref=e114]
+                      - text: NRIC
+                  - generic [ref=e116]:
+                    - generic [ref=e117]: MRN No.
+                    - generic [ref=e119]:
+                      - textbox [disabled] [ref=e120]
+                      - generic [ref=e121]:
+                        - button "Search Patient" [disabled] [ref=e122]:
+                          - generic [ref=e123]: 
+                        - button "Find Patient" [disabled] [ref=e124]:
+                          - img [ref=e125]
+                        - button "Find Appointment Patient" [ref=e126] [cursor=pointer]:
+                          - img [ref=e127]
+                        - button "Read MyKad Card" [ref=e128] [cursor=pointer]:
+                          - img [ref=e129]
+                        - text: 
+                - generic [ref=e130]:
+                  - generic [ref=e132]:
+                    - generic [ref=e133]: Name*
+                    - generic [ref=e135]:
+                      - combobox [ref=e136]:
+                        - option "Title" [selected]
+                        - option "Baby of"
+                        - option "No Information"
+                        - option "Tun"
+                        - option "Tan Sri"
+                        - option "Tan Sri Dato'"
+                        - option "Tan Sri Dato' Dr."
+                        - option "Tan Sri Dato' Ir."
+                        - option "Tan Sri Dato Seri"
+                        - option "Tan Sri Datuk"
+                        - option "Tan Sri Datuk Dr."
+                        - option "Tan Sri Datuk Professor"
+                        - option "Tan Sri Datuk Professor Dr."
+                        - option "Tan Sri Dr."
+                        - option "Tan Sri General"
+                        - option "Tan Sri Professor"
+                        - option "Dato'"
+                        - option "Dato' Dr."
+                        - option "Dato' Ir."
+                        - option "Dato' Ir. Dr."
+                        - option "Dato' Paduka Dr."
+                        - option "Dato' Professor Madya Dr."
+                        - option "Dato' Senara Muda"
+                        - option "Dato' Seri"
+                        - option "Dato' Sri"
+                        - option "Datuk"
+                        - option "Datuk Amar"
+                        - option "Datuk Bentara Luar"
+                        - option "Datuk Bentara Raja"
+                        - option "Datuk Dr."
+                        - option "Datuk Ir."
+                        - option "Datuk Patinggi"
+                        - option "Datuk Professor"
+                        - option "Datuk Professor Dr."
+                        - option "Datuk Setia"
+                        - option "Datuk Setia Wangsa"
+                        - option "Datuk Sri"
+                        - option "Datuk Sri Amar DiRaja"
+                        - option "Datuk Sri Dr."
+                        - option "Datuk Wira"
+                        - option "Datuk Wira Jaya"
+                        - option "Dr."
+                        - option "Ir."
+                        - option "Ir. Dr."
+                        - option "Major"
+                        - option "Professor"
+                        - option "Professor DiRaja"
+                        - option "Professor Dr."
+                        - option "Professor Madya"
+                        - option "Professor Madya Dr."
+                        - option "Datu"
+                        - option "Mr."
+                        - option "Tuan"
+                        - option "Haji"
+                        - option "To' Puan"
+                        - option "Toh Puan"
+                        - option "Puan Sri"
+                        - option "Puan Sri Datin"
+                        - option "Puan Sri Datin Professor"
+                        - option "Puan Sri Dr."
+                        - option "Puan Sri Utama"
+                        - option "Datin"
+                        - option "Datin Amar"
+                        - option "Datin Dr."
+                        - option "Datin Paduka"
+                        - option "Datin Patinggi"
+                        - option "Datin Professor"
+                        - option "Datin Professor Dr."
+                        - option "Datin Setia"
+                        - option "Datin Sri"
+                        - option "Datin Sri Cempaka"
+                        - option "Datin Sri Dr."
+                        - option "Ms."
+                        - option "Mrs."
+                        - option "Hajjah"
+                      - textbox [ref=e137]
+                  - generic [ref=e139]:
+                    - generic [ref=e140]: Identification Type*
+                    - combobox [ref=e142]:
+                      - option "--Select--" [selected]
+                      - option "Army"
+                      - option "Birth Certificate"
+                      - option "Birth Certificate - Foreign"
+                      - option "Father's IC"
+                      - option "IC No. of Refugees"
+                      - option "Mother's IC"
+                      - option "MyKid"
+                      - option "New IC"
+                      - option "No Identity"
+                      - option "No Information"
+                      - option "Old IC"
+                      - option "Others"
+                      - option "Passport"
+                      - option "Permanent Resident IC"
+                      - option "Police No."
+                      - option "UNHCR"
+                  - generic [ref=e144]:
+                    - generic [ref=e145]: NRIC
+                    - textbox [ref=e147]
+                  - generic [ref=e149]:
+                    - generic [ref=e150]: Passport No.*
+                    - textbox [ref=e152]
+                    - button "Visa" [ref=e154] [cursor=pointer]
+                  - generic [ref=e156]:
+                    - generic [ref=e157]: Passport Expiry Date*
+                    - textbox "dd/mm/yyyy" [ref=e160]
+                  - generic [ref=e162]:
+                    - generic [ref=e163]: Other Identification No.
+                    - textbox [ref=e165]
+                  - generic [ref=e167]:
+                    - generic [ref=e168]: Nationality*
+                    - combobox [ref=e170]:
+                      - option "--Select--"
+                      - option "Afghan"
+                      - option "Albanian"
+                      - option "Algerian"
+                      - option "American"
+                      - option "American Samoan"
+                      - option "Andorran"
+                      - option "Angolan"
+                      - option "Anguillan"
+                      - option "Antarctican"
+                      - option "Antiguan"
+                      - option "Argentinian"
+                      - option "Armenian"
+                      - option "Aruban"
+                      - option "Australian"
+                      - option "Austrian"
+                      - option "Azerbaijani"
+                      - option "Bahamian"
+                      - option "Bahraini"
+                      - option "Bangladeshi"
+                      - option "Barbadian"
+                      - option "Belarusian"
+                      - option "Belgian"
+                      - option "Belizean"
+                      - option "Beninese"
+                      - option "Bermudian"
+                      - option "Bhutanese"
+                      - option "Bolivian"
+                      - option "Bosnian"
+                      - option "Botswanan"
+                      - option "Bouvet Islander"
+                      - option "Brazilian"
+                      - option "British"
+                      - option "British Indian Ocean Territory"
+                      - option "British Virgin Islander"
+                      - option "Bruneian"
+                      - option "Bulgarian"
+                      - option "Burkinan"
+                      - option "Burmese"
+                      - option "Burundian"
+                      - option "Cambodian"
+                      - option "Cameroonian"
+                      - option "Canadian"
+                      - option "Cape Verdean"
+                      - option "Caymanian"
+                      - option "Central African"
+                      - option "Chadian"
+                      - option "Chilean"
+                      - option "Chinese"
+                      - option "Christmas Islander"
+                      - option "Cocos Islander"
+                      - option "Colombian"
+                      - option "Comoran"
+                      - option "Congolese"
+                      - option "Congolese"
+                      - option "Cook Islander"
+                      - option "Costa Rican"
+                      - option "Croatian"
+                      - option "Cuban"
+                      - option "Cypriot"
+                      - option "Czech"
+                      - option "Danish"
+                      - option "Djiboutian"
+                      - option "Dominican"
+                      - option "Dominican"
+                      - option "Dutch"
+                      - option "Dutch Antillean"
+                      - option "Ecuadorian"
+                      - option "Egyptian"
+                      - option "Emirati"
+                      - option "Equatorial Guinean"
+                      - option "Eritrean"
+                      - option "Estonian"
+                      - option "Ethiopian"
+                      - option "Falkland Islander"
+                      - option "Faroese"
+                      - option "Fijian"
+                      - option "Filipino"
+                      - option "Finnish"
+                      - option "French"
+                      - option "French Guianese"
+                      - option "French Polynesian"
+                      - option "French Southern Territories"
+                      - option "Gabonese"
+                      - option "Gambian"
+                      - option "Georgian"
+                      - option "German"
+                      - option "Ghanaian"
+                      - option "Gibraltarian"
+                      - option "Greek"
+                      - option "Greenlandic"
+                      - option "Grenadian"
+                      - option "Guadeloupean"
+                      - option "Guamanian"
+                      - option "Guatemalan"
+                      - option "Guinean"
+                      - option "Guinean"
+                      - option "Guyanese"
+                      - option "Haitian"
+                      - option "Heard Island And McDonald Islands"
+                      - option "Honduran"
+                      - option "Hong Konger"
+                      - option "Hungarian"
+                      - option "Icelandic"
+                      - option "Indian"
+                      - option "Indonesian"
+                      - option "Iranian"
+                      - option "Iraqi"
+                      - option "Irish"
+                      - option "Israeli"
+                      - option "Italian"
+                      - option "Ivorian"
+                      - option "Jamaican"
+                      - option "Japanese"
+                      - option "Jordanian"
+                      - option "Kazakhstani"
+                      - option "Kenyan"
+                      - option "Kiribatian"
+                      - option "Kittitian"
+                      - option "Kuwaiti"
+                      - option "Kyrgyzstani"
+                      - option "Laotian"
+                      - option "Latvian"
+                      - option "Lebanese"
+                      - option "Liberian"
+                      - option "Libyan"
+                      - option "Liechtensteiner"
+                      - option "Lithuanian"
+                      - option "Luxembourger"
+                      - option "Macanese"
+                      - option "Macedonian"
+                      - option "Madagascan"
+                      - option "Malawian"
+                      - option "Malaysian" [selected]
+                      - option "Maldivian"
+                      - option "Malian"
+                      - option "Maltese"
+                      - option "Marshallese"
+                      - option "Martinican"
+                      - option "Mauritanian"
+                      - option "Mauritian"
+                      - option "Mayottean"
+                      - option "Mexican"
+                      - option "Micronesian"
+                      - option "Moldovan"
+                      - option "Monegasque"
+                      - option "Mongolian"
+                      - option "Montserratian"
+                      - option "Moroccan"
+                      - option "Mosotho"
+                      - option "Mozambican"
+                      - option "Namibian"
+                      - option "Nauruan"
+                      - option "Nepalese"
+                      - option "New Caledonian"
+                      - option "New Zealander"
+                      - option "Nicaraguan"
+                      - option "Nigerian"
+                      - option "Nigerien"
+                      - option "Niuean"
+                      - option "No Information"
+                      - option "Norfolk Islander"
+                      - option "North Korean"
+                      - option "Northern Marianan"
+                      - option "Norwegian"
+                      - option "Omani"
+                      - option "Others"
+                      - option "Pakistani"
+                      - option "Palauan"
+                      - option "Palestinian"
+                      - option "Panamanian"
+                      - option "Papua New Guinean"
+                      - option "Paraguayan"
+                      - option "Peruvian"
+                      - option "Pitcairn Islander"
+                      - option "Polish"
+                      - option "Portuguese"
+                      - option "Puerto Rican"
+                      - option "Qatari"
+                      - option "Réunionese"
+                      - option "Romanian"
+                      - option "Russian"
+                      - option "Rwandan"
+                      - option "Sahrawi"
+                      - option "Saint Helenian"
+                      - option "Saint Lucian"
+                      - option "Saint-Pierrais"
+                      - option "Salvadorean"
+                      - option "Sammarinese"
+                      - option "Samoan"
+                      - option "Santomean"
+                      - option "Saudi Arabian"
+                      - option "Senegalese"
+                      - option "Seychellois"
+                      - option "Sierra Leonean"
+                      - option "Singaporean"
+                      - option "Slovakian"
+                      - option "Slovenian"
+                      - option "Solomon Islander"
+                      - option "Somali"
+                      - option "South African"
+                      - option "South Georgia Islander"
+                      - option "South Korean"
+                      - option "Spanish"
+                      - option "Sri Lankan"
+                      - option "Sudanese"
+                      - option "Surinamese"
+                      - option "Svalbardian"
+                      - option "Swazi"
+                      - option "Swedish"
+                      - option "Swiss"
+                      - option "Syrian"
+                      - option "Taiwanese"
+                      - option "Tajikistani"
+                      - option "Tanzanian"
+                      - option "Thai"
+                      - option "Timorese"
+                      - option "Togolese"
+                      - option "Tokelauan"
+                      - option "Tongan"
+                      - option "Trinidadian"
+                      - option "Tunisian"
+                      - option "Turkish"
+                      - option "Turkmenistani"
+                      - option "Turks and Caicos Islander"
+                      - option "Tuvaluan"
+                      - option "U.S. Virgin Islander"
+                      - option "Ugandan"
+                      - option "Ukrainian"
+                      - option "United States Minor Outlying Islands"
+                      - option "Uruguayan"
+                      - option "Uzbekistani"
+                      - option "Vanuatuan"
+                      - option "Vatican"
+                      - option "Venezuelan"
+                      - option "Vietnamese"
+                      - option "Vincentian"
+                      - option "Wallisian"
+                      - option "Yemeni"
+                      - option "Yugoslavian"
+                      - option "Zambian"
+                      - option "Zimbabwean"
+                  - generic [ref=e172]:
+                    - generic [ref=e173]: Gender*
+                    - combobox [ref=e175]:
+                      - option "-Select-" [selected]
+                      - option "Ambiguous"
+                      - option "Female"
+                      - option "Male"
+                      - option "No Information"
+                      - option "Other"
+                      - option "Unknown"
+                  - generic [ref=e177]:
+                    - generic [ref=e178]: Date of Birth*
+                    - textbox "Passport Expiry Date* Date of Birth*" [ref=e181]:
+                      - /placeholder: dd/mm/yyyy
+                  - text:       
+                  - generic [ref=e183]:
+                    - generic [ref=e184]: Age
+                    - generic [ref=e186]:
+                      - textbox "Year(s)" [ref=e187]
+                      - textbox "Month(s)" [ref=e188]
+                      - textbox "Day(s)" [ref=e189]
+                  - generic [ref=e191]:
+                    - generic [ref=e192]: Religion
+                    - combobox [ref=e194]:
+                      - option "--Select--" [selected]
+                      - option "Animism"
+                      - option "Atheist"
+                      - option "Bahaism"
+                      - option "Buddhism"
+                      - option "Christianity"
+                      - option "Confucianism"
+                      - option "Hinduism"
+                      - option "Islam"
+                      - option "No Information"
+                      - option "Others"
+                      - option "Sikhism"
+                      - option "Taoism"
+                  - generic [ref=e196]:
+                    - generic [ref=e197]: Race*
+                    - combobox [ref=e199]:
+                      - option "--Select--" [selected]
+                      - option "No Information"
+                      - option "Malay"
+                      - option "Chinese"
+                      - option "Indian"
+                      - option "Peninsular Indigenous (Orang Asli)"
+                      - option "Bajau"
+                      - option "Dusun"
+                      - option "Kadazan"
+                      - option "Murut"
+                      - option "Other Sabah Bumiputera"
+                      - option "Melanau"
+                      - option "Kedayan"
+                      - option "Iban"
+                      - option "Bidayuh"
+                      - option "Other Sarawak Bumiputera"
+                      - option "Others"
+                      - option "Non-Citizen"
+                  - generic [ref=e201]:
+                    - generic [ref=e202]: Marital Status
+                    - combobox [ref=e204]:
+                      - option "--Select--" [selected]
+                      - option "Divorced"
+                      - option "Married"
+                      - option "No Information"
+                      - option "Others"
+                      - option "Single"
+                      - option "Widowed"
+                  - generic [ref=e206]:
+                    - generic [ref=e207]: TIN Number
+                    - textbox [ref=e209]
+                  - generic [ref=e211]:
+                    - generic [ref=e212]: Blood Group
+                    - combobox [ref=e214]:
+                      - option "--Select--" [selected]
+                      - option "A"
+                      - option "AB"
+                      - option "B"
+                      - option "Missing"
+                      - option "No Information"
+                      - option "Not Available"
+                      - option "O"
+                  - generic [ref=e216]:
+                    - generic [ref=e217]: Income Category
+                    - combobox [ref=e219]:
+                      - option "--Select--" [selected]
+                      - option "No Information"
+                      - option "No Income"
+                      - option "< RM 500"
+                      - option "RM 500 - RM 1000"
+                      - option "RM 1001 - RM 1500"
+                      - option "RM 1501 - RM 3000"
+                      - option "RM 3001 - RM 5000"
+                      - option "RM 5001 - RM 10000"
+                      - option "RM 10000 - RM 15000"
+                      - option "> RM 15000"
+                  - generic [ref=e223]:
+                    - generic [ref=e224] [cursor=pointer]:
+                      - checkbox "VIP" [ref=e225]
+                      - text: VIP
+                    - generic [ref=e226] [cursor=pointer]:
+                      - checkbox "Pregnant" [disabled] [ref=e227]
+                      - text: Pregnant
+                    - generic [ref=e228] [cursor=pointer]:
+                      - checkbox "Ambulance Transfer" [ref=e229]
+                      - text: Ambulance Transfer
+                  - generic [ref=e231]:
+                    - generic [ref=e232]: Expected Delivery
+                    - textbox "dd/mm/yyyy" [disabled] [ref=e235]
+                  - generic [ref=e237]:
+                    - generic [ref=e238]: Patient Category
+                    - combobox [disabled] [ref=e240]:
+                      - option "--Select--" [selected]
+                      - option "Foreign Patients - Expatriate"
+                      - option "Foreign Patients - Foreign Worker"
+                      - option "Foreign Patients - Malaysia My Second Home (MM2H) Participant"
+                      - option "Foreign Patients - Student"
+                      - option "Foreign Patients -Professional Worker"
+                      - option "Health Tourist"
+                      - option "No Information"
+                      - option "Tourist Seeking Treatment"
+                  - generic [ref=e242]:
+                    - generic [ref=e243]: Attach Photo
+                    - generic [ref=e244]:
+                      - img "Attach Photo" [ref=e247] [cursor=pointer]
+                      - img [ref=e248]
+                      - button "Capture Image" [ref=e249] [cursor=pointer]:
+                        - img [ref=e250]
+                  - generic [ref=e252]:
+                    - generic [ref=e253]: Thumb
+                    - generic [ref=e254]:
+                      - img "Attach Thumb" [ref=e257] [cursor=pointer]
+                      - img [ref=e258]
+                      - img "IC Card" [ref=e261] [cursor=pointer]
+                      - img [ref=e262]
+                  - generic [ref=e264]:
+                    - generic [ref=e265]: MyKAD IP
+                    - textbox [ref=e267]: wss://localhost:5963
+                - generic [ref=e268]:
+                  - heading "Correspondence Details" [level=4] [ref=e270]
+                  - generic [ref=e272]:
+                    - generic [ref=e274]:
+                      - generic [ref=e275]: Address Line 1 *
+                      - textbox [ref=e277]
+                    - generic [ref=e279]:
+                      - generic [ref=e280]: Address Line 2
+                      - textbox [ref=e282]
+                    - generic [ref=e284]:
+                      - generic [ref=e285]: Address Line 3
+                      - textbox [ref=e287]
+                    - generic [ref=e289]:
+                      - generic [ref=e290]: Postcode *
+                      - textbox [ref=e292]
+                    - generic [ref=e294]:
+                      - generic [ref=e295]: City / District
+                      - combobox [ref=e297]:
+                        - option "--Select--"
+                        - option "Ampang"
+                        - option "Bandar Baru Bangi"
+                        - option "Bandar Puncak Alam"
+                        - option "Banting"
+                        - option "Batang Berjuntai"
+                        - option "Batang Kali"
+                        - option "Batu Arang"
+                        - option "Batu Caves"
+                        - option "Beranang"
+                        - option "Bukit Rotan"
+                        - option "Cheras"
+                        - option "Cyberjaya"
+                        - option "Dengkil"
+                        - option "Hulu Langat"
+                        - option "Jenjarom"
+                        - option "Jeram"
+                        - option "Kajang"
+                        - option "Kapar"
+                        - option "Kerling"
+                        - option "Klang"
+                        - option "KLIA"
+                        - option "Kuala Kubu Baru"
+                        - option "Kuala Selangor"
+                        - option "Pelabuhan Klang"
+                        - option "Petaling Jaya" [selected]
+                        - option "Puchong"
+                        - option "Pulau Carey"
+                        - option "Pulau Indah"
+                        - option "Pulau Ketam"
+                        - option "Rasa"
+                        - option "Rawang"
+                        - option "Sabak Bernam"
+                        - option "Sekinchan"
+                        - option "Semenyih"
+                        - option "Sepang"
+                        - option "Serdang"
+                        - option "Serendah"
+                        - option "Seri Kembangan"
+                        - option "Shah Alam"
+                        - option "Subang Jaya"
+                        - option "Sungai Ayer Tawar"
+                        - option "Sungai Besar"
+                        - option "Sungai Buloh"
+                        - option "Sungai Pelek"
+                        - option "Tanjong Karang"
+                        - option "Tanjong Sepat"
+                        - option "Telok Panglima Garang"
+                    - generic [ref=e299]:
+                      - generic [ref=e300]: State*
+                      - combobox [ref=e302]:
+                        - option "--Select--"
+                        - option "Johor"
+                        - option "Kedah"
+                        - option "Kelantan"
+                        - option "Luar Negeri"
+                        - option "Melaka"
+                        - option "Negeri Sembilan"
+                        - option "Others"
+                        - option "Pahang"
+                        - option "Perak"
+                        - option "Perlis"
+                        - option "Pulau Pinang"
+                        - option "Sabah"
+                        - option "Sarawak"
+                        - option "Selangor" [selected]
+                        - option "Terengganu"
+                        - option "Wilayah Persekutuan Kuala Lumpur"
+                        - option "Wilayah Persekutuan Labuan"
+                        - option "Wilayah Persekutuan Putrajaya"
+                    - generic [ref=e304]:
+                      - generic [ref=e305]: Country*
+                      - combobox [ref=e307]:
+                        - option "--Select--"
+                        - option "Afghanistan"
+                        - option "Albania"
+                        - option "Algeria"
+                        - option "American Samoa"
+                        - option "Andorra"
+                        - option "Angola"
+                        - option "Anguilla"
+                        - option "Antartica"
+                        - option "Antigua And Barbuda"
+                        - option "Argentina"
+                        - option "Armenia"
+                        - option "Aruba"
+                        - option "Australia"
+                        - option "Austria"
+                        - option "Azerbaijan"
+                        - option "Bahamas"
+                        - option "Bahrain"
+                        - option "Bangladesh"
+                        - option "Barbados"
+                        - option "Belarus"
+                        - option "Belgium"
+                        - option "Belize"
+                        - option "Benin"
+                        - option "Bermuda"
+                        - option "Bhutan"
+                        - option "Bolivia"
+                        - option "Bosnia And Herzegovina"
+                        - option "Botswana"
+                        - option "Bouvet Island"
+                        - option "Brazil"
+                        - option "British Indian Ocean Territory"
+                        - option "Brunei Darussalam"
+                        - option "Bulgaria"
+                        - option "Burkina Faso"
+                        - option "Burundi"
+                        - option "Cambodia"
+                        - option "Cameroon"
+                        - option "Canada"
+                        - option "Cape Verde"
+                        - option "Cayman Islands"
+                        - option "Central African Republic"
+                        - option "Chad"
+                        - option "Chile"
+                        - option "China"
+                        - option "Christmas Island"
+                        - option "Cocos (Keeling) Islands"
+                        - option "Colombia"
+                        - option "Comoros"
+                        - option "Congo (Zaire)"
+                        - option "Congo, The Democratic Republic Of The"
+                        - option "Cook Island"
+                        - option "Costa Rica"
+                        - option "Cote Divoire"
+                        - option "Croatia"
+                        - option "Cuba"
+                        - option "Cyprus"
+                        - option "Czech Republic"
+                        - option "Denmark"
+                        - option "Djibouti"
+                        - option "Dominia"
+                        - option "Dominican Republic"
+                        - option "East Timor"
+                        - option "Egypt"
+                        - option "El Salvador"
+                        - option "Equador"
+                        - option "Equatorial Guinea"
+                        - option "Eritrea"
+                        - option "Estonia"
+                        - option "Ethiopia"
+                        - option "Falkland Islands (Malvinas)"
+                        - option "Faroe Islands"
+                        - option "Fiji"
+                        - option "Finland"
+                        - option "France"
+                        - option "French Guiana"
+                        - option "French Polynesia"
+                        - option "French Southern Territories"
+                        - option "Gabon"
+                        - option "Gambia"
+                        - option "Georgia"
+                        - option "Germany"
+                        - option "Ghana"
+                        - option "Gibraltar"
+                        - option "Greece"
+                        - option "Greenland"
+                        - option "Grenada"
+                        - option "Guadeloupe"
+                        - option "Guam"
+                        - option "Guatemala"
+                        - option "Guinea"
+                        - option "Guinea-Bissau"
+                        - option "Guyana"
+                        - option "Haiti"
+                        - option "Heard Island And McDdonald Islands"
+                        - option "Holy See (Vatican City State)"
+                        - option "Honduras"
+                        - option "Hong Kong"
+                        - option "Hungary"
+                        - option "Iceland"
+                        - option "India"
+                        - option "Indonesia"
+                        - option "Iran, Islamic Republic Of"
+                        - option "Iraq"
+                        - option "Ireland"
+                        - option "Israel"
+                        - option "Italy"
+                        - option "Jamaica"
+                        - option "Japan"
+                        - option "Jordan"
+                        - option "Kazakhstan"
+                        - option "Kenya"
+                        - option "Kiribati"
+                        - option "Korea, Democratic Peoples Republic Of"
+                        - option "Korea, Republic Of"
+                        - option "Kuwait"
+                        - option "Kyrgyzstan"
+                        - option "Lao Peoples Democratic Republic"
+                        - option "Latvia"
+                        - option "Lebanon"
+                        - option "Lesotho"
+                        - option "Liberia"
+                        - option "Libyan Arab Jamahiriya"
+                        - option "Liechtenstein"
+                        - option "Lithuania"
+                        - option "Luxembourg"
+                        - option "Macau"
+                        - option "Macedonia, The Former Yugoslav Republic Of"
+                        - option "Madagascar"
+                        - option "Malawi"
+                        - option "Malaysia" [selected]
+                        - option "Maldives"
+                        - option "Mali"
+                        - option "Malta"
+                        - option "Marshall Islands"
+                        - option "Martinique"
+                        - option "Mauritania"
+                        - option "Mauritius"
+                        - option "Mayotte"
+                        - option "Mexico"
+                        - option "Micronesia, Federated States Of"
+                        - option "Moldova, Republic Of"
+                        - option "Monaco"
+                        - option "Mongolia"
+                        - option "Montserrat"
+                        - option "Morocco"
+                        - option "Mozambique"
+                        - option "Myanmar"
+                        - option "Namibia"
+                        - option "Nauru"
+                        - option "Nepal"
+                        - option "Netherlands"
+                        - option "Netherlands Antilles"
+                        - option "New Caledonia"
+                        - option "New Zealand"
+                        - option "Nicaragua"
+                        - option "Niger"
+                        - option "Nigeria"
+                        - option "Niue"
+                        - option "No Information"
+                        - option "Norfolk Island"
+                        - option "Northern Mariana Islands"
+                        - option "Norway"
+                        - option "Oman"
+                        - option "Others"
+                        - option "Pakistan"
+                        - option "Palau"
+                        - option "Palestinian Territory"
+                        - option "Panama"
+                        - option "Papua New Guinea"
+                        - option "Paraguay"
+                        - option "Peru"
+                        - option "Philippines"
+                        - option "Pitcairn"
+                        - option "Poland"
+                        - option "Portugal"
+                        - option "Puerto Rico"
+                        - option "Qatar"
+                        - option "Reunion"
+                        - option "Romania"
+                        - option "Russian Federation"
+                        - option "Rwanda"
+                        - option "Saint Helena"
+                        - option "Saint Kitts And Nevis"
+                        - option "Saint Lucia"
+                        - option "Saint Pierre And Miquelon"
+                        - option "Saint Vincent And The Grenadines"
+                        - option "Samoa"
+                        - option "San Marino"
+                        - option "Sao Tome And Principe"
+                        - option "Saudi Arabia"
+                        - option "Senegal"
+                        - option "Seychelles"
+                        - option "Sierra Leone"
+                        - option "Singapore"
+                        - option "Slovakia"
+                        - option "Slovenia"
+                        - option "Solomon Islands"
+                        - option "Somalia"
+                        - option "South Africa"
+                        - option "South Georgia And The South Sandwich Islands"
+                        - option "Spain"
+                        - option "Sri Lanka"
+                        - option "Sudan"
+                        - option "Suriname"
+                        - option "Svalbard And Jan Mayen"
+                        - option "Swaziland"
+                        - option "Sweden"
+                        - option "Switzerland"
+                        - option "Syrian Arab Republic"
+                        - option "Taiwan, Province Of China"
+                        - option "Tajikistan"
+                        - option "Tanzania, United Republic Of"
+                        - option "Thailand"
+                        - option "Togo"
+                        - option "Tokelau"
+                        - option "Tonga"
+                        - option "Trinidad And Tobago"
+                        - option "Tunisia"
+                        - option "Turkey"
+                        - option "Turkmenistan"
+                        - option "Turks And Caicos Islands"
+                        - option "Tuvalu"
+                        - option "Uganda"
+                        - option "Ukraine"
+                        - option "United Arab Emirates"
+                        - option "United Kingdom"
+                        - option "United States"
+                        - option "United States Minor Outlying Islands"
+                        - option "Uruguay"
+                        - option "Uzbekistan"
+                        - option "Vanuatu"
+                        - option "Venezuela"
+                        - option "Vietnam"
+                        - option "Virgin Islands, British"
+                        - option "Virgin Islands, U.S"
+                        - option "Wallis And Futuna"
+                        - option "Western Sahara"
+                        - option "Yemen"
+                        - option "Yugoslavia"
+                        - option "Zambia"
+                        - option "Zimbabwe"
+                    - generic [ref=e309]:
+                      - generic [ref=e310]:  Mobile No*
+                      - generic [ref=e312]:
+                        - combobox [ref=e313]:
+                          - option "Code" [selected]
+                          - option "60"
+                          - option "91"
+                        - textbox "Mobile" [ref=e314]
+                    - generic [ref=e316]:
+                      - generic [ref=e317]: Phone No.
+                      - generic [ref=e319]:
+                        - textbox [ref=e320]: "60"
+                        - textbox "Phone" [ref=e321]
+                    - generic [ref=e323]:
+                      - generic [ref=e324]: E-mail *
+                      - textbox [ref=e326]
+                - generic [ref=e327]:
+                  - heading "Other Details" [level=4] [ref=e329]
+                  - generic [ref=e331]:
+                    - generic [ref=e333]:
+                      - generic [ref=e334]: Remark
+                      - textbox [ref=e336]
+                    - generic [ref=e338]:
+                      - generic [ref=e339]: Language Preferred
+                      - combobox [ref=e341]:
+                        - option "--Select--" [selected]
+                        - option "Afrikaans"
+                        - option "Arabic"
+                        - option "Bulgarian"
+                        - option "Catalan"
+                        - option "Chinese"
+                        - option "Chinese traditional"
+                        - option "Croatian"
+                        - option "Czech"
+                        - option "Danish"
+                        - option "Dutch"
+                        - option "English"
+                        - option "Estonian"
+                        - option "Finnish"
+                        - option "French"
+                        - option "German"
+                        - option "Greek"
+                        - option "Hebrew"
+                        - option "Hindi"
+                        - option "Hungarian"
+                        - option "Icelandic"
+                        - option "Indonesian"
+                        - option "Italian"
+                        - option "Japanese"
+                        - option "Kazakh"
+                        - option "Korean"
+                        - option "Latvian"
+                        - option "Lithuanian"
+                        - option "Malay"
+                        - option "Norwegian"
+                        - option "Polish"
+                        - option "Portuguese"
+                        - option "Romanian"
+                        - option "Russian"
+                        - option "Serbian"
+                        - option "Serbian (Latin)"
+                        - option "Slovak"
+                        - option "Slovenian"
+                        - option "Spanish"
+                        - option "Swedish"
+                        - option "Tamil"
+                        - option "Thai"
+                        - option "Turkish"
+                        - option "Ukrainian"
+                        - option "Vietnamese"
+                    - generic [ref=e343]:
+                      - generic [ref=e344]: Employer/Occupation
+                      - textbox [ref=e346]
+                - button "Update Registration" [disabled] [ref=e348]
+                - generic [ref=e350]:
+                  - tab "Next of Kin Details" [ref=e351]:
+                    - heading "Next of Kin Details" [level=4] [ref=e352]
+                  - generic [ref=e353]:
+                    - table [ref=e355]:
+                      - rowgroup [ref=e356]:
+                        - row "Delete Title Name Nationality NRIC Passport No. Address E-mail Mobile No Phone No Relationship Payor Occupation Remarks Address 1 Address 2 LegalGuardian City / District State Country Postcode" [ref=e357]:
+                          - columnheader "Delete" [ref=e358]
+                          - columnheader "Title" [ref=e359]
+                          - columnheader "Name" [ref=e360]
+                          - columnheader "Nationality" [ref=e361]
+                          - columnheader "NRIC" [ref=e362]
+                          - columnheader "Passport No." [ref=e363]
+                          - columnheader "Address" [ref=e364]
+                          - columnheader "E-mail" [ref=e365]
+                          - columnheader "Mobile No" [ref=e366]
+                          - columnheader "Phone No" [ref=e367]
+                          - columnheader "Relationship" [ref=e368]
+                          - columnheader "Payor" [ref=e369]
+                          - columnheader "Occupation" [ref=e370]
+                          - columnheader "Remarks" [ref=e371]
+                          - columnheader "Address 1" [ref=e372]
+                          - columnheader "Address 2" [ref=e373]
+                          - columnheader "LegalGuardian" [ref=e374]
+                          - columnheader "City / District" [ref=e375]
+                          - columnheader "State" [ref=e376]
+                          - columnheader "Country" [ref=e377]
+                          - columnheader "Postcode" [ref=e378]
+                      - rowgroup
+                    - generic [ref=e381]:
+                      - generic [ref=e382]:
+                        - generic [ref=e383] [cursor=pointer]:
+                          - radio "MRN No." [checked] [ref=e384]
+                          - text: MRN No.
+                        - generic [ref=e385] [cursor=pointer]:
+                          - radio "NRIC" [ref=e386]
+                          - text: NRIC
+                        - generic [ref=e387]: MRN No.
+                      - generic [ref=e389]:
+                        - textbox [ref=e390]
+                        - generic [ref=e391]:
+                          - button "Search Patient" [ref=e392] [cursor=pointer]:
+                            - generic [ref=e393]: 
+                          - button "Find Patient" [ref=e394] [cursor=pointer]:
+                            - img [ref=e395]
+                          - button "Read MyKad Card" [ref=e396] [cursor=pointer]:
+                            - img [ref=e397]
+                    - generic [ref=e398]:
+                      - generic [ref=e400]:
+                        - generic [ref=e401]: Name *
+                        - generic [ref=e403]:
+                          - combobox [ref=e406]:
+                            - option "Title" [selected]
+                            - option "Baby of"
+                            - option "No Information"
+                            - option "Tun"
+                            - option "Tan Sri"
+                            - option "Tan Sri Dato'"
+                            - option "Tan Sri Dato' Dr."
+                            - option "Tan Sri Dato' Ir."
+                            - option "Tan Sri Dato Seri"
+                            - option "Tan Sri Datuk"
+                            - option "Tan Sri Datuk Dr."
+                            - option "Tan Sri Datuk Professor"
+                            - option "Tan Sri Datuk Professor Dr."
+                            - option "Tan Sri Dr."
+                            - option "Tan Sri General"
+                            - option "Tan Sri Professor"
+                            - option "Dato'"
+                            - option "Dato' Dr."
+                            - option "Dato' Ir."
+                            - option "Dato' Ir. Dr."
+                            - option "Dato' Paduka Dr."
+                            - option "Dato' Professor Madya Dr."
+                            - option "Dato' Senara Muda"
+                            - option "Dato' Seri"
+                            - option "Dato' Sri"
+                            - option "Datuk"
+                            - option "Datuk Amar"
+                            - option "Datuk Bentara Luar"
+                            - option "Datuk Bentara Raja"
+                            - option "Datuk Dr."
+                            - option "Datuk Ir."
+                            - option "Datuk Patinggi"
+                            - option "Datuk Professor"
+                            - option "Datuk Professor Dr."
+                            - option "Datuk Setia"
+                            - option "Datuk Setia Wangsa"
+                            - option "Datuk Sri"
+                            - option "Datuk Sri Amar DiRaja"
+                            - option "Datuk Sri Dr."
+                            - option "Datuk Wira"
+                            - option "Datuk Wira Jaya"
+                            - option "Dr."
+                            - option "Ir."
+                            - option "Ir. Dr."
+                            - option "Major"
+                            - option "Professor"
+                            - option "Professor DiRaja"
+                            - option "Professor Dr."
+                            - option "Professor Madya"
+                            - option "Professor Madya Dr."
+                            - option "Datu"
+                            - option "Mr."
+                            - option "Tuan"
+                            - option "Haji"
+                            - option "To' Puan"
+                            - option "Toh Puan"
+                            - option "Puan Sri"
+                            - option "Puan Sri Datin"
+                            - option "Puan Sri Datin Professor"
+                            - option "Puan Sri Dr."
+                            - option "Puan Sri Utama"
+                            - option "Datin"
+                            - option "Datin Amar"
+                            - option "Datin Dr."
+                            - option "Datin Paduka"
+                            - option "Datin Patinggi"
+                            - option "Datin Professor"
+                            - option "Datin Professor Dr."
+                            - option "Datin Setia"
+                            - option "Datin Sri"
+                            - option "Datin Sri Cempaka"
+                            - option "Datin Sri Dr."
+                            - option "Ms."
+                            - option "Mrs."
+                            - option "Hajjah"
+                          - textbox [ref=e408]
+                      - generic [ref=e410]:
+                        - generic [ref=e411]: Nationality*
+                        - combobox [ref=e413]:
+                          - option "--Select--"
+                          - option "Afghan"
+                          - option "Albanian"
+                          - option "Algerian"
+                          - option "American"
+                          - option "American Samoan"
+                          - option "Andorran"
+                          - option "Angolan"
+                          - option "Anguillan"
+                          - option "Antarctican"
+                          - option "Antiguan"
+                          - option "Argentinian"
+                          - option "Armenian"
+                          - option "Aruban"
+                          - option "Australian"
+                          - option "Austrian"
+                          - option "Azerbaijani"
+                          - option "Bahamian"
+                          - option "Bahraini"
+                          - option "Bangladeshi"
+                          - option "Barbadian"
+                          - option "Belarusian"
+                          - option "Belgian"
+                          - option "Belizean"
+                          - option "Beninese"
+                          - option "Bermudian"
+                          - option "Bhutanese"
+                          - option "Bolivian"
+                          - option "Bosnian"
+                          - option "Botswanan"
+                          - option "Bouvet Islander"
+                          - option "Brazilian"
+                          - option "British"
+                          - option "British Indian Ocean Territory"
+                          - option "British Virgin Islander"
+                          - option "Bruneian"
+                          - option "Bulgarian"
+                          - option "Burkinan"
+                          - option "Burmese"
+                          - option "Burundian"
+                          - option "Cambodian"
+                          - option "Cameroonian"
+                          - option "Canadian"
+                          - option "Cape Verdean"
+                          - option "Caymanian"
+                          - option "Central African"
+                          - option "Chadian"
+                          - option "Chilean"
+                          - option "Chinese"
+                          - option "Christmas Islander"
+                          - option "Cocos Islander"
+                          - option "Colombian"
+                          - option "Comoran"
+                          - option "Congolese"
+                          - option "Congolese"
+                          - option "Cook Islander"
+                          - option "Costa Rican"
+                          - option "Croatian"
+                          - option "Cuban"
+                          - option "Cypriot"
+                          - option "Czech"
+                          - option "Danish"
+                          - option "Djiboutian"
+                          - option "Dominican"
+                          - option "Dominican"
+                          - option "Dutch"
+                          - option "Dutch Antillean"
+                          - option "Ecuadorian"
+                          - option "Egyptian"
+                          - option "Emirati"
+                          - option "Equatorial Guinean"
+                          - option "Eritrean"
+                          - option "Estonian"
+                          - option "Ethiopian"
+                          - option "Falkland Islander"
+                          - option "Faroese"
+                          - option "Fijian"
+                          - option "Filipino"
+                          - option "Finnish"
+                          - option "French"
+                          - option "French Guianese"
+                          - option "French Polynesian"
+                          - option "French Southern Territories"
+                          - option "Gabonese"
+                          - option "Gambian"
+                          - option "Georgian"
+                          - option "German"
+                          - option "Ghanaian"
+                          - option "Gibraltarian"
+                          - option "Greek"
+                          - option "Greenlandic"
+                          - option "Grenadian"
+                          - option "Guadeloupean"
+                          - option "Guamanian"
+                          - option "Guatemalan"
+                          - option "Guinean"
+                          - option "Guinean"
+                          - option "Guyanese"
+                          - option "Haitian"
+                          - option "Heard Island And McDonald Islands"
+                          - option "Honduran"
+                          - option "Hong Konger"
+                          - option "Hungarian"
+                          - option "Icelandic"
+                          - option "Indian"
+                          - option "Indonesian"
+                          - option "Iranian"
+                          - option "Iraqi"
+                          - option "Irish"
+                          - option "Israeli"
+                          - option "Italian"
+                          - option "Ivorian"
+                          - option "Jamaican"
+                          - option "Japanese"
+                          - option "Jordanian"
+                          - option "Kazakhstani"
+                          - option "Kenyan"
+                          - option "Kiribatian"
+                          - option "Kittitian"
+                          - option "Kuwaiti"
+                          - option "Kyrgyzstani"
+                          - option "Laotian"
+                          - option "Latvian"
+                          - option "Lebanese"
+                          - option "Liberian"
+                          - option "Libyan"
+                          - option "Liechtensteiner"
+                          - option "Lithuanian"
+                          - option "Luxembourger"
+                          - option "Macanese"
+                          - option "Macedonian"
+                          - option "Madagascan"
+                          - option "Malawian"
+                          - option "Malaysian" [selected]
+                          - option "Maldivian"
+                          - option "Malian"
+                          - option "Maltese"
+                          - option "Marshallese"
+                          - option "Martinican"
+                          - option "Mauritanian"
+                          - option "Mauritian"
+                          - option "Mayottean"
+                          - option "Mexican"
+                          - option "Micronesian"
+                          - option "Moldovan"
+                          - option "Monegasque"
+                          - option "Mongolian"
+                          - option "Montserratian"
+                          - option "Moroccan"
+                          - option "Mosotho"
+                          - option "Mozambican"
+                          - option "Namibian"
+                          - option "Nauruan"
+                          - option "Nepalese"
+                          - option "New Caledonian"
+                          - option "New Zealander"
+                          - option "Nicaraguan"
+                          - option "Nigerian"
+                          - option "Nigerien"
+                          - option "Niuean"
+                          - option "No Information"
+                          - option "Norfolk Islander"
+                          - option "North Korean"
+                          - option "Northern Marianan"
+                          - option "Norwegian"
+                          - option "Omani"
+                          - option "Others"
+                          - option "Pakistani"
+                          - option "Palauan"
+                          - option "Palestinian"
+                          - option "Panamanian"
+                          - option "Papua New Guinean"
+                          - option "Paraguayan"
+                          - option "Peruvian"
+                          - option "Pitcairn Islander"
+                          - option "Polish"
+                          - option "Portuguese"
+                          - option "Puerto Rican"
+                          - option "Qatari"
+                          - option "Réunionese"
+                          - option "Romanian"
+                          - option "Russian"
+                          - option "Rwandan"
+                          - option "Sahrawi"
+                          - option "Saint Helenian"
+                          - option "Saint Lucian"
+                          - option "Saint-Pierrais"
+                          - option "Salvadorean"
+                          - option "Sammarinese"
+                          - option "Samoan"
+                          - option "Santomean"
+                          - option "Saudi Arabian"
+                          - option "Senegalese"
+                          - option "Seychellois"
+                          - option "Sierra Leonean"
+                          - option "Singaporean"
+                          - option "Slovakian"
+                          - option "Slovenian"
+                          - option "Solomon Islander"
+                          - option "Somali"
+                          - option "South African"
+                          - option "South Georgia Islander"
+                          - option "South Korean"
+                          - option "Spanish"
+                          - option "Sri Lankan"
+                          - option "Sudanese"
+                          - option "Surinamese"
+                          - option "Svalbardian"
+                          - option "Swazi"
+                          - option "Swedish"
+                          - option "Swiss"
+                          - option "Syrian"
+                          - option "Taiwanese"
+                          - option "Tajikistani"
+                          - option "Tanzanian"
+                          - option "Thai"
+                          - option "Timorese"
+                          - option "Togolese"
+                          - option "Tokelauan"
+                          - option "Tongan"
+                          - option "Trinidadian"
+                          - option "Tunisian"
+                          - option "Turkish"
+                          - option "Turkmenistani"
+                          - option "Turks and Caicos Islander"
+                          - option "Tuvaluan"
+                          - option "U.S. Virgin Islander"
+                          - option "Ugandan"
+                          - option "Ukrainian"
+                          - option "United States Minor Outlying Islands"
+                          - option "Uruguayan"
+                          - option "Uzbekistani"
+                          - option "Vanuatuan"
+                          - option "Vatican"
+                          - option "Venezuelan"
+                          - option "Vietnamese"
+                          - option "Vincentian"
+                          - option "Wallisian"
+                          - option "Yemeni"
+                          - option "Yugoslavian"
+                          - option "Zambian"
+                          - option "Zimbabwean"
+                      - generic [ref=e415]:
+                        - generic [ref=e416]: Passport No.
+                        - textbox [ref=e418]
+                      - generic [ref=e420]:
+                        - generic [ref=e421]: NRIC*
+                        - textbox [ref=e423]
+                      - generic [ref=e425]:
+                        - generic [ref=e426]: Relationship *
+                        - combobox [ref=e428]:
+                          - option "--Select--" [selected]
+                          - option "Adopted Child"
+                          - option "Biological Child"
+                          - option "Father"
+                          - option "Grandfather"
+                          - option "Grandmother"
+                          - option "Guardian"
+                          - option "Husband"
+                          - option "Mother"
+                          - option "No Information"
+                          - option "Others"
+                          - option "Self"
+                          - option "Sibling"
+                          - option "Step Child"
+                          - option "Wife"
+                      - generic [ref=e430]:
+                        - generic [ref=e431]: Payor
+                        - combobox [ref=e433]:
+                          - option "--Select--" [selected]
+                          - option "MALAYAN RACING ASSOCIATION"
+                          - option "AA INTERNATIONAL HUB SDN BHD"
+                          - option "ADABI CONSUMER INDUSTRIES SDN BHD"
+                          - option "ADVANCED AGRIECOLOGICAL RESEARCH SDN BHD"
+                          - option "AETNA GLOBAL BENEFITS (ASIA PACIFIC) LIMITED"
+                          - option "AIA BERHAD C/O MICARE SDN BHD"
+                          - option "AIA BHD. (EB)"
+                          - option "AIA BHD. (EB) - P"
+                          - option "AIA BHD. (INDIVIDUAL)"
+                          - option "AIA BHD. (INDIVIDUAL) - P"
+                          - option "AIA PUBLIC TAKAFUL BHD. (EB)"
+                          - option "AIA PUBLIC TAKAFUL BHD. (EB) - P"
+                          - option "AIA PUBLIC TAKAFUL BHD. (INDIVIDUAL)"
+                          - option "AIA PUBLIC TAKAFUL BHD. (INDIVIDUAL) - P"
+                          - option "AIG TRAVEL ASIA PACIFIC PTE LTD."
+                          - option "ALKOOT INSURANCE & REINSURANCE COMPANY"
+                          - option "ALLIANZ WORLDWIDE CARE"
+                          - option "ALLNEX MALAYSIA SDN BHD"
+                          - option "AMANAH RAYA BERHAD"
+                          - option "AMANAH SAHAM NASIONAL BERHAD"
+                          - option "AMGENERAL INSURANCE BERHAD"
+                          - option "AMITA NAZA SDN BHD"
+                          - option "AMMETLIFE C/O INTEGRATED HEALTH PLANS (MALAYSIA) SDN BHD"
+                          - option "ANTSBEES SDN BHD"
+                          - option "AP SOLUTIONS GMBH, SUCCURSALE FRANCAISE"
+                          - option "APRIL ASSISTANCE (THAILAND) CO LTD."
+                          - option "APRIL VIETNAM COMPANY LIMITED"
+                          - option "ASIA ASSISTANCE NETWORK (M) SDN BHD C/O PROGRESSIVE INSURANCE BERHAD"
+                          - option "ASIA ASSISTANCE NETWORK (M) SDN BHD C/O RHB INSURANCE BERHAD"
+                          - option "ASIA JET PARTNERS MALAYSIA SDN BHD"
+                          - option "ASP MEDICAL CLINIC SDN BHD (KUALA LUMPUR)"
+                          - option "ASP MEDICAL CLINIC SDN BHD (PULAU PINANG)"
+                          - option "ASSUNTA HOSPITAL"
+                          - option "AUTO BAVARIA RETAIL C/O SIME DARBY GLOBAL SERVICES"
+                          - option "AVISENA HEALTHCARE SDN BHD"
+                          - option "AXA WINTERTHUR"
+                          - option "BABY VACCINATION VOUCHER"
+                          - option "BANK NEGARA MALAYSIA"
+                          - option "BEACON HOSPITAL SDN BHD"
+                          - option "BERJAYA AIR SDN BHD"
+                          - option "BERJAYA CORPORATION BERHAD"
+                          - option "BERJAYA ECO SERVICES SDN BHD"
+                          - option "BERJAYA ENVIROPARKS SDN BHD"
+                          - option "BERJAYA HILLS BERHAD"
+                          - option "BERJAYA HILLS RESORT BERHAD"
+                          - option "BERJAYA HOTELS & RESORTS"
+                          - option "BERJAYA LAND BERHAD"
+                          - option "BERJAYA PROJECT MANAGEMENT SDN BHD"
+                          - option "BERJAYA SOMPO INSURANCE BERHAD"
+                          - option "BOOKDOC (HEALTH4U SOLUTIONS SDN BHD)"
+                          - option "BOUSTEAD IKANO SDN BHD"
+                          - option "BPJ-BERJAYA SDN BHD"
+                          - option "BRIGHT TERM SDN BHD"
+                          - option "CENGILD G.I MEDICAL CENTRE SDN BHD"
+                          - option "CIGNA INTERNATIONAL EXPATRIATE BENEFITS"
+                          - option "CINEMATA PRODUCTIONS SDN BHD"
+                          - option "CLARITY CREST SDN BHD"
+                          - option "COLUMBIA ASIA HOSPITAL - CHERAS"
+                          - option "COLUMBIA ASIA HOSPITAL - SEREMBAN"
+                          - option "COMPUMED SERVICES SDN BHD"
+                          - option "COMPUMED SERVICES SDN BHD (MSIG INSURANCE)"
+                          - option "CSC STEEL SDN BHD"
+                          - option "CUEPACSCARE4U SOLUTIONS SDN BHD"
+                          - option "DATO DR MOHD HAMZAH BIN KAMARULZAMAN - RESIDENT DOCTOR"
+                          - option "DATO' DR NOOR ZALMY AZIZAN"
+                          - option "DATO'DR ZAKARIA ZAHARI (RESIDENT CONSULTANT)"
+                          - option "DATUK DR JOSEPH YAP CHONG KIAT"
+                          - option "DEWAN BAHASA DAN PUSTAKA MALAYSIA"
+                          - option "DIAVERUM MALAYSIA SDN BHD"
+                          - option "DR A.ANANDA DORAI"
+                          - option "DR ACHDIAT MAHPHA FANSURI BIN MUSTAPA"
+                          - option "DR ALBERT NAVIN DURAIRATNAM"
+                          - option "DR ALDRIN LIE TZE MIN"
+                          - option "DR ANAND SACHITHANANDAN"
+                          - option "DR ANITA CODATI (SESSIONAL CONSULTANT)"
+                          - option "DR ANITA KAUR AHLUWALIA - RESIDENT CONSULTANT"
+                          - option "DR ANUSHREE NARAYANAN"
+                          - option "DR ARIFAH MOHD AMIN@HAMIM"
+                          - option "DR ARUN ARUNASALAM -SESSIONAL CONSULTANT"
+                          - option "DR AW TUI IAR'S"
+                          - option "DR BALACHANDRAN A/L APOO"
+                          - option "DR CHONG KUOH REN"
+                          - option "DR DENNIS KHOO YEAP TENG"
+                          - option "DR ELANG KUMARAN (RESIDENT DOCTOR)"
+                          - option "DR ELIZABETH LIM YENN LYNN - RESIDENT DOCTOR"
+                          - option "DR FADZRUL ABBAS - SESSIONAL CONSULTANT"
+                          - option "DR FONG TECK SIONG - SESSIONAL CONSULTANT"
+                          - option "DR FOO SZE YUEN (RESIDENT DOCTOR)"
+                          - option "DR GAN ING EARN"
+                          - option "DR GANGARAM HEMANDAS BELANI"
+                          - option "DR GANGULY GAUTAM"
+                          - option "DR GARY LEE CHIN KEONG"
+                          - option "DR GURDEEP SINGH NARAIN SINGH"
+                          - option "DR HAFISYATUL AIZA BINTI ZAINAL ABIDIN (RESIDENT DOCTOR)"
+                          - option "DR HAIZAL HARON KAMAR"
+                          - option "DR HANIZA ZAINAL ABIDIN"
+                          - option "DR HEMANTH KUMAR RAMASAMY (RESIDENT DOCTOR)"
+                          - option "DR HENG KIEN SENG"
+                          - option "DR HISHAM KUNHIMON"
+                          - option "DR HUI MUN TSONG"
+                          - option "DR JAMALUL AZIZI BIN ABDUL RAHAMAN"
+                          - option "DR JEREMY PRAKASH SILVANATHAN (SESSIONAL DOCTOR)"
+                          - option "DR KENG TEE CHAU"
+                          - option "DR KENNETH ROHAN LEE CHEE KEONG (RESIDENT CONSULTANT)"
+                          - option "DR KHAIRUN MARINA BINTI BACHOK – RESIDENT DOCTOR"
+                          - option "DR KHOO EN SZEE"
+                          - option "DR KHOR SIM EE"
+                          - option "DR KOONG JUN KIT (RESIDENT DOCTOR)"
+                          - option "DR KRISHNA KUMAR S. KATHERAVELOO (SESSIONAL CONSULTANT)"
+                          - option "DR KULADEVA RATNAM"
+                          - option "DR KWAN KEAT LEONG"
+                          - option "DR LAU GIN CHOY"
+                          - option "DR LEE SOON KHAI"
+                          - option "DR LEONG WAI YEW"
+                          - option "DR LIM AI WEI"
+                          - option "DR LIM CHOR SHEN"
+                          - option "DR LING SHIH GANG"
+                          - option "DR LOH KHEE FEEI (SESSIONAL DOCTOR)"
+                          - option "DR MALLINA SIVARAJASINGAM"
+                          - option "DR MANOHAR ARUMUGAM"
+                          - option "DR MOHAMMAD NAWAR"
+                          - option "DR MOHAMMED FAUZI ABDUL RANI"
+                          - option "DR MOHANASUNDRAM PILLAI – VISITING DOCTOR"
+                          - option "DR MOHD REDZUAN BIN ISMAIL"
+                          - option "DR MUHAMMAD RAHMANI BIN JAFFAR (VISITING CONSULTANT)"
+                          - option "DR MUHD DANIEL SOMA"
+                          - option "DR MUHILAN PARAMESWARAN"
+                          - option "DR NAVDEEP SINGH PANNU"
+                          - option "DR NOR LIZA ARIFFIN (RESIDENT DOCTOR)"
+                          - option "DR NUR ADILA BINTI MOKHTAR (RESIDENT DOCTOR)"
+                          - option "DR NURHAZINAT BINTI MOHAMED YUNUS"
+                          - option "DR OON GIUN HUA"
+                          - option "DR PREMILA ARUL ARUMUGAM (RESIDENT DOCTOR)"
+                          - option "DR PRIADARSHINI SOMASUNDARAM"
+                          - option "DR RAJESH KUMAR PARAMSIVAM"
+                          - option "DR RAMPRASAD ARADADA"
+                          - option "DR RAVINDRAN M. RAMASAMY"
+                          - option "DR REYNU RAJAN - SESSIONAL CONSULTANT"
+                          - option "DR RUVEENA BHAVANI RAJARAM (RESIDENT DOCTOR)"
+                          - option "DR SAIFUL RAZMAN MOHD NOOR"
+                          - option "DR SANDEV SINGH - RESIDENT DOCTOR"
+                          - option "DR SANGITA DHARSHINI (RESIDENT DOCTOR)"
+                          - option "DR SEE BENG TEONG – RESIDENT DOCTOR"
+                          - option "DR SHALINI BHASKAR"
+                          - option "DR SHANTHI RATNAM (RESIDENT)"
+                          - option "DR SHIVANESAN STRIMARI RAJAMANIKAN (RESIDENT DOCTOR)"
+                          - option "DR SIA SHEAU FUNG - RESIDENT DOCTOR"
+                          - option "DR SIVAKUMARAN KARUPAYAH"
+                          - option "DR SOEHARDY ZAINUDDIN"
+                          - option "DR SOONG KEAN LEONG"
+                          - option "DR SUEHAZLYN - (RESIDENT)"
+                          - option "DR SUMIATI MOHD DAUD"
+                          - option "DR SUNDER RAMASAMY"
+                          - option "DR SURINDER SINGH"
+                          - option "DR TAN CHIH KIANG (RESIDENT DOCTOR)"
+                          - option "DR TAN CHONG SEONG - VISITING O&G"
+                          - option "DR TAN CHOR NGEE"
+                          - option "DR TAN GIE HOOI"
+                          - option "DR TAN LAN ENG"
+                          - option "DR TAN LENG LENG – RESIDENT DOCTOR"
+                          - option "DR TAN WEE YONG (RESIDENT)"
+                          - option "DR TAUFIQ BIN ABDULLAH (RESIDENT)"
+                          - option "DR TERENCE TAY KHAI WEI"
+                          - option "DR THANEEMALAI JEGANATHAN"
+                          - option "DR THOMAS JOTHINAYAGAM"
+                          - option "DR VANITA PARAMAJOTHY"
+                          - option "DR VIJEYASINGAM RAJASINGAM"
+                          - option "DR WAI KOK YAU"
+                          - option "DR WAN HANIZA BTE WAN MOHAMAD"
+                          - option "DR WAN HIMRATUL AZLIZA BINTI WAN HARUN"
+                          - option "DR WONG CHEE PIAU"
+                          - option "DR WONG SZE MING"
+                          - option "DR YEONG YEW KWAN"
+                          - option "DR YEU BOON KIAN"
+                          - option "DR YONG JEE KIEN"
+                          - option "DR YUGARAJAH ASOKUMARAN (RESIDENT DOCTOR)"
+                          - option "DR ZAMZURI ZAKARIA"
+                          - option "EBEN ASSIST SDN BHD"
+                          - option "EDGENTA HEALTHCARE MANAGEMENT SDN BHD"
+                          - option "EDGENTA UEMS SDN BHD"
+                          - option "ELMINNA CARE SDN BHD (KLINIK ELMINNA)"
+                          - option "EMA GLOBAL ASSISTANCE SDN BHD"
+                          - option "EPSON PRECISION MALAYSIA SDN BHD"
+                          - option "E-TECH IT SDN BHD"
+                          - option "ETIQA FAMILY TAKAFUL BERHAD"
+                          - option "ETIQA FAMILY TAKAFUL BERHAD - P"
+                          - option "ETIQA LIFE INSURANCE BERHAD"
+                          - option "ETIQA STAFF C/O ETIQA FAMILY TAKAFUL BERHAD"
+                          - option "EURO-CENTER (THAILAND) CO., LTD"
+                          - option "EUROP ASSISTANCE - GLOBAL CORPORATE SOLUTIONS"
+                          - option "EUROP ASSISTANCE MALAYSIA INTERNATIONAL HUB SDN BHD"
+                          - option "EUROP ASSISTANCE SERVICES (M) SDN BHD"
+                          - option "EUROP ASSISTANCE SERVICES (M) SDN BHD C/O AMMETLIFE INSURANCE BERHAD"
+                          - option "EUROP ASSISTANCE SERVICES (M) SDN BHD C/O AXA AFFIN GENERAL INSURANCE BERHAD"
+                          - option "EUROP ASSISTANCE SERVICES (M) SDN BHD C/O HONG LEONG ASSURANCE BERHAD"
+                          - option "EUROP ASSISTANCE SERVICES (M) SDN BHD C/O HONG LEONG MSIG TAKAFUL BERHAD"
+                          - option "EUROP ASSISTANCE SERVICES (M) SDN BHD C/O MCIS INSURANCE BERHAD"
+                          - option "EXIMIUS MEDICAL ADMINISTRATION SOLUTIONS SDN BHD (EMAS)"
+                          - option "FEDERAL LAND DEVELOPMENT AUTHORITY (FELDA)"
+                          - option "FFM BERHAD"
+                          - option "FLEXBEN SOLUTIONS PLT"
+                          - option "FLOWCO (MALAYSIA) SDN BHD"
+                          - option "FO GUANG SHAN (MALAYSIA)"
+                          - option "FOMEMA SDN BHD"
+                          - option "FORWARD VICTORY SDN BHD"
+                          - option "FULLERTON HEALTHCARE GROUP PTE. LTD."
+                          - option "GBA CORPORATION SDN BHD"
+                          - option "GENE SOLUTIONS GENOMICS MALAYSIA SDN BHD"
+                          - option "GENTING BERHAD"
+                          - option "GENTING MALAYSIA BERHAD"
+                          - option "GHHS HEALTHCARE SDN BHD"
+                          - option "GLENMARIE PROPERTIES SDN BHD"
+                          - option "GLOBAL DOCTORS HOSPITAL"
+                          - option "GLOBAL MEDICALL ASSISTANCE (M) SDN BHD"
+                          - option "GREAT EASTERN LIFE ASSURANCE (M) BHD C/O MICARE SDN BHD"
+                          - option "HEALIX INTERNATIONAL LIMITED"
+                          - option "HEALTH CONNECT SDN BHD"
+                          - option "HEALTH DIGITAL TECHNOLOGIES SDN. BHD"
+                          - option "HEALTHCARE - MEDICLINIC DEPARTMENT (AAN) C/O ASIA ASSISTANCE NETWORK (M) SDN BHD"
+                          - option "HEALTHMETRICS SDN BHD"
+                          - option "HEALTIVO CLINIC (HEALTIVO SDN BHD)"
+                          - option "HENNER-GMC UG 13"
+                          - option "HIGH COMMISSION OF THE DEMOCRATIC SOCIALIST REPUBLIC OF SRI LANKA"
+                          - option "HYUNDAI-SIME DARBY MOTORS SDN BHD"
+                          - option "IA INTERNATIONAL ASSISTANCE SDN BHD"
+                          - option "IHM SDN BHD"
+                          - option "IKANO CORPORATION SDN BHD"
+                          - option "IKANO HANDEL SDN BHD"
+                          - option "INSTITUT KWSP"
+                          - option "INSTITUT PENYELIDIKAN PERHUTANAN MALAYSIA (FRIM)"
+                          - option "INSTITUT TADBIRAN AWAM NEGARA (INTAN)"
+                          - option "INTEGRATED HEALTH PLANS (MALAYSIA) SDN BHD"
+                          - option "INTEGRATED ONCOLOGY CENTER (KUALA LUMPUR) SDN.BHD. (HOSPITAL PICASO)"
+                          - option "INTER MUTUELLES ASSISTANCE G.I.E"
+                          - option "INTERNATIONAL ISLAMIC UNIVERSITY MALAYSIA"
+                          - option "INTERNATIONAL MEDICARE GROUP SDN BHD"
+                          - option "INTERNATIONAL SOS (M) SDN BHD"
+                          - option "INTERNATIONAL SOS GLOBAL CORPORATE SERVICES SDN BHD"
+                          - option "ISLAND HOSPITAL SDN BHD"
+                          - option "IVF TECHNOLOGIES SDN BHD"
+                          - option "IX CHANGE PTE LTD"
+                          - option "JABATAN HAL EHWAL VETERAN ATM"
+                          - option "JABATAN PERKHIDMATAN AWAM MALAYSIA"
+                          - option "JWK HEALTHCARE SDN BHD (KLINIK PHONG)"
+                          - option "KARAMJEET SINGH & CO."
+                          - option "KKM HOSPITAL PUTRAJAYA"
+                          - option "KKM HOSPITAL SELAYANG"
+                          - option "KKM HOSPITAL SERDANG"
+                          - option "KKM HOSPITAL SHAH ALAM"
+                          - option "KKM HOSPITAL SUNGAI BULOH"
+                          - option "KLINIK KELUARGA IMAN (IMAN MEDIGROUP SDN BHD)"
+                          - option "KLINIK LIM"
+                          - option "KLINIK LIM (DATARAN SUNWAY)"
+                          - option "KLINIK MEDIVIRON (BISTARI DE KOTA)"
+                          - option "KLINIK MEDIVIRON COVA SQUARE"
+                          - option "KMI KELANA JAYA MEDICAL CENTRE SDN BHD"
+                          - option "KOPERASI WAWASAN MALAYSIA BERHAD"
+                          - option "KPJ AMPANG PUTERI SPECIALIST HOSPITAL"
+                          - option "KPJ DAMANSARA SPECIALIST HOSPITAL"
+                          - option "KPJ DAMANSARA SPECIALIST HOSPITAL 2"
+                          - option "KPJ JOHOR SPECIALIST HOSPITAL"
+                          - option "KPJ RAWANG SPECIALIST HOSPITAL"
+                          - option "KPJ TAWAKKAL SPECIALIST HOSPITAL"
+                          - option "KUMPULAN WANG PERSARAAN (DIPERBADANKAN)"
+                          - option "KUMPULAN WANG SIMPANAN PEKERJA (KWSP) - MELAKA"
+                          - option "KUMPULAN WANG SIMPANAN PEKERJA (KWSP) - SEREMBAN"
+                          - option "KUMPULAN WANG SIMPANAN PEKERJA (KWSP) - SHAH ALAM"
+                          - option "LABLINK SDN BHD"
+                          - option "LABUAN REINSURANCE (L) LTD"
+                          - option "LADANG RAKYAT TRENGGANU SDN.BHD"
+                          - option "LAND & GENERAL BERHAD"
+                          - option "LEMBAGA GETAH MALAYSIA"
+                          - option "LEMBAGA HASIL DALAM NEGERI MALAYSIA"
+                          - option "LEMBAGA PELABUHAN BINTULU (BINTULU PORT AUTHORITY)"
+                          - option "MAGNA MAHSURI SDN BHD"
+                          - option "MAJLIS BANDARAYA PETALING JAYA (BUKU RAWATAN)"
+                          - option "MALAYSIA AIRLINES BERHAD C/O MICARE SDN BHD"
+                          - option "MALAYSIAN AIRLINE SYSTEM BERHAD (MAS) C/O MICARE SDN BHD"
+                          - option "MALAYSIAN COMMUNICATIONS AND MULTIMEDIA COMMISSION"
+                          - option "MALAYSIAN EMPLOYERS FEDERATION"
+                          - option "MALAYSIAN INVESTMENT DEVELOPMENT AUTHORITY"
+                          - option "MALAYSIAN SHEET GLASS SDN BHD (NSG GROUP)"
+                          - option "MALAYSIA-THAILAND JOINT AUTHORITY"
+                          - option "MANULIFE INSURANCE BHD C/O INTEGRATED HEALTH PLANS (MALAYSIA) SDN BHD"
+                          - option "MATERNITY DELIVERY VOUCHER"
+                          - option "MAYBANK STAFF - P C/O ETIQA FAMILY TAKAFUL BERHAD"
+                          - option "MAYBANK STAFF C/O ETIQA FAMILY TAKAFUL BERHAD"
+                          - option "MBPJ - HEALTH SCREENING"
+                          - option "MCC OVERSEAS (M) SDN BHD"
+                          - option "MEDIA PRIMA BERHAD"
+                          - option "MEDIEXPRESS (MALAYSIA) SDN BHD"
+                          - option "MEDIEXPRESS SDN BHD (MBPJ)"
+                          - option "MEDILINKGLOBAL (M) SDN BHD"
+                          - option "MEDILOVE SS15 SDN BHD (KLINIK MEDILOVE)"
+                          - option "MEDIVEST SDN BHD"
+                          - option "MEDKAD SDN BHD"
+                          - option "MICARE SDN BHD"
+                          - option "MICARE SDN BHD C/O HONG LEONG ASSURANCE BERHAD"
+                          - option "MICARE SDN BHD C/O MANULIFE INSURANCE BERHAD"
+                          - option "MICARE SDN BHD C/O ZURICH GENERAL INSURANCE MALAYSIA BERHAD"
+                          - option "MICARE SDN BHD C/O ZURICH GENERAL TAKAFUL MALAYSIA BERHAD"
+                          - option "MIZUHO BANK (MALAYSIA) BERHAD"
+                          - option "MK LAND HOLDINGS BERHAD"
+                          - option "MONASH UNIVERSITY MALAYSIA SDN. BHD."
+                          - option "MPI GENERALI INSURANS BERHAD"
+                          - option "MSH INTERNATIONAL (CHINA)"
+                          - option "MSH INTERNATIONAL(KUALA LUMPUR OFFICE)"
+                          - option "MUFG BANK (MALAYSIA) BERHAD"
+                          - option "MY MAGIC SDN. BHD. (MOLINA)"
+                          - option "NAGOYA AUTOMOBILE MALAYSIA HOLDING SDN BHD"
+                          - option "NATIONAL INSTITUTE OF OCCUPATIONAL SAFETY & HEALTH"
+                          - option "NAZA ENERGIES SDN BHD"
+                          - option "NOW HEALTH INTERNATIONAL"
+                          - option "OBYU HOLDINGS SDN BHD"
+                          - option "ONCOCARE MEDICAL MALAYSIA SDN. BHD"
+                          - option "ONCOCARE STAFF (SELFPAY) - OP & IP"
+                          - option "ONE HOPE CHARITY & WELFARE"
+                          - option "P D KAWAMURA KAKO MANUFACTURING SDN BHD"
+                          - option "PAKAR ANGSANA SDN BHD"
+                          - option "PANASONIC MALAYSIA SDN BHD"
+                          - option "PB TRUSTEE SERVICES BERHAD"
+                          - option "PEJABAT SETIAUSAHA KERAJAAN NEGERI SELANGOR DARUL EHSAN"
+                          - option "PEJABAT SETIAUSAHA KERAJAAN TERENGGANU"
+                          - option "PELABURAN MARA BERHAD"
+                          - option "PERBADANAN HAL EHWAL BEKAS ANGKATAN TENTERA"
+                          - option "PERBADANAN INFAQ YAPEIM SDN BHD"
+                          - option "PERBADANAN NASIONAL BERHAD"
+                          - option "PERBADANAN TABUNG PENDIDIKAN TINGGI NASIONAL (PTPTN)"
+                          - option "PERBADANAN USAHAWAN NASIONAL BERHAD"
+                          - option "PERMODALAN NASIONAL BERHAD"
+                          - option "PERODUA ENGINE MANUFACTURING SDN BHD"
+                          - option "PERODUA GLOBAL MANUFACTURING SDN BHD"
+                          - option "PERODUA MANUFACTURING SDN BHD"
+                          - option "PERODUA SALES SDN BHD"
+                          - option "PERODUA SALES SDN BHD (066332U)"
+                          - option "PERTUBUHAN KESELAMATAN SOSIAL (CAW. RETURN TO WORK)"
+                          - option "PERTUBUHAN KESELAMATAN SOSIAL (REHABILITASI)"
+                          - option "PERTUBUHAN KESELAMATAN SOSIAL (SEHAT) BAHAGIAN PENCEGAHAN, PERUBATAN & PEMULIHAN"
+                          - option "PERTUBUHAN PELADANG KEBANGSAAN (NAFAS)"
+                          - option "PERUSAHAAN OTOMOBIL KEDUA SDN BHD"
+                          - option "PETRA ENERGY BERHAD"
+                          - option "PIHAK BERKUASA PENERBANGAN AWAM MALAYSIA (CAAM)"
+                          - option "PIHAK BERKUASA PERLAKSANAAN KORIDOR UTARA"
+                          - option "PMCARE SDN BHD"
+                          - option "PMCARE SDN BHD (BANK NEGARA)"
+                          - option "PNB COMMERCIAL SDN BHD"
+                          - option "PRA ASSIST MEDICAL NETWORK SDN BHD"
+                          - option "PREMIER INTEGRATED LABS SDN. BHD."
+                          - option "PRESTIGE INTERNATIONAL (S) PTE LTD"
+                          - option "PRIMER CHERANG CLINIC KOTA DAMANSARA SDN BHD"
+                          - option "PROCTER & GAMBLE (MALAYSIA) SDN BHD"
+                          - option "PROTECTHEALTH CORPORATION SDN.BHD."
+                          - option "PRUDENTIAL ASSURANCE MALAYSIA BERHAD"
+                          - option "PRUDENTIAL BSN TAKAFUL (INSURANCE MEDICAL-CHECK UP)"
+                          - option "PRUDENTIAL BSN TAKAFUL BERHAD (PRUBSN HAS)"
+                          - option "PT AA INTERNATIONAL INDONESIA"
+                          - option "PTT SYNERGY GROUP BERHAD"
+                          - option "PUBLIC BANK BERHAD (CAWANGAN BATANG KALI)"
+                          - option "PUSAT HEMODIALISIS MAWAR (MAWAR MEDICAL CENTRE)"
+                          - option "RADIBEMS SDN BHD"
+                          - option "RAMSAY SIME DARBY HEALTH CARE SDN BHD"
+                          - option "RANGE PHARMA SDN. BHD."
+                          - option "SAPURA INDUSTRIAL BERHAD"
+                          - option "SATO KOGYO (M) SDN BHD"
+                          - option "SATO KOGYO CO., LTD."
+                          - option "SCICOM (MSC) BERHAD"
+                          - option "SECURITIES COMMISSION MALAYSIA"
+                          - option "SEGI HEALTHCARE SDN BHD"
+                          - option "SELANGOR SPECIALIST HOSPITAL SDN BHD"
+                          - option "SELCARE MANAGEMENT SDN BHD"
+                          - option "SELFPAY / CASH CUSTOMER"
+                          - option "SELFPAYING - STAFF CASH BILL(IP STAFF)"
+                          - option "SELFPAYING - STAFF CASH BILL(OP SPOUSE)"
+                          - option "SELFPAYING - STAFF CASH BILL(OP STAFF)"
+                          - option "SIME DARBY - JAGUAR LAND ROVER (MALAYSIA) SDN BHD"
+                          - option "SIME DARBY AUTO BAVARIA SDN BHD"
+                          - option "SIME DARBY AUTO CONNEXION SDN BHD"
+                          - option "SIME DARBY AUTO HYUNDAI SDN BHD"
+                          - option "SIME DARBY AUTO PERFORMANCE SDN BHD"
+                          - option "SIME DARBY AUTO SELECTION SDN BHD"
+                          - option "SIME DARBY BEYOND AUTO SDN BHD"
+                          - option "SIME DARBY ENERGY SOLUTIONS SDN BHD"
+                          - option "SIME DARBY HOLDINGS BERHAD"
+                          - option "SIME DARBY INDUSTRIAL SDN BHD"
+                          - option "SIME DARBY LOCKTON INSURANCE BROKERS SDN BHD"
+                          - option "SIME DARBY PLANTATION BERHAD – KCP/NURI"
+                          - option "SIME DARBY SWEDISH AUTO SDN. BHD."
+                          - option "SIME PERFORMANCE MOTORS SDN BHD C/O SIME DARBY BERHAD"
+                          - option "SPERM & OOCYTE DONOR"
+                          - option "SRI DAMANSARA SDN BHD"
+                          - option "SRI KDU SDN BHD"
+                          - option "SRI KOTA SPECIALIST MEDICAL CENTRE"
+                          - option "STAR MEDIA RADIO GROUP SDN.BHD."
+                          - option "STM LOTTERY SDN BHD"
+                          - option "SUNWAY TCM SDN BHD"
+                          - option "TA PROPERTIES SDN BHD"
+                          - option "TDMC HOSPITAL SDN.BHD"
+                          - option "TEJANI EMERGENCY ASSISTANCE MALAYSIA"
+                          - option "TENAGA NASIONAL BERHAD"
+                          - option "TENAGA SWITCHGEAR SDN BHD"
+                          - option "THE EDGE COMMUNICATIONS SDN BHD"
+                          - option "THE PACIFIC INSURANCE BERHAD"
+                          - option "THOMSON GP+ MEMBER"
+                          - option "THOMSON HOSPITALS SDN BHD"
+                          - option "THOMSON HOSPITALS SDN BHD C/O MICARE"
+                          - option "TMC (OP DEPENDANT BENEFIT)"
+                          - option "TMC BOARDS OF DIRECTOR"
+                          - option "TMC BOARDS OF DIRECTOR (FAMILY MEMBER)"
+                          - option "TMC CONSULTANT (IP)"
+                          - option "TMC CONSULTANT (OP)"
+                          - option "TMC GOLD PRIVILEGE MEMBERSHIP"
+                          - option "TMC IP (SPOUSE/PARENTS/PARENTS-IN-LAW/CHILD)"
+                          - option "TMC KIDS CLUB"
+                          - option "TMC LIFESTYLE (M) SDN BHD"
+                          - option "TMC OP (SPOUSE/PARENTS/PARENTS-IN-LAW/CHILD)"
+                          - option "TMC STAFF HEALTH (OP)"
+                          - option "TMC STAFF IP (MATERNITY)"
+                          - option "TMC STAFF IP (SELF-PAYING)"
+                          - option "TMC STAFF OP (SELF-PAYING)"
+                          - option "TMC STAFF VACCINATION"
+                          - option "TOKIO MARINE INSURANCE (M) BHD"
+                          - option "TOKIO MARINE INSURANS (MALAYSIA) BERHAD C/O MICARE"
+                          - option "TOKIO MARINE LIFE INSURANCE MALAYSIA BHD C/O MICARE SDN BHD"
+                          - option "TOSHIBA ELEVATOR (MALAYSIA) SDN BHD"
+                          - option "TRACTORS PETROLEUM SERVICES SDN BHD C/O SIME DARBY"
+                          - option "TRADEWINDS INTERNATIONAL INSURANCE BROKERS SDN BHD"
+                          - option "TUNKU ABDUL RAHMAN UNIVERSITY OF MANAGEMENT AND TECHNOLOGY"
+                          - option "TUNKU AZIZAH FERTILITY FOUNDATION"
+                          - option "UDA DAYAURUS SDN BHD"
+                          - option "UDA HOLDINGS BERHAD"
+                          - option "UITM PRIVATE HEALTHCARE SDN BHD"
+                          - option "ULINK ASSIST PTE LTD"
+                          - option "UNIT PERANCANG EKONOMI NEGERI"
+                          - option "UNIVERSITI KUALA LUMPUR"
+                          - option "UQPAY SDN. BHD."
+                          - option "VSTECS ASTAR SDN BHD"
+                          - option "VSTECS KU SDN BHD (ECS KU SDN BHD)"
+                          - option "VSTECS KUSH SDN BHD"
+                          - option "VSTECS PERICOMP SDN BHD"
+                          - option "WILLIAM RUSSELL LTD"
+                          - option "WOMEN’S SPECIALIST HOLDINGS SDN BHD"
+                          - option "WORLD HEALTH ORGANIZATION"
+                          - option "XTREME MERIDIAN SDN BHD"
+                          - option "YAYASAN PEMBANGUNAN EKONOMI ISLAM MALAYSIA"
+                          - option "YAYASAN SIME DARBY"
+                          - option "ZURICH INSURANCE C/O INTEGRATED HEALTH PLANS (MALAYSIA) SDN BHD"
+                      - generic [ref=e435]:
+                        - generic [ref=e436]: Occupation
+                        - combobox [ref=e438]:
+                          - option "--Select--" [selected]
+                          - option "Agriculture and Fisheries"
+                          - option "Art and Talent"
+                          - option "Building and Construction"
+                          - option "Education"
+                          - option "Information Technology"
+                          - option "Legal"
+                          - option "Manufacturing"
+                          - option "Medical and Health"
+                          - option "Mining"
+                          - option "No Information"
+                          - option "Oil and Gas"
+                          - option "Others"
+                          - option "Service"
+                          - option "Telecommunication"
+                          - option "Transportation"
+                      - generic [ref=e440]:
+                        - generic [ref=e441]:
+                          - text: Mobile No
+                          - text: "*"
+                        - generic [ref=e443]:
+                          - combobox [ref=e445]:
+                            - option "Code" [selected]
+                            - option "60"
+                            - option "91"
+                          - textbox "Mobile" [ref=e447]
+                      - generic [ref=e449]:
+                        - generic [ref=e450]: Phone No
+                        - generic [ref=e452]:
+                          - textbox [ref=e454]: "60"
+                          - textbox "Mobile" [ref=e456]
+                      - generic [ref=e458]:
+                        - generic [ref=e459]: E-mail
+                        - textbox [ref=e461]
+                      - generic [ref=e463]:
+                        - generic [ref=e464]: Legal Guardian
+                        - textbox "Enter legal guardian name" [ref=e466]
+                      - generic [ref=e468] [cursor=pointer]:
+                        - checkbox "Same As Patient Address" [ref=e469]
+                        - text: Same As Patient Address
+                      - generic [ref=e471]:
+                        - generic [ref=e472]: Address Line 1 *
+                        - textbox [ref=e474]
+                      - generic [ref=e476]:
+                        - generic [ref=e477]: Address Line 2
+                        - textbox [ref=e479]
+                      - generic [ref=e481]:
+                        - generic [ref=e482]: Address Line 3
+                        - textbox [ref=e484]
+                      - generic [ref=e486]:
+                        - generic [ref=e487]: Postcode
+                        - textbox [ref=e489]
+                      - generic [ref=e491]:
+                        - generic [ref=e492]: City / District
+                        - combobox [ref=e494]:
+                          - option "--Select--"
+                          - option "Ampang"
+                          - option "Bandar Baru Bangi"
+                          - option "Bandar Puncak Alam"
+                          - option "Banting"
+                          - option "Batang Berjuntai"
+                          - option "Batang Kali"
+                          - option "Batu Arang"
+                          - option "Batu Caves"
+                          - option "Beranang"
+                          - option "Bukit Rotan"
+                          - option "Cheras"
+                          - option "Cyberjaya"
+                          - option "Dengkil"
+                          - option "Hulu Langat"
+                          - option "Jenjarom"
+                          - option "Jeram"
+                          - option "Kajang"
+                          - option "Kapar"
+                          - option "Kerling"
+                          - option "Klang"
+                          - option "KLIA"
+                          - option "Kuala Kubu Baru"
+                          - option "Kuala Selangor"
+                          - option "Pelabuhan Klang"
+                          - option "Petaling Jaya" [selected]
+                          - option "Puchong"
+                          - option "Pulau Carey"
+                          - option "Pulau Indah"
+                          - option "Pulau Ketam"
+                          - option "Rasa"
+                          - option "Rawang"
+                          - option "Sabak Bernam"
+                          - option "Sekinchan"
+                          - option "Semenyih"
+                          - option "Sepang"
+                          - option "Serdang"
+                          - option "Serendah"
+                          - option "Seri Kembangan"
+                          - option "Shah Alam"
+                          - option "Subang Jaya"
+                          - option "Sungai Ayer Tawar"
+                          - option "Sungai Besar"
+                          - option "Sungai Buloh"
+                          - option "Sungai Pelek"
+                          - option "Tanjong Karang"
+                          - option "Tanjong Sepat"
+                          - option "Telok Panglima Garang"
+                      - generic [ref=e496]:
+                        - generic [ref=e497]: State*
+                        - combobox [ref=e499]:
+                          - option "--Select--"
+                          - option "Johor"
+                          - option "Kedah"
+                          - option "Kelantan"
+                          - option "Luar Negeri"
+                          - option "Melaka"
+                          - option "Negeri Sembilan"
+                          - option "Others"
+                          - option "Pahang"
+                          - option "Perak"
+                          - option "Perlis"
+                          - option "Pulau Pinang"
+                          - option "Sabah"
+                          - option "Sarawak"
+                          - option "Selangor" [selected]
+                          - option "Terengganu"
+                          - option "Wilayah Persekutuan Kuala Lumpur"
+                          - option "Wilayah Persekutuan Labuan"
+                          - option "Wilayah Persekutuan Putrajaya"
+                      - generic [ref=e501]:
+                        - generic [ref=e502]: Country*
+                        - combobox [ref=e504]:
+                          - option "--Select--"
+                          - option "Afghanistan"
+                          - option "Albania"
+                          - option "Algeria"
+                          - option "American Samoa"
+                          - option "Andorra"
+                          - option "Angola"
+                          - option "Anguilla"
+                          - option "Antartica"
+                          - option "Antigua And Barbuda"
+                          - option "Argentina"
+                          - option "Armenia"
+                          - option "Aruba"
+                          - option "Australia"
+                          - option "Austria"
+                          - option "Azerbaijan"
+                          - option "Bahamas"
+                          - option "Bahrain"
+                          - option "Bangladesh"
+                          - option "Barbados"
+                          - option "Belarus"
+                          - option "Belgium"
+                          - option "Belize"
+                          - option "Benin"
+                          - option "Bermuda"
+                          - option "Bhutan"
+                          - option "Bolivia"
+                          - option "Bosnia And Herzegovina"
+                          - option "Botswana"
+                          - option "Bouvet Island"
+                          - option "Brazil"
+                          - option "British Indian Ocean Territory"
+                          - option "Brunei Darussalam"
+                          - option "Bulgaria"
+                          - option "Burkina Faso"
+                          - option "Burundi"
+                          - option "Cambodia"
+                          - option "Cameroon"
+                          - option "Canada"
+                          - option "Cape Verde"
+                          - option "Cayman Islands"
+                          - option "Central African Republic"
+                          - option "Chad"
+                          - option "Chile"
+                          - option "China"
+                          - option "Christmas Island"
+                          - option "Cocos (Keeling) Islands"
+                          - option "Colombia"
+                          - option "Comoros"
+                          - option "Congo (Zaire)"
+                          - option "Congo, The Democratic Republic Of The"
+                          - option "Cook Island"
+                          - option "Costa Rica"
+                          - option "Cote Divoire"
+                          - option "Croatia"
+                          - option "Cuba"
+                          - option "Cyprus"
+                          - option "Czech Republic"
+                          - option "Denmark"
+                          - option "Djibouti"
+                          - option "Dominia"
+                          - option "Dominican Republic"
+                          - option "East Timor"
+                          - option "Egypt"
+                          - option "El Salvador"
+                          - option "Equador"
+                          - option "Equatorial Guinea"
+                          - option "Eritrea"
+                          - option "Estonia"
+                          - option "Ethiopia"
+                          - option "Falkland Islands (Malvinas)"
+                          - option "Faroe Islands"
+                          - option "Fiji"
+                          - option "Finland"
+                          - option "France"
+                          - option "French Guiana"
+                          - option "French Polynesia"
+                          - option "French Southern Territories"
+                          - option "Gabon"
+                          - option "Gambia"
+                          - option "Georgia"
+                          - option "Germany"
+                          - option "Ghana"
+                          - option "Gibraltar"
+                          - option "Greece"
+                          - option "Greenland"
+                          - option "Grenada"
+                          - option "Guadeloupe"
+                          - option "Guam"
+                          - option "Guatemala"
+                          - option "Guinea"
+                          - option "Guinea-Bissau"
+                          - option "Guyana"
+                          - option "Haiti"
+                          - option "Heard Island And McDdonald Islands"
+                          - option "Holy See (Vatican City State)"
+                          - option "Honduras"
+                          - option "Hong Kong"
+                          - option "Hungary"
+                          - option "Iceland"
+                          - option "India"
+                          - option "Indonesia"
+                          - option "Iran, Islamic Republic Of"
+                          - option "Iraq"
+                          - option "Ireland"
+                          - option "Israel"
+                          - option "Italy"
+                          - option "Jamaica"
+                          - option "Japan"
+                          - option "Jordan"
+                          - option "Kazakhstan"
+                          - option "Kenya"
+                          - option "Kiribati"
+                          - option "Korea, Democratic Peoples Republic Of"
+                          - option "Korea, Republic Of"
+                          - option "Kuwait"
+                          - option "Kyrgyzstan"
+                          - option "Lao Peoples Democratic Republic"
+                          - option "Latvia"
+                          - option "Lebanon"
+                          - option "Lesotho"
+                          - option "Liberia"
+                          - option "Libyan Arab Jamahiriya"
+                          - option "Liechtenstein"
+                          - option "Lithuania"
+                          - option "Luxembourg"
+                          - option "Macau"
+                          - option "Macedonia, The Former Yugoslav Republic Of"
+                          - option "Madagascar"
+                          - option "Malawi"
+                          - option "Malaysia" [selected]
+                          - option "Maldives"
+                          - option "Mali"
+                          - option "Malta"
+                          - option "Marshall Islands"
+                          - option "Martinique"
+                          - option "Mauritania"
+                          - option "Mauritius"
+                          - option "Mayotte"
+                          - option "Mexico"
+                          - option "Micronesia, Federated States Of"
+                          - option "Moldova, Republic Of"
+                          - option "Monaco"
+                          - option "Mongolia"
+                          - option "Montserrat"
+                          - option "Morocco"
+                          - option "Mozambique"
+                          - option "Myanmar"
+                          - option "Namibia"
+                          - option "Nauru"
+                          - option "Nepal"
+                          - option "Netherlands"
+                          - option "Netherlands Antilles"
+                          - option "New Caledonia"
+                          - option "New Zealand"
+                          - option "Nicaragua"
+                          - option "Niger"
+                          - option "Nigeria"
+                          - option "Niue"
+                          - option "No Information"
+                          - option "Norfolk Island"
+                          - option "Northern Mariana Islands"
+                          - option "Norway"
+                          - option "Oman"
+                          - option "Others"
+                          - option "Pakistan"
+                          - option "Palau"
+                          - option "Palestinian Territory"
+                          - option "Panama"
+                          - option "Papua New Guinea"
+                          - option "Paraguay"
+                          - option "Peru"
+                          - option "Philippines"
+                          - option "Pitcairn"
+                          - option "Poland"
+                          - option "Portugal"
+                          - option "Puerto Rico"
+                          - option "Qatar"
+                          - option "Reunion"
+                          - option "Romania"
+                          - option "Russian Federation"
+                          - option "Rwanda"
+                          - option "Saint Helena"
+                          - option "Saint Kitts And Nevis"
+                          - option "Saint Lucia"
+                          - option "Saint Pierre And Miquelon"
+                          - option "Saint Vincent And The Grenadines"
+                          - option "Samoa"
+                          - option "San Marino"
+                          - option "Sao Tome And Principe"
+                          - option "Saudi Arabia"
+                          - option "Senegal"
+                          - option "Seychelles"
+                          - option "Sierra Leone"
+                          - option "Singapore"
+                          - option "Slovakia"
+                          - option "Slovenia"
+                          - option "Solomon Islands"
+                          - option "Somalia"
+                          - option "South Africa"
+                          - option "South Georgia And The South Sandwich Islands"
+                          - option "Spain"
+                          - option "Sri Lanka"
+                          - option "Sudan"
+                          - option "Suriname"
+                          - option "Svalbard And Jan Mayen"
+                          - option "Swaziland"
+                          - option "Sweden"
+                          - option "Switzerland"
+                          - option "Syrian Arab Republic"
+                          - option "Taiwan, Province Of China"
+                          - option "Tajikistan"
+                          - option "Tanzania, United Republic Of"
+                          - option "Thailand"
+                          - option "Togo"
+                          - option "Tokelau"
+                          - option "Tonga"
+                          - option "Trinidad And Tobago"
+                          - option "Tunisia"
+                          - option "Turkey"
+                          - option "Turkmenistan"
+                          - option "Turks And Caicos Islands"
+                          - option "Tuvalu"
+                          - option "Uganda"
+                          - option "Ukraine"
+                          - option "United Arab Emirates"
+                          - option "United Kingdom"
+                          - option "United States"
+                          - option "United States Minor Outlying Islands"
+                          - option "Uruguay"
+                          - option "Uzbekistan"
+                          - option "Vanuatu"
+                          - option "Venezuela"
+                          - option "Vietnam"
+                          - option "Virgin Islands, British"
+                          - option "Virgin Islands, U.S"
+                          - option "Wallis And Futuna"
+                          - option "Western Sahara"
+                          - option "Yemen"
+                          - option "Yugoslavia"
+                          - option "Zambia"
+                          - option "Zimbabwe"
+                      - generic [ref=e506]:
+                        - generic [ref=e507]: Remarks
+                        - textbox [ref=e509]
+                  - generic [ref=e510]:
+                    - button "Add" [ref=e511] [cursor=pointer]
+                    - button "Modify" [disabled] [ref=e512]
+                    - button "Cancel" [ref=e513] [cursor=pointer]
+        - generic [ref=e514]:
+          - tab "Payor Information" [ref=e515]:
+            - button "Payor Information" [ref=e516] [cursor=pointer]
+          - text:    
+        - text:  
+      - generic [ref=e517]:
+        - tab "Visit Information" [ref=e518]:
+          - button "Visit Information" [expanded] [ref=e519] [cursor=pointer]
+        - text:  
+        - generic [ref=e520]:
+          - generic [ref=e521]:
+            - generic [ref=e524] [cursor=pointer]:
+              - checkbox "Register Only" [ref=e525]
+              - text: Register Only
+            - generic [ref=e528] [cursor=pointer]:
+              - checkbox "Charges Only" [checked] [ref=e529]
+              - text: Charges Only
+          - generic [ref=e531]:
+            - generic [ref=e532]:
+              - generic [ref=e534]:
+                - generic [ref=e535]: Sign
+                - button "Clear" [ref=e542] [cursor=pointer]
+              - checkbox [ref=e543]
+              - text: Cash
+              - checkbox [checked] [ref=e544]
+              - text: Credit
+            - generic [ref=e545]:
+              - button "Consent" [ref=e546] [cursor=pointer]
+              - button "Patient History" [disabled] [ref=e547]
+              - button "Save" [ref=e548] [cursor=pointer]
+              - button "Clear" [ref=e549] [cursor=pointer]
+        - text:  
+  - textbox [ref=e551]
+```
+
+# Test source
+
+```ts
+  178 |       // TODO: Keep only the matching selector.
+  179 |     );
+  180 | 
+  181 |     this.emailInput = this.page.locator(
+  182 |       'input[name="Email"], input[placeholder="Email"], #txtEmail'
+  183 |       // TODO: Keep only the matching selector. Remove if not on form.
+  184 |     );
+  185 | 
+  186 |     // ── Address ──────────────────────────────────────────────
+  187 |     this.address1 = this.page.locator(
+  188 |       'input[name="AddressLine1"], #txtAddress1'
+  189 |       // TODO: Keep only the matching selector.
+  190 |     );
+  191 | 
+  192 |     this.address2 = this.page.locator(
+  193 |       'input[name="AddressLine2"], #txtAddress2'
+  194 |       // TODO: Keep only the matching selector. Remove if not on form.
+  195 |     );
+  196 | 
+  197 |     this.postcodeInput = this.page.locator(
+  198 |       'input[name="Postcode"], input[placeholder="Postcode"], #txtPostcode'
+  199 |       // TODO: Keep only the matching selector.
+  200 |     );
+  201 | 
+  202 |     this.cityDropdown = this.page.locator(
+  203 |       'select[name="CityID"], #ddlCity'
+  204 |       // TODO: Keep only the matching selector.
+  205 |     );
+  206 | 
+  207 |     this.stateDropdown = this.page.locator(
+  208 |       'select[name="StateID"], #ddlState'
+  209 |       // TODO: Keep only the matching selector.
+  210 |     );
+  211 | 
+  212 |     this.countryDropdown = this.page.locator(
+  213 |       'select[name="CountryID"], #ddlCountry'
+  214 |       // TODO: Keep only the matching selector.
+  215 |     );
+  216 | 
+  217 |     // ── Visit Information ─────────────────────────────────────
+  218 |     this.visitTypeDropdown = this.page.locator(
+  219 |       'select[name="VisitTypeID"], #ddlVisitType'
+  220 |       // TODO: Keep only the matching selector.
+  221 |     );
+  222 | 
+  223 |     this.refEntityDropdown = this.page.locator(
+  224 |       'select[name="RefEntityTypeID"], #ddlRefEntityType'
+  225 |       // TODO: Keep only the matching selector.
+  226 |     );
+  227 | 
+  228 |     this.doctorDropdown = this.page.locator(
+  229 |       'select[name="DoctorID"], #ddlDoctor'
+  230 |       // TODO: Keep only the matching selector. Remove if not on form.
+  231 |     );
+  232 | 
+  233 |     this.clinicDropdown = this.page.locator(
+  234 |       'select[name="ClinicID"], #ddlClinic'
+  235 |       // TODO: Keep only the matching selector. Remove if not on form.
+  236 |     );
+  237 | 
+  238 |     // ── Guarantee / Payment ───────────────────────────────────
+  239 |     this.guaranteeTypeDropdown = this.page.locator(
+  240 |       'select[name="GuaranteeTypeID"], #ddlGuaranteeType'
+  241 |       // TODO: Keep only the matching selector. Remove if not on form.
+  242 |     );
+  243 | 
+  244 |     // ── Actions ───────────────────────────────────────────────
+  245 |     this.saveButton = this.page.locator(
+  246 |       'button:has-text("Save"), input[value="Save"], #btnSave'
+  247 |       // TODO: Keep only the matching selector.
+  248 |     );
+  249 | 
+  250 |     // ── Validation ────────────────────────────────────────────
+  251 |     this.successToast = this.page.locator(
+  252 |       'text=Successfully, .alert-success, .toast-success, #successMsg'
+  253 |       // TODO: Run a successful save manually and observe what element appears.
+  254 |     );
+  255 | 
+  256 |     this.validationError = this.page.locator(
+  257 |       '.validation-summary-errors, .alert-danger, .error-message'
+  258 |       // TODO: Trigger a validation error manually and observe what element appears.
+  259 |     );
+  260 |   }
+  261 | 
+  262 |   // ==========================================================
+  263 |   // METHODS
+  264 |   // ==========================================================
+  265 | 
+  266 |   // ── Wait for page to be ready ─────────────────────────────
+  267 |   async waitForPageLoad() {
+  268 |     await this.page.waitForLoadState('networkidle');
+  269 |     // TODO: Update heading text if your form says something other than 'Patient Information'
+  270 |     await expect(this.page.locator('text=Patient Information')).toBeVisible();
+  271 |   }
+  272 | 
+  273 |   // ── Section: Basic Details ────────────────────────────────
+  274 |   async fillBasicDetails() {
+  275 | 
+  276 |     // Full name
+  277 |     // TODO: Replace 'Test Patient' with a realistic test name if required by system validation
+> 278 |     await this.nameInput.fill('Test Patient');
+      |                          ^ Error: locator.fill: Test timeout of 100000ms exceeded.
+  279 | 
+  280 |     // NRIC — randomised to avoid duplicate record errors
+  281 |     // TODO: Confirm the NRIC format your system accepts.
+  282 |     //       Malaysian format: 6-digit DOB + 2-digit state + 4-digit sequence
+  283 |     //       Example: 900101-14-1234  (with or without dashes depending on system)
+  284 |     const randomNRIC = `900101${Math.floor(100000 + Math.random() * 900000)}`;
+  285 |     await this.nricInput.fill(randomNRIC);
+  286 | 
+  287 |     // Date of birth
+  288 |     // TODO: Confirm your system's date format: dd/mm/yyyy or mm/dd/yyyy or yyyy-mm-dd
+  289 |     await this.dobInput.fill('');          // clear any pre-filled value first
+  290 |     await this.dobInput.fill('01/01/1990');
+  291 | 
+  292 |     // Nationality
+  293 |     // TODO: Replace 'Malaysian' with the exact <option> label in your dropdown
+  294 |     await this.selectDropdown(this.nationalityDropdown, 'Malaysian');
+  295 | 
+  296 |     // Gender
+  297 |     // TODO: Replace 'Male' with the exact <option> label (e.g. 'MALE', 'M', 'Lelaki')
+  298 |     await this.selectDropdown(this.genderDropdown, 'Male');
+  299 | 
+  300 |     // Race  ← UNCOMMENT if Race field is present on your form
+  301 |     // TODO: Replace 'Malay' with the exact <option> label
+  302 |     // await this.selectDropdown(this.raceDropdown, 'Malay');
+  303 | 
+  304 |     // Religion  ← UNCOMMENT if Religion field is present on your form
+  305 |     // TODO: Replace 'Islam' with the exact <option> label
+  306 |     // await this.selectDropdown(this.religionDropdown, 'Islam');
+  307 | 
+  308 |     // Marital status  ← UNCOMMENT if present on your form
+  309 |     // TODO: Replace 'Single' with the exact <option> label
+  310 |     // await this.selectDropdown(this.maritalStatusDropdown, 'Single');
+  311 | 
+  312 |     // Mobile number  ← UNCOMMENT if present on your form
+  313 |     // TODO: Replace with a valid test mobile number accepted by your system
+  314 |     // await this.mobileInput.fill('0123456789');
+  315 | 
+  316 |     // Email  ← UNCOMMENT if present on your form
+  317 |     // TODO: Replace with a valid test email
+  318 |     // await this.emailInput.fill('testpatient@example.com');
+  319 |   }
+  320 | 
+  321 |   // ── Section: Address ─────────────────────────────────────
+  322 |   async fillAddress() {
+  323 | 
+  324 |     // Address line 1
+  325 |     // TODO: Replace with any valid address string your system accepts
+  326 |     await this.address1.fill('No 1, Jalan Test');
+  327 | 
+  328 |     // Address line 2  ← UNCOMMENT if present on your form
+  329 |     // TODO: Replace with valid second address line
+  330 |     // await this.address2.fill('Taman Test');
+  331 | 
+  332 |     // Postcode
+  333 |     // TODO: Replace '47500' with a postcode that corresponds to your City/State selection
+  334 |     await this.postcodeInput.fill('47500');
+  335 | 
+  336 |     // City
+  337 |     // TODO: Replace 'Petaling Jaya' with the exact <option> label in your dropdown
+  338 |     await this.selectDropdown(this.cityDropdown, 'Petaling Jaya');
+  339 | 
+  340 |     // State
+  341 |     // TODO: Replace 'Selangor' with the exact <option> label
+  342 |     await this.selectDropdown(this.stateDropdown, 'Selangor');
+  343 | 
+  344 |     // Country
+  345 |     // TODO: Replace 'Malaysia' with the exact <option> label
+  346 |     await this.selectDropdown(this.countryDropdown, 'Malaysia');
+  347 |   }
+  348 | 
+  349 |   // ── Section: Visit Details ────────────────────────────────
+  350 |   async fillVisitDetails() {
+  351 | 
+  352 |     // Visit type
+  353 |     // TODO: Replace 'OP' with the exact <option> label for Outpatient
+  354 |     //       Common values: 'OP', 'Outpatient', 'Out-Patient'
+  355 |     await this.selectDropdown(this.visitTypeDropdown, 'OP');
+  356 | 
+  357 |     // Referring entity type
+  358 |     // TODO: Replace 'Self' with the exact <option> label
+  359 |     //       Common values: 'Self', 'SELF', 'Walk-In'
+  360 |     await this.selectDropdown(this.refEntityDropdown, 'Self');
+  361 | 
+  362 |     // Doctor / Consultant  ← UNCOMMENT if present on your form
+  363 |     // TODO: Replace with the exact doctor name or code shown in the dropdown
+  364 |     // await this.selectDropdown(this.doctorDropdown, 'DR. TEST DOCTOR');
+  365 | 
+  366 |     // Clinic / Department  ← UNCOMMENT if present on your form
+  367 |     // TODO: Replace with the exact clinic name shown in the dropdown
+  368 |     // await this.selectDropdown(this.clinicDropdown, 'GENERAL CLINIC');
+  369 | 
+  370 |     // Guarantee type  ← UNCOMMENT if present on your form
+  371 |     // TODO: Replace 'Cash' with the exact <option> label
+  372 |     // await this.selectDropdown(this.guaranteeTypeDropdown, 'Cash');
+  373 |   }
+  374 | 
+  375 |   // ── Save ─────────────────────────────────────────────────
+  376 |   async clickSave() {
+  377 |     await this.saveButton.click();
+  378 |   }
+```

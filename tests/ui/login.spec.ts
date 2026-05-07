@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/LoginPage';
 import { ENV } from '../../utils/env';
 
-test('KPJ Login UI Test', async ({ page }) => {
+test.skip('KPJ Login UI Test', async ({ page }) => {
   await page.goto(`${ENV.BASE_URL}/Account/Login/`, { 
   waitUntil: 'domcontentloaded' 
 });

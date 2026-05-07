@@ -1,11 +1,11 @@
+/// <reference types="node" />
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
   timeout: 100000,
-  retries: 1,
-  // Add these lines:
-  workers: 1, // Change from default to 1
+  retries: 0,          // ← no retries, run once only
+  workers: 1,          // ← single worker, no parallel sessions
   fullyParallel: false,
   reporter: [
     ['list'],
@@ -15,9 +15,9 @@ export default defineConfig({
   use: {
     baseURL: process.env.BASE_URL,
     headless: false,
-    viewport: { width: 1280, height: 720 }, // Ensures consistent element visibility
+    viewport: { width: 1280, height: 720 },
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    trace: 'on-first-retry',
+    trace: 'on-first-retry',  // no retries so trace won't fire, but harmless
   }
 });
