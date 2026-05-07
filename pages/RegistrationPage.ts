@@ -275,7 +275,7 @@ export class RegistrationPage {
 
     // Full name
     // TODO: Replace 'Test Patient' with a realistic test name if required by system validation
-    await this.nameInput.fill('Test Patient');
+ await this.nameInput.fill('Test Patient');
 
     // NRIC — randomised to avoid duplicate record errors
     // TODO: Confirm the NRIC format your system accepts.

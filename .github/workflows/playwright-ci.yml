@@ -13,6 +13,10 @@ jobs:
   test:
     name: Run Playwright tests
     runs-on: windows-latest
+    env:
+      BASE_URL: ${{ secrets.BASE_URL }}
+      KPJ_USERNAME: ${{ secrets.KPJ_USERNAME }}
+      KPJ_PASSWORD: ${{ secrets.KPJ_PASSWORD }}
 
     steps:
       - name: Checkout repository

@@ -15,3 +15,10 @@ test.skip('KPJ Login UI Test', async ({ page }) => {
 
   await page.waitForURL('**/PatientDashboard');
 });
+
+// // tests/ui/login.spec.ts
+
+
+// // Skipped — login is covered inside op-registration.spec.ts
+// // Enable this only when testing login in isolation
+// test.skip('KPJ Login UI Test', async ({ page }) => {});
