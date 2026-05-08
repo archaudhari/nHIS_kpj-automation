@@ -14,8 +14,9 @@ export default defineConfig({
   ],
   use: {
     baseURL: process.env.BASE_URL,
-    headless: false,
+    headless: process.env.CI ? true : false,
     viewport: { width: 1280, height: 720 },
+    ignoreHTTPSErrors: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'on-first-retry',  // no retries so trace won't fire, but harmless
