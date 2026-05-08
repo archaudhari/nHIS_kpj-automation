@@ -37,8 +37,8 @@ jobs:
         run: npx playwright test
         env:
           BASE_URL:  ${{ secrets.BASE_URL }}
-          USERNAME:  ${{ secrets.USERNAME }}
-          PASSWORD:  ${{ secrets.PASSWORD }}
+          KPJ_USERNAME:  ${{ secrets.KPJ_USERNAME }}
+          KPJ_PASSWORD:  ${{ secrets.KPJ_PASSWORD }}
 
       # 6. Upload HTML report (always, even on failure)
       - name: Upload Playwright HTML report
