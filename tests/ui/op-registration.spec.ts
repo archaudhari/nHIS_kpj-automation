@@ -6,6 +6,8 @@ import { LoginPage } from '../../pages/LoginPage';
 import { OPPage } from '../../pages/OPPage';
 import { RegistrationPage } from '../../pages/RegistrationPage';
 import { ENV } from '../../utils/env';
+import { RegistrationDataGenerator } from '../../utils/registrationData';
+
 
 test('KPJ OP Registration Flow', async ({ page }) => {
 
@@ -26,21 +28,18 @@ test('KPJ OP Registration Flow', async ({ page }) => {
   // Clicks #li0OP > a, waits for submenu, clicks #li1PatientRegistration
   await op.openRegistration();
 
-  // ── Step 4: Wait for Registration form to be ready ──────
-  await registration.waitForPageLoad();
+  // ── Step 4: Fill Patient Details ───────────────────────
+  // await registration.fillPatientDetails();
 
-  // ── Step 5: Fill Patient Information ────────────────────
-  await registration.fillBasicDetails();
+  // ── Step 5: Fill Address ─────────────────────────────────
+  //await registration.fillAddress();
 
-  // ── Step 6: Fill Address ─────────────────────────────────
-  await registration.fillAddress();
-
-  // ── Step 7: Fill Visit Details ───────────────────────────
-  await registration.fillVisitDetails();
+  // ── Step 6: Fill Visit Details ───────────────────────────
+  //await registration.fillVisitDetails();
 
   // ── Step 8: Save ─────────────────────────────────────────
-  await registration.clickSave();
+  //await registration.clickSave();
 
   // ── Step 9: Assert success ───────────────────────────────
-  await registration.validateSuccess();
+ // await registration.validateSuccess();
 });

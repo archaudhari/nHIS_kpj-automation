@@ -1,0 +1,9 @@
+{
+  title: 'Mr.',
+  firstName: 'RAHUL',
+  lastName: 'SHARMA',
+  identificationType: 'New IC',
+  nric: '900101840588',
+  passportNo: 'O25180822',
+  passportExpiryDate: '10/05/2031'
+}

@@ -1,0 +1,248 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui\op-registration.spec.ts >> OP Registration Form >> TC-02 | First Name - random valid uppercase alpha name
+- Location: tests\ui\op-registration.spec.ts:41:7
+
+# Error details
+
+```
+Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/op-registration
+Call log:
+  - navigating to "http://localhost:4200/op-registration", waiting until "load"
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - generic [ref=e6]:
+    - heading "This site can’t be reached" [level=1] [ref=e7]
+    - paragraph [ref=e8]:
+      - strong [ref=e9]: localhost
+      - text: refused to connect.
+    - generic [ref=e10]:
+      - paragraph [ref=e11]: "Try:"
+      - list [ref=e12]:
+        - listitem [ref=e13]: Checking the connection
+        - listitem [ref=e14]:
+          - link "Checking the proxy and the firewall" [ref=e15] [cursor=pointer]:
+            - /url: "#buttons"
+    - generic [ref=e16]: ERR_CONNECTION_REFUSED
+  - generic [ref=e17]:
+    - button "Reload" [ref=e19] [cursor=pointer]
+    - button "Details" [ref=e20] [cursor=pointer]
+```
+
+# Test source
+
+```ts
+  155 | // ─────────────────────────────────────────────
+  156 | export class RegistrationPage {
+  157 |   readonly page: Page;
+  158 | 
+  159 |   // ── Patient Type ──────────────────────────
+  160 |   readonly patientTypeSelect: Locator;
+  161 | 
+  162 |   // ── Name ──────────────────────────────────
+  163 |   readonly titleSelect:      Locator;
+  164 |   readonly firstNameInput:   Locator;
+  165 |   readonly middleNameInput:  Locator;
+  166 |   readonly lastNameInput:    Locator;
+  167 |   readonly familyNameInput:  Locator;
+  168 | 
+  169 |   // ── Identity ──────────────────────────────
+  170 |   readonly idTypeSelect:     Locator;
+  171 |   readonly nricInput:        Locator;
+  172 |   readonly passportInput:    Locator;
+  173 |   readonly referenceNoInput: Locator;
+  174 | 
+  175 |   // ── Demographics ──────────────────────────
+  176 |   readonly nationalitySelect:   Locator;
+  177 |   readonly genderSelect:        Locator;
+  178 |   readonly dobInput:            Locator;
+  179 |   readonly ageYearInput:        Locator;
+  180 |   readonly ageMonthInput:       Locator;
+  181 |   readonly ageDayInput:         Locator;
+  182 |   readonly religionSelect:      Locator;
+  183 |   readonly raceSelect:          Locator;
+  184 |   readonly maritalStatusSelect: Locator;
+  185 |   readonly bloodGroupSelect:    Locator;
+  186 |   readonly incomeCategorySelect:Locator;
+  187 | 
+  188 |   // ── Contact ───────────────────────────────
+  189 |   readonly mobileNoInput:    Locator;
+  190 |   readonly resiNoInput:      Locator;
+  191 | 
+  192 |   // ── Address ───────────────────────────────
+  193 |   readonly resAddressTextarea: Locator;
+  194 |   readonly houseNoInput:       Locator;
+  195 |   readonly streetInput:        Locator;
+  196 |   readonly landmarkInput:      Locator;
+  197 |   readonly postcodeInput:      Locator;
+  198 |   readonly citySelect:         Locator;
+  199 | 
+  200 |   // ── Buttons ───────────────────────────────
+  201 |   readonly saveBtn:   Locator;
+  202 |   readonly cancelBtn: Locator;
+  203 | 
+  204 |   constructor(page: Page) {
+  205 |     this.page = page;
+  206 | 
+  207 |     // Patient type
+  208 |     this.patientTypeSelect = page.locator('select[ng-model="Registration.PatientTypeID"]');
+  209 | 
+  210 |     // Name
+  211 |     this.titleSelect     = page.locator('select[ng-model="Registration.PrefixID"]');
+  212 |     this.firstNameInput  = page.locator('#txtFirstName');
+  213 |     this.middleNameInput = page.locator('#txtMiddleName');
+  214 |     this.lastNameInput   = page.locator('#txtLastName');
+  215 |     this.familyNameInput = page.locator('#txtFamilyName1');
+  216 | 
+  217 |     // Identity
+  218 |     this.idTypeSelect     = page.locator('select[ng-model="Registration.IDTypeID"]');
+  219 |     this.nricInput        = page.locator('input[ng-model="Registration.NationalId"]').first();
+  220 |     this.passportInput    = page.locator('input[ng-model="Registration.FamilyName"]');
+  221 |     this.referenceNoInput = page.locator('input[ng-model="Registration.ReferenceNo"]');
+  222 | 
+  223 |     // Demographics
+  224 |     this.nationalitySelect    = page.locator('select[ng-model="Registration.NationalityID"]').first();
+  225 |     this.genderSelect         = page.locator('select[ng-model="Registration.GenderID"]');
+  226 |     this.dobInput             = page.locator('input[placeholder="dd/mm/yyyy"]').first();
+  227 |     this.ageYearInput         = page.locator('#txtYear');
+  228 |     this.ageMonthInput        = page.locator('#txtMonth');
+  229 |     this.ageDayInput          = page.locator('#txtDays');
+  230 |     this.religionSelect       = page.locator('select[ng-model="Registration.ReligionID"]');
+  231 |     this.raceSelect           = page.locator('select[ng-model="Registration.RaceID"]');
+  232 |     this.maritalStatusSelect  = page.locator('select[ng-model="Registration.MaritalStatusID"]');
+  233 |     this.bloodGroupSelect     = page.locator('select[ng-model="Registration.BloodGroupID"]');
+  234 |     this.incomeCategorySelect = page.locator('select[ng-model="Registration.IncomeCategoryID"]');
+  235 | 
+  236 |     // Contact
+  237 |     this.mobileNoInput = page.locator('#txtMobileNo').first();
+  238 |     this.resiNoInput   = page.locator('#txtResiNo').first();
+  239 | 
+  240 |     // Address
+  241 |     this.resAddressTextarea = page.locator('textarea[ng-model="Registration.ResAddress"]');
+  242 |     this.houseNoInput       = page.locator('input[ng-model="Registration.ResHouseNo"]');
+  243 |     this.streetInput        = page.locator('input[ng-model="Registration.ResStreet"]');
+  244 |     this.landmarkInput      = page.locator('input[ng-model="Registration.ResLandMark"]');
+  245 |     this.postcodeInput      = page.locator('input[ng-model="Registration.ResPinCode"]');
+  246 |     this.citySelect         = page.locator('select[ng-model="Registration.ResCityID"]');
+  247 | 
+  248 |     // Buttons
+  249 |     this.saveBtn   = page.locator('button[ng-click*="Save"], button[ng-click*="save"]').first();
+  250 |     this.cancelBtn = page.locator('button[ng-click*="Cancel"], button[ng-click*="cancel"]').first();
+  251 |   }
+  252 | 
+  253 |   // ── Navigation ────────────────────────────
+  254 |   async navigate(url: string) {
+> 255 |     await this.page.goto(url);
+      |                     ^ Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/op-registration
+  256 |   }
+  257 | 
+  258 |   // ── Field helpers ─────────────────────────
+  259 | 
+  260 |   async selectPatientType(value: string) {
+  261 |     await this.patientTypeSelect.selectOption({ label: value });
+  262 |   }
+  263 | 
+  264 |   async fillTitle(title: string) {
+  265 |     await this.titleSelect.selectOption({ label: title });
+  266 |   }
+  267 | 
+  268 |   async fillFirstName(name: string) {
+  269 |     await this.firstNameInput.clear();
+  270 |     await this.firstNameInput.fill(name);
+  271 |   }
+  272 | 
+  273 |   async fillMiddleName(name: string) {
+  274 |     await this.middleNameInput.clear();
+  275 |     await this.middleNameInput.fill(name);
+  276 |   }
+  277 | 
+  278 |   async fillLastName(name: string) {
+  279 |     await this.lastNameInput.clear();
+  280 |     await this.lastNameInput.fill(name);
+  281 |   }
+  282 | 
+  283 |   async fillFamilyName(name: string) {
+  284 |     await this.familyNameInput.clear();
+  285 |     await this.familyNameInput.fill(name);
+  286 |   }
+  287 | 
+  288 |   async selectIdType(idType: string) {
+  289 |     await this.idTypeSelect.selectOption({ label: idType });
+  290 |   }
+  291 | 
+  292 |   async fillNric(nric: string) {
+  293 |     await this.nricInput.clear();
+  294 |     await this.nricInput.fill(nric);
+  295 |     await this.nricInput.blur();
+  296 |   }
+  297 | 
+  298 |   async fillPassport(passportNo: string) {
+  299 |     await this.passportInput.clear();
+  300 |     await this.passportInput.fill(passportNo);
+  301 |     await this.passportInput.blur();
+  302 |   }
+  303 | 
+  304 |   async selectNationality(nationality: string) {
+  305 |     await this.nationalitySelect.selectOption({ label: nationality });
+  306 |   }
+  307 | 
+  308 |   async selectGender(gender: string) {
+  309 |     await this.genderSelect.selectOption({ label: gender });
+  310 |   }
+  311 | 
+  312 |   async fillDob(dob: string) {
+  313 |     await this.dobInput.clear();
+  314 |     await this.dobInput.fill(dob);
+  315 |     await this.dobInput.blur();
+  316 |   }
+  317 | 
+  318 |   async fillAge(year: string, month = '', day = '') {
+  319 |     if (year)  { await this.ageYearInput.clear();  await this.ageYearInput.fill(year); }
+  320 |     if (month) { await this.ageMonthInput.clear(); await this.ageMonthInput.fill(month); }
+  321 |     if (day)   { await this.ageDayInput.clear();   await this.ageDayInput.fill(day); }
+  322 |     await this.ageYearInput.blur();
+  323 |   }
+  324 | 
+  325 |   async selectReligion(religion: string) {
+  326 |     await this.religionSelect.selectOption({ label: religion });
+  327 |   }
+  328 | 
+  329 |   async selectRace(race: string) {
+  330 |     await this.raceSelect.selectOption({ label: race });
+  331 |   }
+  332 | 
+  333 |   async fillMobileNo(mobile: string) {
+  334 |     await this.mobileNoInput.clear();
+  335 |     await this.mobileNoInput.fill(mobile);
+  336 |     await this.mobileNoInput.blur();
+  337 |   }
+  338 | 
+  339 |   async fillResiNo(resi: string) {
+  340 |     await this.resiNoInput.clear();
+  341 |     await this.resiNoInput.fill(resi);
+  342 |   }
+  343 | 
+  344 |   async selectMaritalStatus(status: string) {
+  345 |     await this.maritalStatusSelect.selectOption({ label: status });
+  346 |   }
+  347 | 
+  348 |   async selectBloodGroup(blood: string) {
+  349 |     await this.bloodGroupSelect.selectOption({ label: blood });
+  350 |   }
+  351 | 
+  352 |   async selectIncomeCategory(income: string) {
+  353 |     await this.incomeCategorySelect.selectOption({ label: income });
+  354 |   }
+  355 | 
+```
