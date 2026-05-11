@@ -1,12 +1,14 @@
 // ============================================================
 // tests/ui/op-registration.spec.ts
 // ============================================================
-import { test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/LoginPage';
 import { OPPage } from '../../pages/OPPage';
 import { RegistrationPage } from '../../pages/RegistrationPage';
 import { ENV } from '../../utils/env';
 import { RegistrationDataGenerator } from '../../utils/registrationData';
+import * as fs from 'fs';
+import * as path from 'path';
 
 
 test('KPJ OP Registration Flow', async ({ page }) => {
@@ -27,19 +29,31 @@ test('KPJ OP Registration Flow', async ({ page }) => {
   // ── Step 3: Navigate OP → Registration ──────────────────
   // Clicks #li0OP > a, waits for submenu, clicks #li1PatientRegistration
   await op.openRegistration();
+  // await page.waitForURL('**/PatientDashboard', {
+  //   waitUntil: 'domcontentloaded',
+  // });
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let randomLetters = '';
+    for (let i = 0; i < 10; i++) {
+        randomLetters += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+    }
+    
+    // Now the name will look like "PATIENTXYABFDKLMN" (No numbers, no underscores)
+    const dynamicPatientName = `PATIENT${randomLetters}`;
 
-  // ── Step 4: Fill Patient Details ───────────────────────
-  // await registration.fillPatientDetails();
+    // Save it just like before
+    const dataPath = path.join(__dirname, '../../dynamic-data.json');
+    fs.writeFileSync(dataPath, JSON.stringify({ latestPatientName: dynamicPatientName }, null, 2));
+    console.log(`Saved new patient: ${dynamicPatientName}`);
 
-  // ── Step 5: Fill Address ─────────────────────────────────
-  //await registration.fillAddress();
+    // 3. Initialize your Registration Page Object
+    const registrationPage = new RegistrationPage(page);
+    
+    // 4. Call the method to fill the name
+    await registrationPage.fillDynamicPatientName(dynamicPatientName);
 
-  // ── Step 6: Fill Visit Details ───────────────────────────
-  //await registration.fillVisitDetails();
-
-  // ── Step 8: Save ─────────────────────────────────────────
-  //await registration.clickSave();
-
-  // ── Step 9: Assert success ───────────────────────────────
- // await registration.validateSuccess();
+    // 5. FREEZE THE TEST HERE (To verify visually)
+    await page.pause();
+// 3. FILLING THE FORM
+   
 });

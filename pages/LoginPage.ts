@@ -43,9 +43,10 @@ export class LoginPage {
     await this.page.click(this.loginBtn);
 
     // Step 8: Wait for dashboard — networkidle ensures session is fully set
-    await this.page.waitForURL('**/PatientDashboard', {
-      waitUntil: 'networkidle',
-      timeout: 30000,
-    });
+    // Step 8: Wait for dashboard
+await this.page.waitForURL('**/PatientDashboard', {
+  waitUntil: 'load', // Changed from 'networkidle'
+  timeout: 30000,
+});
   }
 }
