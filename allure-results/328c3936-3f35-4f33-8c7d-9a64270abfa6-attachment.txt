@@ -1,0 +1,2 @@
+✅ Successfully navigated to OP > Registration
+Test is proceeding with Identification Type: Passport

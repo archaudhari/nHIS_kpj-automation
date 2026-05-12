@@ -7,33 +7,99 @@ export class RegistrationPage {
         this.page = page;
     }
 
-    // Add this method inside your RegistrationPage class
+    // NEW METHOD: Handle the menu clicks
+    async navigateToRegistration() {
+        // 1. Click the 'OP' main menu to expand the dropdown
+        const opMenu = this.page.locator('#li0OP > a');
+        await opMenu.waitFor({ state: 'visible' });
+        await opMenu.click();
+
+        // 2. Click the 'Registration' option
+        const registrationLink = this.page.locator('#li1PatientRegistration > a');
+        await registrationLink.waitFor({ state: 'visible' });
+        await registrationLink.click();
+
+        // 3. Wait for Angular to navigate to the Registration view
+        // Based on the href="#/VisitScreen" in your HTML
+        await this.page.waitForURL('**/VisitScreen', { waitUntil: 'domcontentloaded' });
+        
+        // Optional: If the dropdown menu stays open and blocks the screen, click the body to close it
+        await this.page.locator('body').click({ position: { x: 0, y: 0 } }); 
+    }
+
+    // EXISTING METHOD: Fill the dynamic name
     async fillDynamicPatientName(patientName: string) {
         const firstNameInput = this.page.locator('#txtFirstName');
         
-        // 1. Ensure the page has fully settled before doing anything
         await this.page.waitForLoadState('domcontentloaded');
-
-        // 2. Wait for the input to exist and be visible
         await firstNameInput.waitFor({ state: 'visible' });
 
-        // 3. Click the field to focus it, then WAIT for Angular to activate its listeners
         await firstNameInput.click();
         await this.page.waitForTimeout(1000); 
 
-        // 4. Type the text sequentially and slightly slower
+        // Uses the purely alphabetical name so the validation doesn't reject it
         await firstNameInput.pressSequentially(patientName, { delay: 100 });
         
-        // 5. Intentionally click OUTSIDE the input to trigger your app's ng-blur SearchPatientByInput
         await this.page.locator('body').click(); 
-        
-        // 6. Wait a moment for that background search to finish before verifying
         await this.page.waitForTimeout(1500); 
 
-        // 7. Finally, verify the text is actually there
         const expectedValue = patientName.toUpperCase();
         await expect(firstNameInput).toHaveValue(expectedValue);
     }
+    // NEW METHOD: Handle conditional Identification Type logic
+    // Update this method inside your RegistrationPage class
+    // We now pass in 'Male' or 'Female' to ensure the last digit matches the logic!
+    async selectIdentificationTypeAndFillDetails(idType: 'New IC' | 'Passport', gender: 'Male' | 'Female' = 'Male') {
+        const idDropdown = this.page.locator('select[ng-model="Registration.ICCardTypeID"]');
+        await idDropdown.waitFor({ state: 'visible' });
 
-    // ... your other methods like selectNationalityDropdown ...
+        if (idType === 'New IC') {
+            await idDropdown.selectOption({ label: 'New IC' });
+            await this.page.waitForTimeout(500); 
+
+const nricInput = this.page.locator('input[ng-model="Registration.NationalId"][minlength="12"]');            await nricInput.waitFor({ state: 'visible' });
+            
+            // --- MALAYSIAN NRIC GENERATOR (YYMMDD-SS-###G) ---
+            
+            // 1. YYMMDD (Date of Birth)
+            const yy = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+            const mm = Math.floor(Math.random() * 12 + 1).toString().padStart(2, '0');
+            const dd = Math.floor(Math.random() * 28 + 1).toString().padStart(2, '0'); // Max 28 for safe dates
+            
+            // 2. SS (State/Place of Birth Code)
+            // Using '14' as a safe default (Kuala Lumpur). You can randomize this between 01-16 if needed.
+            const ss = '14'; 
+            
+            // 3. ### (Sequence Number)
+            const seq = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            
+            // 4. G (Gender Indicator)
+            // Male = Odd (1, 3, 5, 7, 9) | Female = Even (0, 2, 4, 6, 8)
+            const maleDigits = [1, 3, 5, 7, 9];
+            const femaleDigits = [0, 2, 4, 6, 8];
+            const g = gender === 'Male' 
+                ? maleDigits[Math.floor(Math.random() * maleDigits.length)] 
+                : femaleDigits[Math.floor(Math.random() * femaleDigits.length)];
+
+            // Combine them to form exactly 12 digits: 980605145455
+            const strictNRIC = `${yy}${mm}${dd}${ss}${seq}${g}`; 
+            
+            // Type it into the field
+            await nricInput.pressSequentially(strictNRIC, { delay: 50 });
+
+            await this.page.locator('body').click();
+            await this.page.waitForTimeout(1500); 
+
+        } else if (idType === 'Passport') {
+            await idDropdown.selectOption({ label: 'Passport' });
+            await this.page.waitForTimeout(500); 
+
+            const passportInput = this.page.locator('[ng-model="Registration.FamilyName"]'); 
+            await passportInput.waitFor({ state: 'visible' });
+            await passportInput.pressSequentially('A12345678', { delay: 50 });
+
+            await this.page.locator('body').click();
+            await this.page.waitForTimeout(1500);
+        }
+    }
 }

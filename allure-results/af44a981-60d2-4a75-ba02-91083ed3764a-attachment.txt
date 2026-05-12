@@ -1,0 +1,5 @@
+✅ Successfully navigated to OP > Registration
+Saved new patient: PATIENTQUSIZHGFMI
+✅ Registration page loaded successfully
+✅ Patient name "PATIENTQUSIZHGFMI" filled successfully
+✅ Registration flow initiated successfully

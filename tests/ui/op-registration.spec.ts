@@ -29,31 +29,38 @@ test('KPJ OP Registration Flow', async ({ page }) => {
   // ── Step 3: Navigate OP → Registration ──────────────────
   // Clicks #li0OP > a, waits for submenu, clicks #li1PatientRegistration
   await op.openRegistration();
-  // await page.waitForURL('**/PatientDashboard', {
-  //   waitUntil: 'domcontentloaded',
-  // });
-const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  // ── Step 4: Generate Dynamic Patient Name ────────────────
+  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let randomLetters = '';
     for (let i = 0; i < 10; i++) {
         randomLetters += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
     }
-    
-    // Now the name will look like "PATIENTXYABFDKLMN" (No numbers, no underscores)
     const dynamicPatientName = `PATIENT${randomLetters}`;
 
-    // Save it just like before
+    // Save Data
     const dataPath = path.join(__dirname, '../../dynamic-data.json');
     fs.writeFileSync(dataPath, JSON.stringify({ latestPatientName: dynamicPatientName }, null, 2));
-    console.log(`Saved new patient: ${dynamicPatientName}`);
 
-    // 3. Initialize your Registration Page Object
+    // 3. Initialize Page Object
     const registrationPage = new RegistrationPage(page);
     
-    // 4. Call the method to fill the name
+    // 1. Navigate to Registration
+    await registrationPage.navigateToRegistration();
     await registrationPage.fillDynamicPatientName(dynamicPatientName);
 
-    // 5. FREEZE THE TEST HERE (To verify visually)
+    // RANDOMLY SELECT IDENTIFICATION TYPE (PRIORITIZING NRIC)
+    // Math.random() generates a number between 0 and 1. 
+    // This gives 'New IC' an 80% chance of being chosen, and 'Passport' a 20% chance.
+    const prioritizeNRIC = Math.random() < 0.8; 
+    const randomSelection = prioritizeNRIC ? 'New IC' : 'Passport';
+    
+    console.log(`Test is proceeding with Identification Type: ${randomSelection}`);
+
+// If testing a Male patient:
+await registrationPage.selectIdentificationTypeAndFillDetails('New IC', 'Male');
+
+// If testing a Female patient:
+await registrationPage.selectIdentificationTypeAndFillDetails('New IC', 'Female');
     await page.pause();
-// 3. FILLING THE FORM
-   
 });
