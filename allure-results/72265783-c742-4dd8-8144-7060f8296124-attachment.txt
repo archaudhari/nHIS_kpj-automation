@@ -1,0 +1,3 @@
+✅ Successfully navigated to OP > Registration
+Creating a Male patient with title Mr.
+Test is proceeding with Identification Type: New IC

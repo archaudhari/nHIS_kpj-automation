@@ -6,6 +6,7 @@ export class RegistrationPage {
     constructor(page: Page) {
         this.page = page;
     }
+    
 
     // NEW METHOD: Handle the menu clicks
     async navigateToRegistration() {
@@ -25,6 +26,31 @@ export class RegistrationPage {
         
         // Optional: If the dropdown menu stays open and blocks the screen, click the body to close it
         await this.page.locator('body').click({ position: { x: 0, y: 0 } }); 
+    }
+   // NEW METHOD: Safely select both Title and Gender
+    async selectTitleAndGender(targetTitle: 'Mr.' | 'Mrs.', targetGender: 'Male' | 'Female') {
+        
+        // 1. SELECT THE TITLE
+        const titleDropdown = this.page.locator('select[ng-model="Registration.PrefixID"]');
+        await titleDropdown.waitFor({ state: 'visible' });
+        
+        // Select by the visible label (e.g., 'Mr.')
+        await titleDropdown.selectOption({ label: targetTitle });
+        
+        // CRITICAL: Force AngularJS to realize the dropdown value changed
+        await titleDropdown.dispatchEvent('change');
+        await this.page.waitForTimeout(500); // Give SetGenderByTitle() time to run
+
+        // 2. VERIFY / SELECT THE GENDER
+        const genderDropdown = this.page.locator('select[ng-model="Registration.GenderID"]');
+        await genderDropdown.waitFor({ state: 'visible' });
+
+        // Explicitly set the gender just in case the app's auto-select was too slow or failed
+        await genderDropdown.selectOption({ label: targetGender });
+        
+        // Force Angular to trigger ChkTitByGenderNRIC()
+        await genderDropdown.dispatchEvent('change');
+        await this.page.waitForTimeout(500);
     }
 
     // EXISTING METHOD: Fill the dynamic name

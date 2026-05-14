@@ -30,6 +30,9 @@ test('KPJ OP Registration Flow', async ({ page }) => {
   // Clicks #li0OP > a, waits for submenu, clicks #li1PatientRegistration
   await op.openRegistration();
 
+  const targetGender: 'Male' | 'Female' = Math.random() < 0.5 ? 'Male' : 'Female';
+    const targetTitle = targetGender === 'Male' ? 'Mr.' : 'Mrs.';
+    console.log(`Creating a ${targetGender} patient with title ${targetTitle}`);
   // ── Step 4: Generate Dynamic Patient Name ────────────────
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let randomLetters = '';
@@ -44,23 +47,19 @@ test('KPJ OP Registration Flow', async ({ page }) => {
 
     // 3. Initialize Page Object
     const registrationPage = new RegistrationPage(page);
-    
-    // 1. Navigate to Registration
     await registrationPage.navigateToRegistration();
+
+    // 2. CALL THE NEW METHOD (Passes both Title and Gender)
+    await registrationPage.selectTitleAndGender(targetTitle, targetGender);
+
+    // 3. FILL THE REST OF THE FORM
     await registrationPage.fillDynamicPatientName(dynamicPatientName);
 
-    // RANDOMLY SELECT IDENTIFICATION TYPE (PRIORITIZING NRIC)
-    // Math.random() generates a number between 0 and 1. 
-    // This gives 'New IC' an 80% chance of being chosen, and 'Passport' a 20% chance.
     const prioritizeNRIC = Math.random() < 0.8; 
-    const randomSelection = prioritizeNRIC ? 'New IC' : 'Passport';
+    const randomIdSelection = prioritizeNRIC ? 'New IC' : 'Passport';
     
-    console.log(`Test is proceeding with Identification Type: ${randomSelection}`);
+    // Pass the same gender down to the NRIC generator
+    await registrationPage.selectIdentificationTypeAndFillDetails(randomIdSelection, targetGender);
 
-// If testing a Male patient:
-await registrationPage.selectIdentificationTypeAndFillDetails('New IC', 'Male');
-
-// If testing a Female patient:
-await registrationPage.selectIdentificationTypeAndFillDetails('New IC', 'Female');
     await page.pause();
 });
