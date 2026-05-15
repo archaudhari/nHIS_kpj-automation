@@ -18,9 +18,9 @@ test('KPJ OP Registration Flow', async ({ page }) => {
   const registration = new RegistrationPage(page);
 
   // ── Step 1: Go to Login page ────────────────────────────
-  await page.goto(`${ENV.BASE_URL}/Account/Login/`, {
-    waitUntil: 'domcontentloaded',
-  });
+  await page.goto('/Account/Login/', {
+      waitUntil: 'domcontentloaded',
+    });
 
   // ── Step 2: Login ────────────────────────────────────────
   // Fills credentials + mandatory dropdowns + waits for PatientDashboard
@@ -58,6 +58,26 @@ test('KPJ OP Registration Flow', async ({ page }) => {
     const prioritizeNRIC = Math.random() < 0.8; 
     const randomIdSelection = prioritizeNRIC ? 'New IC' : 'Passport';
     
+    // Step E: DECIDE NATIONALITY AND RACE LOGIC
+    // 80% chance to be Malaysian, 20% chance to be a Foreigner
+    const isMalaysian = Math.random() < 0.8;
+    
+    // Choose Nationality (Both exist in your provided HTML)
+    const targetNationality = isMalaysian ? 'Malaysian' : 'Singaporean'; 
+
+    // Choose Race based on Nationality
+    let targetRace = '';
+    if (isMalaysian) {
+        const malaysianRaces = ['Malay', 'Chinese', 'Indian', 'Peninsular Indigenous (Orang Asli)'];
+        targetRace = malaysianRaces[Math.floor(Math.random() * malaysianRaces.length)];
+    } else {
+        targetRace = 'Non-Citizen'; 
+    }
+
+    console.log(`Setting Nationality: ${targetNationality} | Race: ${targetRace}`);
+
+    // Call the Page Object method BEFORE you handle the NRIC/Passport logic
+    await registrationPage.selectNationalityAndRace(targetNationality, targetRace);
     // Pass the same gender down to the NRIC generator
     await registrationPage.selectIdentificationTypeAndFillDetails(randomIdSelection, targetGender);
 

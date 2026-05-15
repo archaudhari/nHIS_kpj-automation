@@ -128,4 +128,32 @@ const nricInput = this.page.locator('input[ng-model="Registration.NationalId"][m
             await this.page.waitForTimeout(1500);
         }
     }
+    // NEW METHOD: Safely select Nationality and Race
+    async selectNationalityAndRace(targetNationality: string, targetRace: string) {
+        
+        // 1. SELECT NATIONALITY
+        const nationalityDropdown = this.page.locator('select[ng-model="Registration.NationalityID"]');
+        await nationalityDropdown.waitFor({ state: 'visible' });
+        
+        // Select the nationality (e.g., 'Malaysian' or 'Singaporean')
+        await nationalityDropdown.selectOption({ label: targetNationality });
+        
+        // CRITICAL: Force Angular to trigger all 4 background functions
+        await nationalityDropdown.dispatchEvent('change');
+        
+        // Wait 1 full second for the app to fetch the new Race list and update ID requirements
+        await this.page.waitForTimeout(1000); 
+
+        // 2. SELECT RACE
+        // Use this ONLY if .first() causes a timeout
+        const raceDropdown = this.page.locator('select[ng-model="Registration.RaceID"]').first();
+        await raceDropdown.waitFor({ state: 'visible' });
+
+        // Select the appropriate race based on what the test script passed in
+        await raceDropdown.selectOption({ label: targetRace }, { force: true });
+        
+        // Force Angular to register the race selection
+        await raceDropdown.dispatchEvent('change');
+        await this.page.waitForTimeout(500);
+    }
 }
