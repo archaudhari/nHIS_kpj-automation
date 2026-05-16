@@ -80,6 +80,27 @@ test('KPJ OP Registration Flow', async ({ page }) => {
     await registrationPage.selectNationalityAndRace(targetNationality, targetRace);
     // Pass the same gender down to the NRIC generator
     await registrationPage.selectIdentificationTypeAndFillDetails(randomIdSelection, targetGender);
+    // Step F: PREPARE CORRESPONDENCE DATA
+    const dynamicAddress = `No. ${Math.floor(Math.random() * 100)}, Jalan Automation Testing`;
+    const targetMobileCode = '60'; // Malaysia
+    // Generate a valid 9 or 10 digit mobile number
+    const randomMobileNo = `12${Math.floor(1000000 + Math.random() * 9000000)}`; 
+    // Standard 5-digit Malaysian postcode (Using 50000 for Kuala Lumpur)
+    const targetPostcode = '50000'; 
+    // Create a unique email using the timestamp so it never fails duplicate validation
+    const timestampForEmail = Date.now();
+    const dynamicEmail = `test.patient${timestampForEmail}@sancyberhad.com`;
+
+    console.log(`Setting Address: ${dynamicAddress} | Mobile: +${targetMobileCode} ${randomMobileNo}`);
+
+    // Step H: FILL CORRESPONDENCE DETAILS
+    await registrationPage.fillCorrespondenceDetails(
+        dynamicAddress, 
+        targetMobileCode, 
+        randomMobileNo, 
+        targetPostcode, 
+        dynamicEmail
+    );
 
     await page.pause();
 });

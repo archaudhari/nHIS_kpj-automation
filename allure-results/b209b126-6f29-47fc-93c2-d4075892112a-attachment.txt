@@ -1,0 +1,4 @@
+✅ Successfully navigated to OP > Registration
+Creating a Male patient with title Mr.
+Setting Nationality: Malaysian | Race: Indian
+Setting Address: No. 43, Jalan Automation Testing | Mobile: +60 129259987

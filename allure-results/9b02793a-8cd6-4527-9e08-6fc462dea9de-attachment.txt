@@ -1,0 +1,3 @@
+✅ Successfully navigated to OP > Registration
+Creating a Female patient with title Mrs.
+Setting Nationality: Malaysian | Race: Chinese

@@ -83,7 +83,8 @@ export class RegistrationPage {
             await idDropdown.selectOption({ label: 'New IC' });
             await this.page.waitForTimeout(500); 
 
-const nricInput = this.page.locator('input[ng-model="Registration.NationalId"][minlength="12"]');            await nricInput.waitFor({ state: 'visible' });
+const nricInput = this.page.locator('input[ng-model="Registration.NationalId"][minlength="12"]');            
+await nricInput.waitFor({ state: 'visible' });
             
             // --- MALAYSIAN NRIC GENERATOR (YYMMDD-SS-###G) ---
             
@@ -154,6 +155,47 @@ const nricInput = this.page.locator('input[ng-model="Registration.NationalId"][m
         
         // Force Angular to register the race selection
         await raceDropdown.dispatchEvent('change');
+        await this.page.waitForTimeout(500);
+    }
+    // NEW METHOD: Fill Correspondence Details
+    async fillCorrespondenceDetails(address: string, mobileCodeLabel: string, mobileNo: string, postcode: string, email: string) {
+        
+        // 1. ADDRESS LINE 1
+        const addressInput = this.page.locator('textarea[ng-model="Registration.ResAddress"]');
+        await addressInput.waitFor({ state: 'visible' });
+        await addressInput.fill(address);
+        // Click body to trigger ng-blur="Setaddress(1)"
+        await this.page.locator('body').click(); 
+        await this.page.waitForTimeout(500);
+
+        // 2. POSTCODE (Important to do before moving on, as SearchPatientByPostal often auto-fills City/State)
+        const postcodeInput = this.page.locator('input[ng-model="Registration.ResPinCode"]');
+        await postcodeInput.waitFor({ state: 'visible' });
+        await postcodeInput.pressSequentially(postcode, { delay: 50 });
+        // Click body to trigger ng-blur="SearchPatientByPostal()"
+        await this.page.locator('body').click();
+        await this.page.waitForTimeout(1500); // Wait for background postal search to finish
+
+        // 3. MOBILE NUMBER (Code + Number)
+        const mobileCodeDropdown = this.page.locator('select[ng-model="Registration.MobileCountryCode"]');
+        await mobileCodeDropdown.waitFor({ state: 'visible' });
+        // Select by visible text (e.g., '60' or '91')
+        await mobileCodeDropdown.selectOption({ label: mobileCodeLabel });
+        await mobileCodeDropdown.dispatchEvent('change');
+        
+        const mobileNoInput = this.page.locator('#txtMobileNo');
+        await mobileNoInput.waitFor({ state: 'visible' });
+        await mobileNoInput.pressSequentially(mobileNo, { delay: 50 });
+        // Click body to trigger ng-blur="SearchPatientByInput(3)"
+        await this.page.locator('body').click();
+        await this.page.waitForTimeout(1500); // Wait for duplicate mobile check to finish
+
+        // 4. EMAIL
+        const emailInput = this.page.locator('input[ng-model="Registration.Email"]');
+        await emailInput.waitFor({ state: 'visible' });
+        await emailInput.fill(email);
+        // Click body to trigger ng-blur="EmailValidate()"
+        await this.page.locator('body').click();
         await this.page.waitForTimeout(500);
     }
 }
