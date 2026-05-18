@@ -1,0 +1,6 @@
+✅ Successfully navigated to OP > Registration
+Creating a Male patient with title Mr.
+Setting Nationality: Malaysian | Race: Indian
+Setting Address: No. 57, Jalan Automation Testing | Mobile: +60 129166491
+Adding Kin: KIN_AUTOMATION_1858 (Father) | NRIC: 750428823763
+[Visit Setup] Navigating to Department: Internal Medicine

@@ -1,0 +1,60 @@
+✅ Successfully navigated to OP > Registration
+Creating a Female patient with title Mrs.
+Setting Nationality: Malaysian | Race: Peninsular Indigenous (Orang Asli)
+Setting Address: No. 80, Jalan Automation Testing | Mobile: +60 127663186
+Adding Kin: KIN_AUTOMATION_6869 (Father) | NRIC: 010208406130
+Visit Information is closed. Clicking the tab to open it...
+[Visit Setup] Department: Obstetrics & Gynaecology | Doctor: Doctor_Pornima  
+Visit Information is already open! Skipping the click.
+
+--- DOCTORS AVAILABLE FOR DEPARTMENT: Obstetrics & Gynaecology ---
+[
+  '--Select--',
+  'Demo Doctor  ',
+  'Doctor 106  ',
+  'Doctor 11  ',
+  'Doctor 116  ',
+  'Doctor 12  ',
+  'Doctor 126  ',
+  'Doctor 127  ',
+  'Doctor 133  ',
+  'Doctor 213  TIEBA',
+  'Doctor 47  ',
+  'Doctor 49  ',
+  'Doctor 50  ',
+  'Doctor 52  ',
+  'Doctor 72  ',
+  'Doctor 78  ',
+  'Doctor 87  ',
+  'Doctor 89  ',
+  'Doctor 96  ',
+  'Doctor Aisya  ',
+  'Doctor hayati  ',
+  'Doctor_Amrita  ',
+  'Doctor_Annie  ',
+  'Doctor_Fikry  ',
+  'Doctor_Firdaus  ',
+  'Doctor_Kabir  ',
+  'Doctor_Kabir  ',
+  'Doctor_Natasha  ',
+  'Doctor_Pornima  ',
+  'Doctor_Raihan  ',
+  'Doctor_Shantanu  ',
+  'Doctor_Tieba  ',
+  'Employee 71  ',
+  'Ilham Bin Sirayuddin  ',
+  'keerthana  ',
+  'Medical Officer Aisya  ',
+  'Medical Officer_Amrita  ',
+  'Medical Officer_Annie  ',
+  'Medical Officer_Fikry  ',
+  'Medical Officer_Firdaus  ',
+  'Medical Officer_Kabir  ',
+  'Medical Officer_Natasha  ',
+  'Medical Officer_Raihan  ',
+  'Medical Officer_Tieba  ',
+  'Nor Liza Ariffin  ',
+  'SABARI  '
+]
+------------------------------------------------------
+

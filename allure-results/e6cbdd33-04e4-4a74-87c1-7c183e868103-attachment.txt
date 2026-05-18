@@ -1,0 +1,62 @@
+✅ Successfully navigated to OP > Registration
+Creating a Male patient with title Mr.
+Setting Nationality: Singaporean | Race: Non-Citizen
+Setting Address: No. 71, Jalan Automation Testing | Mobile: +60 122886228
+Adding Kin: KIN_AUTOMATION_1612 (Father) | NRIC: 510724358403
+[Visit Setup] Navigating to Department: Internal Medicine
+[Visit] Trying doctor: "A"...
+[Visit] ⚠ Department did not auto-load for "A". Error: Department did not auto-load for doctor "A"
+
+expect(received).toBe(expected) // Object.is equality
+
+Expected: true
+Received: false
+
+Call Log:
+- Timeout 10000ms exceeded while waiting on the predicate
+[Visit] Trying doctor: "ABC"...
+[Visit] ⚠ Department did not auto-load for "ABC". Error: Department did not auto-load for doctor "ABC"
+
+expect(received).toBe(expected) // Object.is equality
+
+Expected: true
+Received: false
+
+Call Log:
+- Timeout 10000ms exceeded while waiting on the predicate
+[Visit] Trying doctor: "Allen R"...
+[Visit] ⚠ Department did not auto-load for "Allen R". Error: Department did not auto-load for doctor "Allen R"
+
+expect(received).toBe(expected) // Object.is equality
+
+Expected: true
+Received: false
+
+Call Log:
+- Timeout 10000ms exceeded while waiting on the predicate
+[Visit] Trying doctor: "Aron F"...
+[Visit] ⚠ Department did not auto-load for "Aron F". Error: Department did not auto-load for doctor "Aron F"
+
+expect(received).toBe(expected) // Object.is equality
+
+Expected: true
+Received: false
+
+Call Log:
+- Timeout 10000ms exceeded while waiting on the predicate
+[Visit] Trying doctor: "Aron F"...
+[Visit] ⚠ Department did not auto-load for "Aron F". Error: Department did not auto-load for doctor "Aron F"
+
+expect(received).toBe(expected) // Object.is equality
+
+Expected: true
+Received: false
+
+Call Log:
+- Test timeout of 100000ms exceeded
+[Visit] Trying doctor: "Chong Kuoh Ren"...
+[Visit] ⚠ Department did not auto-load for "Chong Kuoh Ren". Error: locator.inputValue: Test timeout of 100000ms exceeded.
+Call log:
+  - waiting for locator('select[ng-model="Visit.DepartmentID"]').first()
+
+[Visit] Trying doctor: "Cluster Adem"...

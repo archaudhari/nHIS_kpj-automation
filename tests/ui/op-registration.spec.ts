@@ -101,6 +101,63 @@ test('KPJ OP Registration Flow', async ({ page }) => {
         targetPostcode, 
         dynamicEmail
     );
+// ... [Previous Steps: Address, Postcode, etc.] ...
 
+   // ... [Previous Steps: Address, Postcode, etc.] ...
+
+    // Step I: NEXT OF KIN DETAILS
+    const kinTitle = 'Mr.';
+    const kinName = `KIN_AUTOMATION_${Math.floor(Math.random() * 10000)}`;
+    const kinRelation = 'Father';
+    
+    // Generate valid 12-digit NRIC for Kin
+    const kinYy = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+    const kinMm = Math.floor(Math.random() * 12 + 1).toString().padStart(2, '0');
+    const kinDd = Math.floor(Math.random() * 28 + 1).toString().padStart(2, '0');
+    const kinRandom6 = Math.floor(100000 + Math.random() * 900000).toString();
+    const targetKinNric = `${kinYy}${kinMm}${kinDd}${kinRandom6}`;
+
+    const kinMobileCode = '60';
+    const kinMobileNo = `12${Math.floor(1000000 + Math.random() * 9000000)}`;
+    const sameAsPatientAddress = true;
+
+    console.log(`Adding Kin: ${kinName} (${kinRelation}) | NRIC: ${targetKinNric}`);
+    
+    // Pass the new kinName variable into the method
+    await registrationPage.fillNextOfKinDetails(
+        kinTitle, 
+        kinName, 
+        kinRelation, 
+        targetKinNric, 
+        kinMobileCode, 
+        kinMobileNo, 
+        sameAsPatientAddress
+    );
+
+    // Step J: VISIT INFORMATION
+    
+    // Click the tab to open the Visit Information section (handled in fillVisitInformation if needed)
+
+    const targetDepartment = 'Internal Medicine';
+    const targetEncounter = 'Outpatient';
+    const targetAdmissionSource = 'Internal';
+    const targetVisitType = 'New';
+
+    // ... [Previous Steps: Next of Kin Details, etc.] ...
+
+    console.log(`[Visit Setup] Navigating to Department: ${targetDepartment}`);
+
+    // 1. TRIGGER THE CLICK EVENT FIRST
+    await registrationPage.openVisitInformationSection();
+    
+    // 2. THEN RUN THE SMART DOCTOR LOOP
+    await registrationPage.fillVisitInformation(
+    targetEncounter,       // ✅ arg 1 → encounterType
+    targetDepartment,      // ✅ arg 2 → department
+    targetAdmissionSource, // ✅ arg 3 → admissionSource
+    targetVisitType        // ✅ arg 4 → targetVisitType
+);
+
+    // 5. FREEZE TO VERIFY
     await page.pause();
 });

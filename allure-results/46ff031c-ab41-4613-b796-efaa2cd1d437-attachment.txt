@@ -1,0 +1,2 @@
+❌ CRITICAL FAILURE: Could not find "TMC Imaging  " in the list above!
+Check the console output above to see exactly what strings Playwright is seeing.

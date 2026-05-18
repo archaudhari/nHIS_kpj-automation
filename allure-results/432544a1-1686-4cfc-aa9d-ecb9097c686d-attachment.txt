@@ -1,0 +1,8 @@
+✅ Successfully navigated to OP > Registration
+Creating a Male patient with title Mr.
+Setting Nationality: Malaysian | Race: Peninsular Indigenous (Orang Asli)
+Setting Address: No. 69, Jalan Automation Testing | Mobile: +60 123189068
+Adding Kin: KIN_AUTOMATION_4055 (Father) | NRIC: 560212613384
+Visit Information is closed. Clicking the tab to open it...
+[Visit Setup] Department: Orthopaedic Surgery | Doctor: Doctor 16  
+Visit Information is already open! Skipping the click.

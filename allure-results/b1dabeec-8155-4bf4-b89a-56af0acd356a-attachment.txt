@@ -1,0 +1,6 @@
+✅ Successfully navigated to OP > Registration
+Creating a Male patient with title Mr.
+Setting Nationality: Malaysian | Race: Chinese
+Setting Address: No. 6, Jalan Automation Testing | Mobile: +60 122022368
+Adding Kin: Father | Mobile: +60 129059059
+Visit Details: General Medicine -> Doctor 1  

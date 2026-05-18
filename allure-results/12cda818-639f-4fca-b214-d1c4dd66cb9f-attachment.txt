@@ -1,0 +1,6 @@
+✅ Successfully navigated to OP > Registration
+Creating a Female patient with title Mrs.
+Setting Nationality: Singaporean | Race: Non-Citizen
+Setting Address: No. 81, Jalan Automation Testing | Mobile: +60 126272700
+Adding Kin: KIN_AUTOMATION_8852 (Father) | NRIC: 350302360354
+[Visit Setup] Navigating to Department: Internal Medicine

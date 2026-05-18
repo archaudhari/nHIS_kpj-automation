@@ -1,0 +1,63 @@
+✅ Successfully navigated to OP > Registration
+Creating a Female patient with title Mrs.
+Setting Nationality: Singaporean | Race: Non-Citizen
+Setting Address: No. 63, Jalan Automation Testing | Mobile: +60 129647504
+Adding Kin: KIN_AUTOMATION_5138 (Father) | NRIC: 441003322831
+Visit Information is closed. Clicking the tab to open it...
+[Visit Setup] Dept: Radiology | Doctor: TMC Imaging   | Type: New
+Visit Information is already open! Skipping the click.
+
+--- DOCTORS AVAILABLE FOR DEPARTMENT: Radiology ---
+[
+  '--Select--',
+  'Demo Doctor  ',
+  'Doctor 11  ',
+  'Doctor 12  ',
+  'Doctor 128  ',
+  'Doctor 139  ',
+  'Doctor 143  ',
+  'Doctor 158  ',
+  'Doctor 171  ',
+  'Doctor 180  ',
+  'Doctor 181  ',
+  'Doctor 184  ',
+  'Doctor 213  TIEBA',
+  'Doctor 32  ',
+  'Doctor 42  ',
+  'Doctor 52  ',
+  'Doctor 521  ',
+  'Doctor 71  ',
+  'Doctor 82  ',
+  'Doctor 87  ',
+  'Doctor 99  ',
+  'Doctor Aisya  ',
+  'Doctor hayati  ',
+  'Doctor_Amrita  ',
+  'Doctor_Annie  ',
+  'Doctor_Fikry  ',
+  'Doctor_Firdaus  ',
+  'Doctor_Kabir  ',
+  'Doctor_Kabir  ',
+  'Doctor_Natasha  ',
+  'Doctor_Pornima  ',
+  'Doctor_Raihan  ',
+  'Doctor_Shantanu  ',
+  'Doctor_Tieba  ',
+  'DummyRadiology  ',
+  'Employee 71  ',
+  'Ilham Bin Sirayuddin  ',
+  'keerthana  ',
+  'Medical Officer Aisya  ',
+  'Medical Officer_Amrita  ',
+  'Medical Officer_Annie  ',
+  'Medical Officer_Fikry  ',
+  'Medical Officer_Firdaus  ',
+  'Medical Officer_Kabir  ',
+  'Medical Officer_Natasha  ',
+  'Medical Officer_Raihan  ',
+  'Medical Officer_Tieba  ',
+  'Nor Liza Ariffin  ',
+  'SABARI  '
+]
+------------------------------------------------------
+

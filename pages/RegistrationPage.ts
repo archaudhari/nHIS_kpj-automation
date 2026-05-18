@@ -198,4 +198,179 @@ await nricInput.waitFor({ state: 'visible' });
         await this.page.locator('body').click();
         await this.page.waitForTimeout(500);
     }
+    // UPDATED METHOD: Fill Next of Kin Details (Now includes Name)
+    async fillNextOfKinDetails(title: string, name: string, relation: string, kinNric: string, mobileCode: string, mobileNo: string, sameAsPatient: boolean) {
+        
+        // 1. Title
+        const kinTitle = this.page.locator('select[ng-model="Registration.KinTitleID"]');
+        await kinTitle.waitFor({ state: 'visible' });
+        await kinTitle.selectOption({ label: title });
+
+        // 2. NAME (The newly added field)
+        const kinNameInput = this.page.locator('input[ng-model="Registration.KinName"]');
+        await kinNameInput.waitFor({ state: 'visible' });
+        // Using fill() is usually safe for plain text fields without heavy ng-change events
+        await kinNameInput.fill(name);
+
+        // 3. Relationship
+        const kinRelation = this.page.locator('select[ng-model="Registration.KinRelationID"]');
+        await kinRelation.waitFor({ state: 'visible' });
+        await kinRelation.selectOption({ label: relation });
+
+        // 4. NEXT OF KIN NRIC
+        const kinNricInput = this.page.locator('input[ng-model="Registration.KinNationalId"]');
+        await kinNricInput.waitFor({ state: 'visible' });
+        await kinNricInput.pressSequentially(kinNric, { delay: 50 });
+
+        // 5. Mobile Code
+        const kinMobileCode = this.page.locator('select[ng-model="Registration.KinMobileCountryCode"]');
+        await kinMobileCode.waitFor({ state: 'visible' });
+        await kinMobileCode.selectOption({ label: mobileCode });
+
+        // 6. Mobile Number
+        const kinMobileNo = this.page.locator('#txtKinMobileNo');
+        await kinMobileNo.waitFor({ state: 'visible' });
+        await kinMobileNo.pressSequentially(mobileNo, { delay: 50 });
+
+        // 7. Same As Patient Address Checkbox
+        if (sameAsPatient) {
+            const sameAsPatientCheckbox = this.page.locator('input[ng-model="chkSameasPatAddr"]');
+            const isChecked = await sameAsPatientCheckbox.isChecked();
+            if (!isChecked) {
+                await sameAsPatientCheckbox.check({ force: true });
+                await sameAsPatientCheckbox.dispatchEvent('change');
+                await this.page.waitForTimeout(500); 
+            }
+        }
+
+        // 8. Click 'Add' Button to save Kin to the grid
+        const addKinButton = this.page.locator('button[ng-click="AddKinDetails(KinDetailsList);"]');
+        await addKinButton.click();
+        await this.page.waitForTimeout(1000); 
+    }
+
+// 8. VISIT INFORMATION (STALE-ELEMENT IMMUNE)
+    
+// =====================================================================
+    // CLICK EVENT: OPEN VISIT INFORMATION TAB
+ 
+    // 8. VISIT INFORMATION
+    //    Correct flow:
+    //      1. Encounter Type
+    //      2. PRIMARY DOCTOR first  →  Department auto-loads from doctor selection
+    //      3. Confirm Department loaded
+    //      4. Loop doctors until Visit Type "New" is available → select it → STOP
+    //      5. Queue No.
+    //      6. Admission Source
+    // =====================================================================
+    async openVisitInformationSection() {
+        const visitTab = this.page.locator(
+            'a[href="#visitInfo"], a[ng-click*="visitInfo"], a[ng-click*="Visit"], ' +
+            'li[ng-click*="visitInfo"] > a, .visit-info-tab > a'
+        ).first();
+ 
+        try {
+            await visitTab.waitFor({ state: 'visible', timeout: 4000 });
+            await visitTab.click();
+        } catch {
+            const fallback = this.page.getByRole('link', { name: /visit information/i })
+                .or(this.page.getByRole('tab',  { name: /visit information/i }))
+                .first();
+            await fallback.waitFor({ state: 'visible', timeout: 4000 });
+            await fallback.click();
+        }
+ 
+        // Wait for panel to be visible instead of timeout
+        await expect(this.page.locator('select[ng-model="Visit.EncounterTypeID"]')).toBeVisible({ timeout: 5000 });
+    }
+ 
+    async fillVisitInformation(
+    encounterType: string,
+    department: string,
+    admissionSource: string,
+    targetVisitType: string
+) {
+    const startTime = Date.now();
+
+    // 1. ENCOUNTER TYPE
+    const encounterDropdown = this.page.locator('select[ng-model="Visit.EncounterTypeID"]');
+    await encounterDropdown.waitFor({ state: 'visible' });
+    await encounterDropdown.selectOption({ label: encounterType });
+    await this.page.waitForLoadState('domcontentloaded', { timeout: 5000 });
+
+    // 2. PRIMARY DOCTOR - select first available to trigger Department load
+    const doctorDropdown = this.page.locator('select[ng-model="Visit.DoctorID"]').first();
+    await expect.poll(async () => doctorDropdown.locator('option').count()).toBeGreaterThan(1);
+    
+    const firstDoctorValue = await doctorDropdown.locator('option').nth(1).getAttribute('value');
+    await doctorDropdown.selectOption(firstDoctorValue!);
+    await this.page.waitForLoadState('domcontentloaded', { timeout: 5000 });
+
+    // 3. Confirm Department loaded
+    const departmentDropdown = this.page.locator('select[ng-model="Visit.DepartmentID"]').first();
+    await expect.poll(async () => departmentDropdown.inputValue()).not.toBe('0');
+    console.log('[Visit] Department auto-loaded');
+
+    // 4. Now get ALL doctors again and loop until Visit Type "New" found
+    const allDoctors = await this.page.locator('select[ng-model="Visit.DoctorID"] option').all();
+    const doctorList: { value: string, name: string }[] = [];
+    for (let i = 1; i < allDoctors.length; i++) {
+        const value = await allDoctors[i].getAttribute('value');
+        const name = await allDoctors[i].innerText();
+        if (value) doctorList.push({ value, name: name.trim() });
+    }
+
+    let foundNew = false;
+    for (let i = 0; i < doctorList.length; i++) {
+        const doc = doctorList[i];
+        console.log(`[Visit] [${i + 1}/${doctorList.length}] Checking ${doc.name}...`);
+
+        const docDropdown = this.page.locator('select[ng-model="Visit.DoctorID"]').first();
+        await docDropdown.selectOption(doc.value);
+
+        // Wait for Visit Type API to respond - max 3s, not 8s
+        const visitTypeDropdown = this.page.locator('select[ng-model="Visit.VisitType"]').first();
+        
+        const hasOptions = await this.page.waitForFunction(
+            (sel) => {
+                const el = document.querySelector(sel) as HTMLSelectElement;
+                return el && el.options.length > 1;
+            },
+            'select[ng-model="Visit.VisitType"]',
+            { timeout: 3000 }
+        ).then(() => true).catch(() => false);
+
+        if (!hasOptions) {
+            console.log(`❌ [Visit] No Visit Types for ${doc.name}`);
+            continue;
+        }
+
+        const types = await visitTypeDropdown.locator('option').allInnerTexts();
+        if (types.map(t => t.trim()).includes(targetVisitType)) {
+            console.log(`✅ [Visit] FOUND! ${doc.name} has "${targetVisitType}"`);
+            await visitTypeDropdown.selectOption({ label: targetVisitType });
+            foundNew = true;
+            break; // STOP LOOP
+        }
+    }
+
+    if (!foundNew) {
+        throw new Error(`No doctor supports "${targetVisitType}"`);
+    }
+
+    // 5. Queue No.
+    const queueInput = this.page.locator('input[ng-model="Visit.TokenNo"]');
+    await expect(queueInput).toBeEnabled({ timeout: 3000 });
+    const randomQueue = Math.floor(100 + Math.random() * 900).toString();
+    await queueInput.fill(randomQueue);
+    console.log(`[Visit] Queue No: ${randomQueue}`);
+
+    // 6. Admission Source
+    const sourceDropdown = this.page.locator('select[ng-model="Visit.PatientSourceID"]');
+    await sourceDropdown.selectOption({ label: admissionSource });
+    console.log(`[Visit] Admission Source: ${admissionSource}`);
+
+    console.log(`[Visit] Complete in ${Date.now() - startTime}ms ✅`);
+}
+
 }

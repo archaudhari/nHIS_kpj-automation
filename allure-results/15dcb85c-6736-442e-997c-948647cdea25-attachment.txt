@@ -1,0 +1,4 @@
+✅ Successfully navigated to OP > Registration
+Creating a Male patient with title Mr.
+Setting Nationality: Malaysian | Race: Peninsular Indigenous (Orang Asli)
+Setting Address: No. 68, Jalan Automation Testing | Mobile: +60 126105377
