@@ -1,0 +1,14 @@
+✅ Successfully navigated to OP > Registration
+Creating a Female patient with title Mrs.
+Setting Nationality: Malaysian | Race: Peninsular Indigenous (Orang Asli)
+Setting Address: No. 39, Jalan Automation Testing | Mobile: +60 127510293
+Adding Kin: KIN_AUTOMATION_9297 (Father) | NRIC: 601211709483
+[Visit] Encounter options available: [{"text":"--Select--","value":""},{"text":"Outpatient","value":"number:1"}]
+[Visit] 1. Encounter Type → "Doctor 52"
+[Visit] 2. Doctor dropdown found → ng-model="Visit.DoctorID"
+[Visit] 282 doctor(s) available. Scanning for Visit Type "New"...
+[Visit] Trying doctor: "A"...
+[Visit]   Department auto-loaded → "--Select--"
+[Visit]   Available Visit Types: [--Select--, Follow Up, New, Other]
+✅ [Visit] "A" has "New" — selecting & stopping.
+[Visit] 4. Queue No. → "568"

@@ -1,0 +1,13 @@
+✅ Successfully navigated to OP > Registration
+Creating a Female patient with title Mrs.
+Setting Nationality: Singaporean | Race: Non-Citizen
+Setting Address: No. 74, Jalan Automation Testing | Mobile: +60 127869379
+Adding Kin: KIN_AUTOMATION_9580 (Father) | NRIC: 570622628772
+[Visit] Random order: Internal Medicine - Doctor_Annie → Cardiothoracic Surgery - Doctor 81 → Radiology - Doctor 52 → Anaesthesiology & Critical Care - Doctor 12 → Anatomical Pathology - Nor Liza Ariffin
+[Visit] Encounter Type options: [ '--Select--', 'Outpatient' ]
+[Visit] Encounter Type values: [
+  { value: '', text: '--Select--' },
+  { value: 'number:1', text: 'Outpatient' }
+]
+[Visit] 1. Encounter Type set: Outpatient
+[Visit] 2.1 Selecting Doctor: Internal Medicine - Doctor_Annie

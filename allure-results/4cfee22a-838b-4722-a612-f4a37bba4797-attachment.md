@@ -1,0 +1,918 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui\op-registration.spec.ts >> KPJ OP Registration Flow
+- Location: tests\ui\op-registration.spec.ts:14:5
+
+# Error details
+
+```
+Test timeout of 100000ms exceeded.
+```
+
+```
+Error: locator.selectOption: Test timeout of 100000ms exceeded.
+Call log:
+  - waiting for locator('select[ng-model="Visit.DoctorID"]').first()
+    - locator resolved to <select ng-model="Visit.DoctorID" ng-options="item.value as item.text for item in drpDoctor" class="form-control input-sm ng-pristine ng-untouched ng-valid" ng-change="fnSetClusterbyDoctor();fnSetDepartment1();fnSetVisitType(1);fnSetCabin();">…</select>
+  - attempting select option action
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+    - waiting 20ms
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+      - waiting 100ms
+    118 × waiting for element to be visible and enabled
+        - did not find some options
+      - retrying select option action
+        - waiting 500ms
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner:
+      - text:  
+      - navigation [ref=e3]:
+        - generic [ref=e4]:
+          - heading "Patient Dashboard" [level=1] [ref=e6]
+          - list [ref=e8]:
+            - listitem [ref=e9]:
+              - generic [ref=e10]: "Welcome: Employee 1338:(KPJ)"
+            - listitem [ref=e11]:
+              - generic [ref=e12]: "Last Login : 20/05/2026 01:24:10"
+            - listitem [ref=e13]:
+              - link " 279" [ref=e15] [cursor=pointer]:
+                - /url: "#/InternalMessaging"
+                - generic [ref=e16]: 
+                - generic [ref=e17]: "279"
+              - button "Mic On/Off" [ref=e19] [cursor=pointer]
+              - img "Change Password" [ref=e22]
+              - generic "Logout" [ref=e24]:
+                - generic [ref=e25]: 
+    - navigation [ref=e26]:
+      - list [ref=e31]:
+        - listitem [ref=e32]:
+          - link [ref=e33] [cursor=pointer]:
+            - /url: "#"
+        - listitem [ref=e34]:
+          - link "Home" [ref=e35] [cursor=pointer]:
+            - /url: "#/home"
+            - generic [ref=e36]: Home
+        - listitem [ref=e37]:
+          - link "Emergency" [ref=e38] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e39]: Emergency
+        - listitem [ref=e40]:
+          - link "IP" [ref=e41] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e42]: IP
+        - listitem [ref=e43]:
+          - link "OP" [ref=e44] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e45]: OP
+          - text:                
+        - listitem [ref=e46]:
+          - link "Finance" [ref=e47] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e48]: Finance
+        - listitem [ref=e49]:
+          - link "Billing" [ref=e50] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e51]: Billing
+        - listitem [ref=e52]:
+          - link "Investigation" [ref=e53] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e54]: Investigation
+        - listitem [ref=e55]:
+          - link "Nursing Station" [ref=e56] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e57]: Nursing Station
+        - listitem [ref=e58]:
+          - link "OT" [ref=e59] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e60]: OT
+        - listitem [ref=e61]:
+          - link "Inventory" [ref=e62] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e63]: Inventory
+        - listitem [ref=e64]:
+          - link "Ancillary Services" [ref=e65] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e66]: Ancillary Services
+        - listitem [ref=e67]:
+          - link "Report" [ref=e68] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e69]: Report
+        - listitem [ref=e70]:
+          - link "System Configuration" [ref=e71] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e72]: System Configuration
+        - listitem [ref=e73]:
+          - link "Application Configuration" [ref=e74] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e75]: Application Configuration
+        - listitem [ref=e76]:
+          - link "Telemedicine" [ref=e77] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e78]: Telemedicine
+    - generic [ref=e85]:
+      - generic [ref=e87]:
+        - tablist [ref=e88]:
+          - generic [ref=e89]:
+            - tab "Patient Information" [ref=e90]:
+              - button "Patient Information" [ref=e91] [cursor=pointer]
+              - button
+            - text:             
+        - generic [ref=e92]:
+          - tab "Payor Information" [ref=e93]:
+            - button "Payor Information" [ref=e94] [cursor=pointer]
+          - text:    
+        - text:  
+      - generic [ref=e95]:
+        - tab "Visit Information" [ref=e96]:
+          - button "Visit Information" [expanded] [ref=e97] [cursor=pointer]
+        - tabpanel "Visit Information" [ref=e98]:
+          - generic [ref=e101]:
+            - generic [ref=e102]:
+              - generic [ref=e104]:
+                - generic [ref=e105]: Episode No
+                - textbox [ref=e107]
+              - generic [ref=e109]:
+                - generic [ref=e110]: Time
+                - textbox [ref=e112]: 10:54 PM
+              - generic [ref=e114]:
+                - generic [ref=e115]: Encounter Type*
+                - combobox [ref=e117]:
+                  - option "--Select--"
+                  - option "Outpatient" [selected]
+              - generic [ref=e119]:
+                - generic [ref=e120]: Cash Counter*
+                - combobox [ref=e122]:
+                  - option "--Select--"
+                  - option "ADM5-C-01 (Ward Level 5)" [selected]
+                  - option "ADM6-C-01 (Ward Level 6)"
+                  - option "ADM7-C-01 (Ward Level 7)"
+                  - option "ADMG-C-01 (Central)"
+                  - option "ADMG-C-02 (Central)"
+                  - option "ADMG-C-03 (Central)"
+                  - option "ADMG-C-04 (Central)"
+                  - option "ADMG-C-05 (Central)"
+                  - option "ADMG-C-06 (Central)"
+                  - option "ADMG-E-01 (Central)"
+                  - option "ADMG-S-01 (Central)"
+                  - option "ADMG-S-02 (Central)"
+                  - option "BILL-BL01 (IP Billing)"
+                  - option "BILL-BL02 (IP Billing)"
+                  - option "BILL-BL03 (IP Billing)"
+                  - option "BILL-BL04 (IP Billing)"
+                  - option "BILL-BL05 (IP Billing)"
+                  - option "BILL-BL06 (IP Billing)"
+                  - option "BILL-BL07 (IP Billing)"
+                  - option "CC-CC01 (Credit Control)"
+                  - option "CC-CC02 (Credit Control)"
+                  - option "CC-CC03 (Credit Control)"
+                  - option "CC-CC04 (Credit Control)"
+                  - option "CC-CC05 (Credit Control)"
+                  - option "CC-CC06 (Credit Control)"
+                  - option "CC-CC07 (Credit Control)"
+                  - option "DCL1-C-01 (Daycare)"
+                  - option "DCL1-C-02 (Daycare)"
+                  - option "DCL1-C-03 (Daycare)"
+                  - option "DCL1-C-04 (Daycare)"
+                  - option "DC-O-01 (Daycare)"
+                  - option "DCOC-C-01 (Daycare (Oncology) )"
+                  - option "DCOC-C-02 (Daycare (Oncology) )"
+                  - option "ED-C-01 (Emergency)"
+                  - option "ED-C-02 (Emergency)"
+                  - option "ED-C-03 (Emergency)"
+                  - option "ED-E-01 (Emergency)"
+                  - option "ED-S-01 (Emergency)"
+                  - option "HSD-C-01 (HSD)"
+                  - option "OPD-B-01 (Outpatient)"
+                  - option "OPD-B-02 (Outpatient)"
+                  - option "OPD-B-03 (Outpatient)"
+                  - option "OPD-B-04 (Outpatient)"
+                  - option "OPD-E-01 (Outpatient)"
+                  - option "OPD-E-02 (Outpatient)"
+                  - option "RAD-C-01 (Imaging)"
+                  - option "REHB-C-01 (Rehab)"
+                  - option "REHB-C-02 (Rehab)"
+                  - option "SH-C-01 (Emergency (Staff Health) )"
+                  - option "SP10-C-01 (SPC10/11 (Paeds))"
+                  - option "SP10-C-02 (SPC10/11 (Paeds))"
+                  - option "SP10-C-03 (SPC10/11 (Paeds))"
+                  - option "SP12-C-01 (SPC12)"
+                  - option "SP12-C-02 (SPC12)"
+                  - option "SP12-C-03 (SPC12)"
+                  - option "SP12-C-04 (SPC12)"
+                  - option "SP13-C-01 (SPC13A)"
+                  - option "SP13-C-02 (SPC13A)"
+                  - option "SPC1-C-01 (SPC1 (Onco))"
+                  - option "SPC1-C-02 (SPC1 (Onco))"
+                  - option "SPC2-C-01 (SPC2)"
+                  - option "SPC2-C-02 (SPC2)"
+                  - option "SPC3-C-01 (SPC3)"
+                  - option "SPC3-C-02 (SPC3)"
+                  - option "SPC3-C-03 (SPC3)"
+                  - option "SPC3-C-04 (SPC3)"
+                  - option "SPC5-C-01 (SPC5)"
+                  - option "SPC5-C-02 (SPC5)"
+                  - option "SPC6-C-01 (SPC6)"
+                  - option "SPC6-C-02 (SPC6)"
+                  - option "SPC6-C-03 (SPC6)"
+                  - option "SPC7-C-01 (SPC7)"
+                  - option "SPC7-C-02 (SPC7)"
+                  - option "SPC8-C-01 (SPC8)"
+                  - option "SPC8-C-02 (SPC8)"
+                  - option "SPC8-C-03 (SPC8)"
+                  - option "SPC9-C-01 (SPC9 (IVF))"
+                  - option "SPC9-C-02 (SPC9 (IVF))"
+                  - option "SPC9-C-03 (SPC9 (IVF))"
+                  - option "SPC9-C-04 (SPC9 (IVF))"
+                  - option "SPC9-C-05 (SPC9 (IVF))"
+              - generic [ref=e124]:
+                - generic [ref=e125]: Location*
+                - combobox [disabled] [ref=e127]:
+                  - option "--Select--"
+                  - option "KPJ" [selected]
+              - generic [ref=e129]:
+                - generic [ref=e130]: Registration Department*
+                - combobox [ref=e132]:
+                  - option "--Select--" [selected]
+                  - option "Anaesthesiology & Critical Care"
+                  - option "Anatomical Pathology"
+                  - option "Breast & Endocrine Surgery"
+                  - option "Breast & Oncoplastic Surgery"
+                  - option "Cardiology"
+                  - option "Cardiothoracic Surgery"
+                  - option "Cardiothoracic Surgery (Paediatric)"
+                  - option "Chemical Pathology"
+                  - option "Clinical Haematology"
+                  - option "Clinical Oncology"
+                  - option "Colorectal Surgery"
+                  - option "Daycare"
+                  - option "Dermatology"
+                  - option "Dietetics"
+                  - option "Ear, Nose & Throat Surgery"
+                  - option "Endocrinology"
+                  - option "Gastroenterology & Hepatology"
+                  - option "General Paediatric & Paediatric Dermatology"
+                  - option "General Paediatric & Paediatric Endocrinology"
+                  - option "General Paediatrics"
+                  - option "General Paediatrics & Clinical Genetics"
+                  - option "General Paediatrics & Paediatric Cardiology"
+                  - option "General Paediatrics & Paediatric Gastroenterology & Hepatology"
+                  - option "General Paediatrics & Paediatric Neurology"
+                  - option "General Surgery"
+                  - option "Geriatric Medicine"
+                  - option "Haematopathology"
+                  - option "Haemodalysis"
+                  - option "Hand & Microsurgery (Orthopaedic)"
+                  - option "Health Screening Centre"
+                  - option "Hepatobiliary Surgery"
+                  - option "Infectious Diseases"
+                  - option "Intensive Care & Internal Medicine"
+                  - option "Internal Medicine"
+                  - option "Laboratory"
+                  - option "Neonatology"
+                  - option "Nephrology"
+                  - option "Neurology"
+                  - option "Neuropsychology"
+                  - option "Neurosurgery"
+                  - option "Nuclear Medicine"
+                  - option "Obstetrics & Gynaecology"
+                  - option "Obstetrics & Gynaecology, Fertility"
+                  - option "Obstetrics & Gynaecology, Gynae-Oncology"
+                  - option "Obstetrics & Gynaecology, Maternal Fetal"
+                  - option "Oncology"
+                  - option "Ophthalmology"
+                  - option "Oral & Maxillofacial Surgery"
+                  - option "Orthopaedic Surgery"
+                  - option "Paediatric Surgery"
+                  - option "Palliative Medicine"
+                  - option "Pathology"
+                  - option "Plastic & Reconstructive Surgery"
+                  - option "Psychiatry"
+                  - option "Radiology"
+                  - option "Rehab & Physiotherapy"
+                  - option "Rehabilitation Medicine"
+                  - option "Resident Medical Officer"
+                  - option "Respiratory Medicine"
+                  - option "Rheumatology"
+                  - option "Sonographer"
+                  - option "Sport Medicine"
+                  - option "Upper Gastrointestinal & Bariatric Surgery"
+                  - option "Upper Gastrointestinal Surgery"
+                  - option "Urology"
+                  - option "Vascular Surgery"
+              - generic [ref=e134]:
+                - generic [ref=e135]: Cluster
+                - combobox [ref=e137]:
+                  - option "-Select-" [selected]
+                  - option "N/A"
+                  - option "SPC1"
+                  - option "SPC10"
+                  - option "SPC11"
+                  - option "SPC12"
+                  - option "SPC13A"
+                  - option "SPC2"
+                  - option "SPC3"
+                  - option "SPC5"
+                  - option "SPC6"
+                  - option "SPC7"
+                  - option "SPC8"
+                  - option "SPC9"
+              - generic [ref=e139]:
+                - generic [ref=e140]: Sub Dept
+                - combobox [disabled] [ref=e142]:
+                  - option "--Select--" [selected]
+              - generic [ref=e144]:
+                - generic [ref=e145]: Primary Doctor*
+                - combobox [ref=e147]:
+                  - option "--Select--" [selected]
+                  - option "A"
+                  - option "ABC"
+                  - option "Allen R"
+                  - option "Aron F"
+                  - option "Aron F"
+                  - option "Chong Kuoh Ren"
+                  - option "Cluster Adem"
+                  - option "Demo Doctor"
+                  - option "Demo Doctor"
+                  - option "Dj"
+                  - option "Doctor 1"
+                  - option "Doctor 10"
+                  - option "Doctor 100"
+                  - option "Doctor 101"
+                  - option "Doctor 102"
+                  - option "Doctor 103"
+                  - option "Doctor 104"
+                  - option "Doctor 105"
+                  - option "Doctor 106"
+                  - option "Doctor 107"
+                  - option "Doctor 108"
+                  - option "Doctor 109"
+                  - option "Doctor 11"
+                  - option "Doctor 110"
+                  - option "Doctor 111"
+                  - option "Doctor 112"
+                  - option "Doctor 113"
+                  - option "Doctor 114"
+                  - option "Doctor 115"
+                  - option "Doctor 116"
+                  - option "Doctor 117"
+                  - option "Doctor 118"
+                  - option "Doctor 119"
+                  - option "Doctor 12"
+                  - option "Doctor 12"
+                  - option "Doctor 120"
+                  - option "Doctor 121"
+                  - option "Doctor 122"
+                  - option "Doctor 123"
+                  - option "Doctor 124"
+                  - option "Doctor 125"
+                  - option "Doctor 126"
+                  - option "Doctor 127"
+                  - option "Doctor 128"
+                  - option "Doctor 129"
+                  - option "Doctor 13"
+                  - option "Doctor 130"
+                  - option "Doctor 131"
+                  - option "Doctor 132"
+                  - option "Doctor 133"
+                  - option "Doctor 134"
+                  - option "Doctor 135"
+                  - option "Doctor 136"
+                  - option "Doctor 137"
+                  - option "Doctor 138"
+                  - option "Doctor 139"
+                  - option "Doctor 14"
+                  - option "Doctor 140"
+                  - option "Doctor 141"
+                  - option "Doctor 142"
+                  - option "Doctor 143"
+                  - option "Doctor 144"
+                  - option "Doctor 145"
+                  - option "Doctor 146"
+                  - option "Doctor 147"
+                  - option "Doctor 148"
+                  - option "Doctor 149"
+                  - option "Doctor 15"
+                  - option "Doctor 150"
+                  - option "Doctor 151"
+                  - option "Doctor 152"
+                  - option "Doctor 153"
+                  - option "Doctor 154"
+                  - option "Doctor 155"
+                  - option "Doctor 156"
+                  - option "Doctor 157"
+                  - option "Doctor 158"
+                  - option "Doctor 159"
+                  - option "Doctor 16"
+                  - option "Doctor 160"
+                  - option "Doctor 161"
+                  - option "Doctor 162"
+                  - option "Doctor 163"
+                  - option "Doctor 164"
+                  - option "Doctor 165"
+                  - option "Doctor 166"
+                  - option "Doctor 167"
+                  - option "Doctor 168"
+                  - option "Doctor 169"
+                  - option "Doctor 17"
+                  - option "Doctor 170"
+                  - option "Doctor 171"
+                  - option "Doctor 172"
+                  - option "Doctor 173"
+                  - option "Doctor 174"
+                  - option "Doctor 175"
+                  - option "Doctor 176"
+                  - option "Doctor 177"
+                  - option "Doctor 178"
+                  - option "Doctor 179"
+                  - option "Doctor 18"
+                  - option "Doctor 180"
+                  - option "Doctor 181"
+                  - option "Doctor 182"
+                  - option "Doctor 183"
+                  - option "Doctor 184"
+                  - option "Doctor 185"
+                  - option "Doctor 186"
+                  - option "Doctor 187"
+                  - option "Doctor 188"
+                  - option "Doctor 189"
+                  - option "Doctor 19"
+                  - option "Doctor 190"
+                  - option "Doctor 191"
+                  - option "Doctor 192"
+                  - option "Doctor 193"
+                  - option "Doctor 194"
+                  - option "Doctor 195"
+                  - option "Doctor 196"
+                  - option "Doctor 197"
+                  - option "Doctor 198"
+                  - option "Doctor 199"
+                  - option "Doctor 2"
+                  - option "Doctor 20"
+                  - option "Doctor 200"
+                  - option "Doctor 201"
+                  - option "Doctor 202"
+                  - option "Doctor 203"
+                  - option "Doctor 204"
+                  - option "Doctor 205"
+                  - option "Doctor 206"
+                  - option "Doctor 207"
+                  - option "Doctor 208"
+                  - option "Doctor 209"
+                  - option "Doctor 21"
+                  - option "Doctor 210"
+                  - option "Doctor 211"
+                  - option "Doctor 212"
+                  - option "Doctor 213 TIEBA"
+                  - option "Doctor 22"
+                  - option "Doctor 23"
+                  - option "Doctor 24"
+                  - option "Doctor 25"
+                  - option "Doctor 26"
+                  - option "Doctor 27"
+                  - option "Doctor 28"
+                  - option "Doctor 29"
+                  - option "Doctor 3"
+                  - option "Doctor 30"
+                  - option "Doctor 31"
+                  - option "Doctor 32"
+                  - option "Doctor 33"
+                  - option "Doctor 34"
+                  - option "Doctor 35"
+                  - option "Doctor 36"
+                  - option "Doctor 37"
+                  - option "Doctor 38"
+                  - option "Doctor 39"
+                  - option "Doctor 4"
+                  - option "Doctor 40"
+                  - option "Doctor 41"
+                  - option "Doctor 42"
+                  - option "Doctor 43"
+                  - option "Doctor 44"
+                  - option "Doctor 45"
+                  - option "Doctor 46"
+                  - option "Doctor 47"
+                  - option "Doctor 48"
+                  - option "Doctor 49"
+                  - option "Doctor 5"
+                  - option "Doctor 50"
+                  - option "Doctor 51"
+                  - option "Doctor 52"
+                  - option "Doctor 52"
+                  - option "Doctor 521"
+                  - option "Doctor 53"
+                  - option "Doctor 54"
+                  - option "Doctor 55"
+                  - option "Doctor 56"
+                  - option "Doctor 58"
+                  - option "Doctor 59"
+                  - option "Doctor 6"
+                  - option "Doctor 60"
+                  - option "Doctor 61"
+                  - option "Doctor 62"
+                  - option "Doctor 63"
+                  - option "Doctor 64"
+                  - option "Doctor 65"
+                  - option "Doctor 66"
+                  - option "Doctor 67"
+                  - option "Doctor 68"
+                  - option "Doctor 69"
+                  - option "Doctor 7"
+                  - option "Doctor 70"
+                  - option "Doctor 71"
+                  - option "Doctor 72"
+                  - option "Doctor 73"
+                  - option "Doctor 74"
+                  - option "Doctor 75"
+                  - option "Doctor 76"
+                  - option "Doctor 77"
+                  - option "Doctor 78"
+                  - option "Doctor 79"
+                  - option "Doctor 8"
+                  - option "Doctor 80"
+                  - option "Doctor 81"
+                  - option "Doctor 82"
+                  - option "Doctor 83"
+                  - option "Doctor 84"
+                  - option "Doctor 85"
+                  - option "Doctor 86"
+                  - option "Doctor 87"
+                  - option "Doctor 88"
+                  - option "Doctor 89"
+                  - option "Doctor 9"
+                  - option "Doctor 90"
+                  - option "Doctor 91"
+                  - option "Doctor 92"
+                  - option "Doctor 93"
+                  - option "Doctor 94"
+                  - option "Doctor 95"
+                  - option "Doctor 96"
+                  - option "Doctor 97"
+                  - option "Doctor 98"
+                  - option "Doctor 99"
+                  - option "Doctor Aisya"
+                  - option "Doctor Aisya"
+                  - option "Doctor hayati"
+                  - option "Doctor hayati"
+                  - option "Doctor_Amrita"
+                  - option "Doctor_Annie"
+                  - option "Doctor_Annie"
+                  - option "Doctor_Fikry"
+                  - option "Doctor_Fikry"
+                  - option "Doctor_Firdaus"
+                  - option "Doctor_Kabir"
+                  - option "Doctor_Kabir"
+                  - option "Doctor_Natasha"
+                  - option "Doctor_Natasha"
+                  - option "Doctor_Pornima"
+                  - option "Doctor_Pornima"
+                  - option "Doctor_Pornima"
+                  - option "Doctor_Raihan"
+                  - option "Doctor_Raihan"
+                  - option "Doctor_Shantanu"
+                  - option "Doctor_Shantanu"
+                  - option "Doctor_Shantanu"
+                  - option "Doctor_Tieba"
+                  - option "Dummylab"
+                  - option "DummyRadiology"
+                  - option "Employee 71"
+                  - option "Employee 71"
+                  - option "Henry Mathews"
+                  - option "Ilham Bin Sirayuddin"
+                  - option "Ilham Bin Sirayuddin"
+                  - option "keerthana"
+                  - option "keerthana"
+                  - option "Kwan Keat Leong"
+                  - option "Medical Officer Aisya"
+                  - option "Medical Officer Aisya"
+                  - option "Medical Officer_Amrita"
+                  - option "Medical Officer_Amrita"
+                  - option "Medical Officer_Annie"
+                  - option "Medical Officer_Annie"
+                  - option "Medical Officer_Fikry"
+                  - option "Medical Officer_Fikry"
+                  - option "Medical Officer_Firdaus"
+                  - option "Medical Officer_Kabir"
+                  - option "Medical Officer_Kabir"
+                  - option "Medical Officer_Natasha"
+                  - option "Medical Officer_Natasha"
+                  - option "Medical Officer_Pornima"
+                  - option "Medical Officer_Raihan"
+                  - option "Medical Officer_Raihan"
+                  - option "Medical Officer_Shantanu"
+                  - option "Medical Officer_Tieba"
+                  - option "Medical Officer_Tieba"
+                  - option "Nor Liza Ariffin"
+                  - option "Nor Liza Ariffin"
+                  - option "SABARI"
+                  - option "TEST CONF TEEST NEW AJ"
+                  - option "TMC Imaging"
+              - generic [ref=e149]:
+                - generic [ref=e150]: Visit Type*
+                - combobox [ref=e152]:
+                  - option "--Select--" [selected]
+              - generic [ref=e154]:
+                - generic [ref=e155]: Admission Source*
+                - combobox [ref=e157]:
+                  - option "--Select--" [selected]
+                  - option "CAMP/Loyalty"
+                  - option "External"
+                  - option "Internal"
+                  - option "Pre-Employment"
+              - generic [ref=e159]:
+                - generic [ref=e160]: Consultation Room
+                - combobox [ref=e162]:
+                  - option "--Select--" [selected]
+              - generic [ref=e163]:
+                - generic [ref=e164]:
+                  - generic [ref=e165]: Queue No.*
+                  - generic [ref=e166]:
+                    - textbox [ref=e167]
+                    - text: 
+                - generic [ref=e170] [cursor=pointer]:
+                  - checkbox "E-Invoicing Required" [ref=e171]
+                  - text: E-Invoicing Required
+              - generic [ref=e172]:
+                - generic [ref=e173]:
+                  - generic [ref=e174]: Ref Entity Type
+                  - combobox [ref=e176]:
+                    - option "--Select--" [selected]
+                    - option "Agent"
+                    - option "Refentity"
+                - generic [ref=e177]:
+                  - generic [ref=e178]: Promotion/Program
+                  - combobox [disabled] [ref=e180]:
+                    - option "--Select--" [selected]
+              - generic [ref=e181]:
+                - generic [ref=e182]:
+                  - generic [ref=e183]: Ref Entity Name
+                  - combobox [ref=e185]:
+                    - option "--Select--" [selected]
+                - generic [ref=e186]:
+                  - generic [ref=e187]: Ref Entity Name
+                  - textbox [ref=e189]
+                - generic [ref=e191]:
+                  - generic [ref=e192] [cursor=pointer]:
+                    - checkbox "Medico Legal Case" [ref=e193]
+                    - text: Medico Legal Case
+                  - generic [ref=e194] [cursor=pointer]:
+                    - checkbox "Brought Dead" [ref=e195]
+                    - text: Brought Dead
+                - generic [ref=e198] [cursor=pointer]:
+                  - checkbox "Referral letter from GP or other hospitals" [ref=e199]
+                  - text: Referral letter from GP or other hospitals
+              - generic [ref=e201]:
+                - generic [ref=e202]: Remark
+                - textbox [ref=e204]
+              - generic [ref=e205]:
+                - generic [ref=e206]:
+                  - generic [ref=e207]: Provisional Diagnosis
+                  - generic [ref=e209]:
+                    - textbox [ref=e210]
+                    - button "" [ref=e212] [cursor=pointer]:
+                      - generic [ref=e213]: 
+                - generic [ref=e214]:
+                  - generic [ref=e215]: Case Category
+                  - combobox [ref=e217]:
+                    - option "--Select--" [selected]
+                    - option "Foreign Patients - Expatriate"
+                    - option "Foreign Patients - Foreign Worker"
+                    - option "Foreign Patients - Malaysia My Second Home (MM2H) Participant"
+                    - option "Foreign Patients - Student"
+                    - option "Foreign Patients -Professional Worker"
+                    - option "Health Tourist"
+                    - option "No Information"
+                    - option "Tourist Seeking Treatment"
+            - generic [ref=e218]:
+              - generic [ref=e219]: PreviousVisits
+              - table [ref=e221]:
+                - rowgroup [ref=e222]:
+                  - row "OP Visit No. Visit Date Doctor Sub Dept Department Visit Type Patient Type Consultation Room Promotion/Program Ref Entity Type Ref Entity Name Remark" [ref=e223]:
+                    - columnheader "OP Visit No." [ref=e224]
+                    - columnheader "Visit Date" [ref=e225]
+                    - columnheader "Doctor" [ref=e226]
+                    - columnheader "Sub Dept" [ref=e227]
+                    - columnheader "Department" [ref=e228]
+                    - columnheader "Visit Type" [ref=e229]
+                    - columnheader "Patient Type" [ref=e230]
+                    - columnheader "Consultation Room" [ref=e231]
+                    - columnheader "Promotion/Program" [ref=e232]
+                    - columnheader "Ref Entity Type" [ref=e233]
+                    - columnheader "Ref Entity Name" [ref=e234]
+                    - columnheader "Remark" [ref=e235]
+                - rowgroup
+              - button "Future Orders" [disabled] [ref=e239]
+        - generic [ref=e240]:
+          - generic [ref=e241]:
+            - generic [ref=e244] [cursor=pointer]:
+              - checkbox "Register Only" [ref=e245]
+              - text: Register Only
+            - generic [ref=e248] [cursor=pointer]:
+              - checkbox "Charges Only" [checked] [ref=e249]
+              - text: Charges Only
+          - generic [ref=e251]:
+            - generic [ref=e252]:
+              - generic [ref=e254]:
+                - generic [ref=e255]: Sign
+                - button "Clear" [ref=e262] [cursor=pointer]
+              - checkbox [ref=e263]
+              - text: Cash
+              - checkbox [checked] [ref=e264]
+              - text: Credit
+            - generic [ref=e265]:
+              - button "Consent" [ref=e266] [cursor=pointer]
+              - button "Patient History" [disabled] [ref=e267]
+              - button "Save" [ref=e268] [cursor=pointer]
+              - button "Clear" [ref=e269] [cursor=pointer]
+        - text:  
+  - textbox [ref=e271]
+```
+
+# Test source
+
+```ts
+  250 |     }
+  251 | 
+  252 | // 8. VISIT INFORMATION (STALE-ELEMENT IMMUNE)
+  253 |     
+  254 | // =====================================================================
+  255 |     // CLICK EVENT: OPEN VISIT INFORMATION TAB
+  256 |  
+  257 |     // 8. VISIT INFORMATION
+  258 |     //    Correct flow:
+  259 |     //      1. Encounter Type
+  260 |     //      2. PRIMARY DOCTOR first  →  Department auto-loads from doctor selection
+  261 |     //      3. Confirm Department loaded
+  262 |     //      4. Loop doctors until Visit Type "New" is available → select it → STOP
+  263 |     //      5. Queue No.
+  264 |     //      6. Admission Source
+  265 |     // =====================================================================
+  266 |     async openVisitInformationSection() {
+  267 |         const visitTab = this.page.locator(
+  268 |             'a[href="#visitInfo"], a[ng-click*="visitInfo"], a[ng-click*="Visit"], ' +
+  269 |             'li[ng-click*="visitInfo"] > a, .visit-info-tab > a'
+  270 |         ).first();
+  271 |  
+  272 |         try {
+  273 |             await visitTab.waitFor({ state: 'visible', timeout: 4000 });
+  274 |             await visitTab.click();
+  275 |         } catch {
+  276 |             const fallback = this.page.getByRole('link', { name: /visit information/i })
+  277 |                 .or(this.page.getByRole('tab',  { name: /visit information/i }))
+  278 |                 .first();
+  279 |             await fallback.waitFor({ state: 'visible', timeout: 4000 });
+  280 |             await fallback.click();
+  281 |         }
+  282 |  
+  283 |         // Wait for panel to be visible instead of timeout
+  284 |         await expect(this.page.locator('select[ng-model="Visit.EncounterTypeID"]')).toBeVisible({ timeout: 5000 });
+  285 |     }
+  286 |  
+  287 |     // =====================================================================
+  288 |     // VISIT INFORMATION: TARGETED DOCTOR & AUTO-DEPARTMENT FLOW
+  289 |     // await doctorDropdown.locator('option').nth(1).waitFor({ state: 'attached', timeout: 5000 });
+  290 |     // =====================================================================
+  291 |    async fillVisitInformation(
+  292 |     encounterType: string = 'Outpatient',
+  293 |     admissionSource: string, // move this up
+  294 |     department: string = '', // make optional with default
+  295 |     targetVisitType: string = 'New'
+  296 | ) {
+  297 |     const startTime = Date.now();
+  298 | 
+  299 |     const targetDoctors = [
+  300 |         'Anaesthesiology & Critical Care - Doctor 12',
+  301 |         'Radiology - Doctor 52', 
+  302 |         'Internal Medicine - Doctor_Annie',
+  303 |         'Cardiothoracic Surgery - Doctor 81',
+  304 |         'Anatomical Pathology - Nor Liza Ariffin'
+  305 |     ];
+  306 | 
+  307 |     // Randomize order each run
+  308 |     for (let i = targetDoctors.length - 1; i > 0; i--) {
+  309 |         const j = Math.floor(Math.random() * (i + 1));
+  310 |         [targetDoctors[i], targetDoctors[j]] = [targetDoctors[j], targetDoctors[i]];
+  311 |     }
+  312 |     console.log(`[Visit] Random order: ${targetDoctors.join(' → ')}`);
+  313 | 
+  314 |     // 1. ENCOUNTER TYPE - Outpatient
+  315 |     // 1. ENCOUNTER TYPE - Outpatient
+  316 | const encounterDropdown = this.page.locator('select[ng-model="Visit.EncounterTypeID"]');
+  317 | await encounterDropdown.waitFor({ state: 'visible', timeout: 5000 });
+  318 | 
+  319 | // Get all options to see what Playwright actually sees
+  320 | const options = await encounterDropdown.locator('option').allInnerTexts();
+  321 | console.log('[Visit] Encounter Type options:', options);
+  322 | // Will print something like: ["--Select--", "Outpatient ", "Emergency"]
+  323 | 
+  324 | const optionValues = await encounterDropdown.locator('option').evaluateAll(opts => 
+  325 |     opts.map(o => ({ value: (o as HTMLOptionElement).value, text: o.textContent?.trim() }))
+  326 | );
+  327 | console.log('[Visit] Encounter Type values:', optionValues);
+  328 | // Will print: [{value: "", text: "--Select--"}, {value: "number:1", text: "Outpatient"}]
+  329 | 
+  330 | // Find the option that contains "Outpatient" and select by value
+  331 | const outpatientOption = optionValues.find(opt => opt.text?.includes('Outpatient'));
+  332 | 
+  333 | if (!outpatientOption) {
+  334 |     throw new Error(`Outpatient not found in Encounter Type. Available: ${options.join(', ')}`);
+  335 | }
+  336 | 
+  337 | await encounterDropdown.selectOption(outpatientOption.value); // Use value: "number:1"
+  338 | await this.page.waitForLoadState('domcontentloaded', { timeout: 5000 });
+  339 | console.log(`[Visit] 1. Encounter Type set: ${outpatientOption.text}`);
+  340 | 
+  341 |     let foundDoctor = '';
+  342 | 
+  343 |     // 2-4. Loop: Doctor → Department → Visit Type New
+  344 |     for (let i = 0; i < targetDoctors.length; i++) {
+  345 |         const doctorName = targetDoctors[i];
+  346 |         
+  347 |         // 2. PRIMARY DOCTOR
+  348 |         console.log(`[Visit] 2.${i+1} Selecting Doctor: ${doctorName}`);
+  349 |         const doctorDropdown = this.page.locator('select[ng-model="Visit.DoctorID"]').first();
+> 350 |         await doctorDropdown.selectOption({ label: doctorName });
+      |                              ^ Error: locator.selectOption: Test timeout of 100000ms exceeded.
+  351 |         await this.page.waitForLoadState('domcontentloaded', { timeout: 5000 });
+  352 | 
+  353 |         // 3. DEPARTMENT - Wait for auto-load
+  354 |         console.log(`[Visit] 3.${i+1} Waiting for Department...`);
+  355 |         const departmentDropdown = this.page.locator('select[ng-model="Visit.DepartmentID"]');
+  356 |         
+  357 |         const deptLoaded = await this.page.waitForFunction(
+  358 |             (sel: string) => {
+  359 |                 const el = document.querySelector(sel) as HTMLSelectElement | null;
+  360 |                 return el && el.value && el.value!== '0' && el.value!== '';
+  361 |             },
+  362 |             'select[ng-model="Visit.DepartmentID"]',
+  363 |             { timeout: 3000 }
+  364 |         ).then(() => true).catch(() => false);
+  365 | 
+  366 |         if (!deptLoaded) {
+  367 |             console.log(`❌ Department failed to load for ${doctorName}`);
+  368 |             continue;
+  369 |         }
+  370 | 
+  371 |         const deptText = await departmentDropdown.locator('option:checked').innerText();
+  372 |         console.log(`✓ Department loaded: ${deptText}`);
+  373 | 
+  374 |         // 4. VISIT TYPE - Check for "New"
+  375 |         console.log(`[Visit] 4.${i+1} Checking Visit Type "New"...`);
+  376 |         const visitTypeDropdown = this.page.locator('select[ng-model="Visit.VisitType"]').first();
+  377 |         
+  378 |         const hasNew = await this.page.waitForFunction(
+  379 |             (args: { selector: string; targetType: string }) => {
+  380 |                 const el = document.querySelector(args.selector) as HTMLSelectElement | null;
+  381 |                 if (!el || el.options.length <= 1) return false;
+  382 |                 return Array.from(el.options).some(opt => opt.text.trim() === args.targetType);
+  383 |             },
+  384 |             { selector: 'select[ng-model="Visit.VisitType"]', targetType: targetVisitType },
+  385 |             { timeout: 3000 }
+  386 |         ).then(() => true).catch(() => false);
+  387 | 
+  388 |         if (hasNew) {
+  389 |             await visitTypeDropdown.selectOption({ label: targetVisitType });
+  390 |             foundDoctor = doctorName;
+  391 |             console.log(`✅ SUCCESS: ${doctorName} → ${deptText} → "${targetVisitType}"`);
+  392 |             break;
+  393 |         }
+  394 | 
+  395 |         console.log(`❌ "${targetVisitType}" not available for ${doctorName}`);
+  396 |     }
+  397 | 
+  398 |     if (!foundDoctor) {
+  399 |         throw new Error(`No doctor has Department + "${targetVisitType}"`);
+  400 |     }
+  401 | 
+  402 |     // 5. Queue No.
+  403 |     const queueInput = this.page.locator('input[ng-model="Visit.TokenNo"]');
+  404 |     await expect(queueInput).toBeEnabled({ timeout: 3000 });
+  405 |     const randomQueue = Math.floor(100 + Math.random() * 900).toString();
+  406 |     await queueInput.fill(randomQueue);
+  407 |     console.log(`[Visit] 5. Queue No: ${randomQueue}`);
+  408 | 
+  409 |     // 6. Admission Source
+  410 |     const sourceDropdown = this.page.locator('select[ng-model="Visit.PatientSourceID"]');
+  411 |     await sourceDropdown.selectOption({ label: admissionSource });
+  412 |     console.log(`[Visit] 6. Admission Source: ${admissionSource}`);
+  413 | 
+  414 |     console.log(`[Visit] Complete in ${Date.now() - startTime}ms ✅ Doctor: ${foundDoctor}`);
+  415 | }
+  416 | }
+```

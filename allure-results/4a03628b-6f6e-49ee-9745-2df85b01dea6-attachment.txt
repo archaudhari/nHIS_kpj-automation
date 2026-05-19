@@ -1,0 +1,8 @@
+✅ Successfully navigated to OP > Registration
+Creating a Female patient with title Mrs.
+Setting Nationality: Malaysian | Race: Indian
+Setting Address: No. 29, Jalan Automation Testing | Mobile: +60 123363906
+Adding Kin: KIN_AUTOMATION_1285 (Father) | NRIC: 000110679521
+[Visit Setup] Navigating to Department: Internal Medicine
+[Visit] Randomized order: Cardiothoracic Surgery - Doctor 81 → Internal Medicine - Doctor_Annie → Anatomical Pathology - Nor Liza Ariffin → Radiology - Doctor 52 → Anaesthesiology & Critical Care - Doctor 12
+[Visit] 1. Encounter Type set

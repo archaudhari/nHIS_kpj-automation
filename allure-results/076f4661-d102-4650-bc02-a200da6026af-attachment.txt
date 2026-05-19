@@ -1,0 +1,8 @@
+✅ Successfully navigated to OP > Registration
+Creating a Female patient with title Mrs.
+Setting Nationality: Singaporean | Race: Non-Citizen
+Setting Address: No. 4, Jalan Automation Testing | Mobile: +60 122422689
+Adding Kin: KIN_AUTOMATION_947 (Father) | NRIC: 720910146937
+[Visit] Encounter options available: [{"text":"--Select--","value":""},{"text":"Outpatient","value":"number:1"}]
+[Visit] 1. Encounter Type → "Doctor 52"
+[Visit] 2. Doctor dropdown found → ng-model="AppPatientData.AppDoctorModalityID"

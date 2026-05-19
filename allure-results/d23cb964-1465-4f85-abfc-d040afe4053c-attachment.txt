@@ -1,0 +1,12 @@
+✅ Successfully navigated to OP > Registration
+Creating a Male patient with title Mr.
+Setting Nationality: Malaysian | Race: Indian
+Setting Address: No. 46, Jalan Automation Testing | Mobile: +60 126612404
+Adding Kin: KIN_AUTOMATION_8428 (Father) | NRIC: 330921117915
+[Visit] Random order: Cardiothoracic Surgery - Doctor 81 → Internal Medicine - Doctor_Annie → Anaesthesiology & Critical Care - Doctor 12 → Radiology - Doctor 52 → Anatomical Pathology - Nor Liza Ariffin
+[Visit] Encounter Type options: [ '--Select--', 'Outpatient' ]
+[Visit] Encounter Type values: [
+  { value: '', text: '--Select--' },
+  { value: 'number:1', text: 'Outpatient' }
+]
+[Visit] 1. Encounter Type set: Outpatient

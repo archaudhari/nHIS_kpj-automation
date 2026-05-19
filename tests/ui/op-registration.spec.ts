@@ -136,26 +136,26 @@ test('KPJ OP Registration Flow', async ({ page }) => {
 
     // Step J: VISIT INFORMATION
     
-    // Click the tab to open the Visit Information section (handled in fillVisitInformation if needed)
-
-    const targetDepartment = 'Internal Medicine';
-    const targetEncounter = 'Outpatient';
-    const targetAdmissionSource = 'Internal';
-    const targetVisitType = 'New';
-
-    // ... [Previous Steps: Next of Kin Details, etc.] ...
-
-    console.log(`[Visit Setup] Navigating to Department: ${targetDepartment}`);
+    // Pick which doctor to test.
+    // const testDoctorsList = [
+    //     { dept: 'Anaesthesiology & Critical Care', doctor: 'Doctor 12' },
+    //     { dept: 'Radiology', doctor: 'Doctor 52' },
+    //     { dept: 'Internal Medicine', doctor: 'Doctor_Annie' },
+    //     { dept: 'Cardiothoracic Surgery', doctor: 'Doctor 81' },
+    //     { dept: 'Anatomical Pathology', doctor: 'Nor Liza Ariffin' }
+    // ]; 
+    // Change [2] (Doctor_Annie) to [1] (Doctor 52) or [0] (Doctor 12)
+// const selectedDoctor = testDoctorsList[1].doctor; 
+const targetVisitType = 'New';
 
     // 1. TRIGGER THE CLICK EVENT FIRST
     await registrationPage.openVisitInformationSection();
     
-    // 2. THEN RUN THE SMART DOCTOR LOOP
+    // 2. PASS JUST THE DOCTOR AND VISIT TYPE
     await registrationPage.fillVisitInformation(
-    targetEncounter,       // ✅ arg 1 → encounterType
-    targetDepartment,      // ✅ arg 2 → department
-    targetAdmissionSource, // ✅ arg 3 → admissionSource
-    targetVisitType        // ✅ arg 4 → targetVisitType
+    'Outpatient',
+    'Internal',
+    targetVisitType
 );
 
     // 5. FREEZE TO VERIFY

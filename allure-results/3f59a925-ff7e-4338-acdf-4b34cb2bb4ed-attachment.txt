@@ -1,0 +1,69 @@
+✅ Successfully navigated to OP > Registration
+Creating a Female patient with title Mrs.
+Setting Nationality: Malaysian | Race: Indian
+Setting Address: No. 32, Jalan Automation Testing | Mobile: +60 129919333
+Adding Kin: KIN_AUTOMATION_856 (Father) | NRIC: 141026450706
+[Visit Setup] Navigating to Department: Internal Medicine
+[Visit] 1. Encounter Type set
+[Visit] Matched: "Doctor 12"
+[Visit] Matched: "Doctor 12"
+[Visit] Matched: "Doctor 120"
+[Visit] Matched: "Doctor 121"
+[Visit] Matched: "Doctor 122"
+[Visit] Matched: "Doctor 123"
+[Visit] Matched: "Doctor 124"
+[Visit] Matched: "Doctor 125"
+[Visit] Matched: "Doctor 126"
+[Visit] Matched: "Doctor 127"
+[Visit] Matched: "Doctor 128"
+[Visit] Matched: "Doctor 129"
+[Visit] Matched: "Doctor 52"
+[Visit] Matched: "Doctor 52"
+[Visit] Matched: "Doctor 521"
+[Visit] Matched: "Doctor 81"
+[Visit] Matched: "Doctor_Annie"
+[Visit] Matched: "Doctor_Annie"
+[Visit] Matched: "Nor Liza Ariffin"
+[Visit] Matched: "Nor Liza Ariffin"
+[Visit] Randomized order: Doctor 128 → Doctor 52 → Doctor 81 → Doctor 125 → Doctor 12 → Doctor 120 → Doctor 126 → Doctor 521 → Doctor 12 → Nor Liza Ariffin → Doctor 122 → Doctor 129 → Doctor_Annie → Doctor 124 → Doctor 123 → Doctor_Annie → Doctor 127 → Doctor 52 → Nor Liza Ariffin → Doctor 121
+[Visit] 2. Primary Doctor set: Doctor 128
+[Visit] 3. Department auto-loaded: --Select--
+[Visit] 4.1 Checking Doctor 128 for "New"...
+❌ [Visit] No Visit Types for Doctor 128
+[Visit] 4.2 Checking Doctor 52 for "New"...
+❌ [Visit] No Visit Types for Doctor 52
+[Visit] 4.3 Checking Doctor 81 for "New"...
+❌ [Visit] No Visit Types for Doctor 81
+[Visit] 4.4 Checking Doctor 125 for "New"...
+❌ [Visit] No Visit Types for Doctor 125
+[Visit] 4.5 Checking Doctor 12 for "New"...
+❌ [Visit] No Visit Types for Doctor 12
+[Visit] 4.6 Checking Doctor 120 for "New"...
+❌ [Visit] No Visit Types for Doctor 120
+[Visit] 4.7 Checking Doctor 126 for "New"...
+❌ [Visit] No Visit Types for Doctor 126
+[Visit] 4.8 Checking Doctor 521 for "New"...
+❌ [Visit] No Visit Types for Doctor 521
+[Visit] 4.9 Checking Doctor 12 for "New"...
+❌ [Visit] No Visit Types for Doctor 12
+[Visit] 4.10 Checking Nor Liza Ariffin for "New"...
+❌ [Visit] No Visit Types for Nor Liza Ariffin
+[Visit] 4.11 Checking Doctor 122 for "New"...
+❌ [Visit] No Visit Types for Doctor 122
+[Visit] 4.12 Checking Doctor 129 for "New"...
+❌ [Visit] No Visit Types for Doctor 129
+[Visit] 4.13 Checking Doctor_Annie for "New"...
+❌ [Visit] No Visit Types for Doctor_Annie
+[Visit] 4.14 Checking Doctor 124 for "New"...
+❌ [Visit] No Visit Types for Doctor 124
+[Visit] 4.15 Checking Doctor 123 for "New"...
+❌ [Visit] No Visit Types for Doctor 123
+[Visit] 4.16 Checking Doctor_Annie for "New"...
+❌ [Visit] No Visit Types for Doctor_Annie
+[Visit] 4.17 Checking Doctor 127 for "New"...
+❌ [Visit] No Visit Types for Doctor 127
+[Visit] 4.18 Checking Doctor 52 for "New"...
+❌ [Visit] No Visit Types for Doctor 52
+[Visit] 4.19 Checking Nor Liza Ariffin for "New"...
+❌ [Visit] No Visit Types for Nor Liza Ariffin
+[Visit] 4.20 Checking Doctor 121 for "New"...

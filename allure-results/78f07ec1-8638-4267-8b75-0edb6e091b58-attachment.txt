@@ -1,0 +1,5 @@
+✅ Successfully navigated to OP > Registration
+Creating a Female patient with title Mrs.
+Setting Nationality: Malaysian | Race: Peninsular Indigenous (Orang Asli)
+Setting Address: No. 28, Jalan Automation Testing | Mobile: +60 126787104
+Adding Kin: KIN_AUTOMATION_2031 (Father) | NRIC: 931225441684
