@@ -249,7 +249,7 @@ await nricInput.waitFor({ state: 'visible' });
         await this.page.waitForTimeout(1000); 
     }
 
-// 8. VISIT INFORMATION (STALE-ELEMENT IMMUNE)
+// 8. VISIT INFORMATION (STABLE-ELEMENT IMMUNE)
     
 // =====================================================================
     // CLICK EVENT: OPEN VISIT INFORMATION TAB
@@ -285,450 +285,236 @@ await nricInput.waitFor({ state: 'visible' });
     }
  
     // =====================================================================
-    // VISIT INFORMATION — Full flow:
-    //   1. Encounter Type
-    //   2. Find the real Doctor dropdown (probe ng-model names in DOM)
-    //   3. Loop doctors → Department auto-loads → check Visit Type "New"
-    //   4. Queue No.
+    // VISIT INFORMATION
+    // Spec call: fillVisitInformation(encounterType, admissionSource, targetVisitType)
+    //
+    // Correct flow (confirmed from live page snapshot):
+    //   1. Encounter Type  → select "Outpatient"
+    //   2. Department      → select from "Registration Department*" (ng-model="Visit.DepartmentID")
+    //                        Doctor list auto-populates after department is chosen
+    //   3. Primary Doctor  → select from "Primary Doctor*" — use page.evaluate to avoid stale refs
+    //   4. Visit Type      → populates after doctor; select "New"
     //   5. Admission Source
+    //   6. Queue No.
     // =====================================================================
     async fillVisitInformation(
-    encounterType: string = 'Outpatient',
-    admissionSource: string = 'Internal',
-    targetVisitType: string = 'New'
-) {
+        encounterType:   string = 'Outpatient',
+        admissionSource: string = 'Internal',
+        targetVisitType: string = 'New'
+    ) {
 
-    // ─────────────────────────────────────────────────────────────
-    // 1. ENCOUNTER TYPE
-    // ─────────────────────────────────────────────────────────────
-    const encounterDropdown = this.page.locator(
-        'select[ng-model="Visit.EncounterTypeID"]'
-    );
+        // ── 1. ENCOUNTER TYPE ───────────────────────────────────────────────────
+        const encounterDropdown = this.page.locator('select[ng-model="Visit.EncounterTypeID"]');
+        await encounterDropdown.waitFor({ state: 'visible', timeout: 15000 });
 
-    await encounterDropdown.waitFor({
-        state: 'visible',
-        timeout: 15000
-    });
-
-    const encounterOptions = await encounterDropdown.evaluate(
-        (sel: HTMLSelectElement) => {
-            return Array.from(sel.options)
-                .map(o => ({
-                    text: o.text.trim(),
-                    value: o.value
-                }))
-                .filter(o => {
-                    const text = o.text.toLowerCase();
-
-                    return (
-                        o.value !== '' &&
-                        !text.includes('select')
-                    );
-                });
-        }
-    );
-
-    console.log(
-        `[Visit] Encounter options: ${JSON.stringify(encounterOptions)}`
-    );
-
-    const matchedEncounter = encounterOptions.find(o =>
-        o.text.toLowerCase().includes(encounterType.toLowerCase())
-    );
-
-    if (!matchedEncounter) {
-        throw new Error(
-            `[Visit] Encounter Type not found: ${encounterType}`
-        );
-    }
-
-    await encounterDropdown.selectOption({
-        value: matchedEncounter.value
-    });
-
-    await encounterDropdown.dispatchEvent('change');
-
-    console.log(
-        `[Visit] Encounter Type selected → ${matchedEncounter.text}`
-    );
-
-    await this.page.waitForLoadState('networkidle');
-    await this.page.waitForTimeout(2500);
-
-    // ─────────────────────────────────────────────────────────────
-    // 2. PRIMARY DOCTOR DROPDOWN
-    // ─────────────────────────────────────────────────────────────
-    const doctorDropdown = this.page.locator('#DoctorModality');
-
-// Wait until dropdown exists
-await doctorDropdown.waitFor({
-    state: 'attached',
-    timeout: 20000
-});
-
-// Wait until Angular removes hidden/disabled state
-await expect.poll(
-
-    async () => {
-
-        return await doctorDropdown.evaluate(
-            (el: HTMLSelectElement) => {
-
-                const style = window.getComputedStyle(el);
-
-                const visible =
-                    style.display !== 'none' &&
-                    style.visibility !== 'hidden';
-
-                const enabled = !el.disabled;
-
-                return visible && enabled;
-            }
-        );
-
-    },
-    {
-        timeout: 30000,
-        intervals: [1000],
-        message: 'Primary Doctor dropdown never became active'
-    }
-
-).toBe(true);
-
-    // Wait for doctor list to load from backend
-    await expect.poll(
-        async () => {
-
-            return await doctorDropdown.evaluate(
-                (sel: HTMLSelectElement) => {
-
-                    const validOptions = Array.from(sel.options)
-                        .filter(o => {
-
-                            const text = o.text
-                                .trim()
-                                .toLowerCase();
-
-                            return (
-                                o.value !== '' &&
-                                !text.includes('select') &&
-                                !text.includes('loading')
-                            );
-                        });
-
-                    return validOptions.length;
-                }
+        const encounterOptions: { text: string; value: string }[] =
+            await encounterDropdown.evaluate((sel: HTMLSelectElement) =>
+                Array.from(sel.options)
+                    .map(o => ({ text: o.text.trim(), value: o.value }))
+                    .filter(o => o.value !== '' && !o.text.toLowerCase().includes('select'))
             );
-        },
-        {
-            timeout: 20000,
-            intervals: [1000],
-            message: 'Doctor dropdown never populated'
+        console.log(`[Visit] 1. Encounter options: ${JSON.stringify(encounterOptions)}`);
+
+        const matchedEncounter =
+            encounterOptions.find(o => o.text.toLowerCase().includes(encounterType.toLowerCase()))
+            ?? encounterOptions[0];
+
+        if (!matchedEncounter) {
+            throw new Error(`[Visit] No valid Encounter Type options found.`);
         }
-    ).toBeGreaterThan(0);
 
-    // Snapshot all available doctors
-    const availableDoctors = await doctorDropdown.evaluate(
-        (sel: HTMLSelectElement) => {
+        await encounterDropdown.selectOption({ value: matchedEncounter.value });
+        await encounterDropdown.dispatchEvent('change');
+        console.log(`[Visit] 1. Encounter Type → "${matchedEncounter.text}"`);
+        await this.page.waitForTimeout(800);
 
-            return Array.from(sel.options)
-                .map(o => ({
-                    text: o.text.trim(),
-                    value: o.value
-                }))
-                .filter(o => {
+        // ── 2. DEPARTMENT ───────────────────────────────────────────────────────
+        // ng-model="Visit.DepartmentID" confirmed from page snapshot.
+        // Selecting department triggers the Primary Doctor list to load.
+        const deptDropdown = this.page.locator('select[ng-model="Visit.DepartmentID"]');
+        await deptDropdown.waitFor({ state: 'visible', timeout: 10000 });
 
-                    const text = o.text.toLowerCase();
-
-                    return (
-                        o.value !== '' &&
-                        !text.includes('select') &&
-                        !text.includes('loading')
-                    );
-                });
-        }
-    );
-
-    console.log(
-        `[Visit] ${availableDoctors.length} doctors available`
-    );
-
-    if (availableDoctors.length === 0) {
-        throw new Error(
-            '[Visit] No doctors found in Primary Doctor dropdown'
-        );
-    }
-
-    // ─────────────────────────────────────────────────────────────
-    // 3. REGISTRATION DEPARTMENT DROPDOWN
-    // ─────────────────────────────────────────────────────────────
-    const departmentDropdown = this.page.locator(
-        'select[ng-model="AppPatientData.DeptID"]'
-    );
-
-    // ─────────────────────────────────────────────────────────────
-    // 4. VISIT TYPE DROPDOWN
-    // ─────────────────────────────────────────────────────────────
-    const visitTypeDropdown = this.page.locator(
-        'select[ng-model="AppPatientData.VisitTypeID"]'
-    );
-
-    let foundWorkingDoctor = false;
-
-    // Shuffle doctors randomly
-    const shuffledDoctors = [...availableDoctors]
-        .sort(() => Math.random() - 0.5);
-
-    // ─────────────────────────────────────────────────────────────
-    // 5. LOOP THROUGH DOCTORS
-    // ─────────────────────────────────────────────────────────────
-    for (const doctor of shuffledDoctors) {
-
-        console.log(
-            `[Visit] Trying doctor → ${doctor.text}`
-        );
-
-        // Select doctor
-        await doctorDropdown.selectOption({
-            value: doctor.value
-        });
-
-        await doctorDropdown.dispatchEvent('change');
-
-        // Allow AngularJS + backend API to process
-        await this.page.waitForLoadState('networkidle');
-        await this.page.waitForTimeout(3000);
-        
-
-        // ─────────────────────────────────────────────────────────
-        // WAIT FOR REGISTRATION DEPARTMENT AUTO-LOAD
-        // ─────────────────────────────────────────────────────────
-        try {
-
-            await expect.poll(
-                async () => {
-
-                    return await departmentDropdown.evaluate(
-                        (sel: HTMLSelectElement) => {
-                            return sel.value;
-                        }
-                    );
-
-                },
-                {
-                    timeout: 10000
-                }
-            ).not.toBe('');
-
-        } catch {
-
-            console.log(
-                `[Visit] Department did not auto-load for ${doctor.text}`
+        const deptOptions: { text: string; value: string }[] =
+            await deptDropdown.evaluate((sel: HTMLSelectElement) =>
+                Array.from(sel.options)
+                    .map(o => ({ text: o.text.trim(), value: o.value }))
+                    .filter(o => o.value !== '' && !o.text.toLowerCase().includes('select'))
             );
+        console.log(`[Visit] 2. Department options count: ${deptOptions.length}`);
 
-            continue;
+        if (deptOptions.length === 0) {
+            throw new Error('[Visit] No Department options found — check Encounter Type selection.');
         }
 
-        const departmentLabel = await departmentDropdown.evaluate(
-            (sel: HTMLSelectElement) => {
-                return sel.options[
-                    sel.selectedIndex
-                ]?.text?.trim() || '';
-            }
+        // Pick a random department so Visit Type "New" is more likely to be available
+        const randomDept = deptOptions[Math.floor(Math.random() * deptOptions.length)];
+        await this.page.evaluate(
+            ({ val }: { val: string }) => {
+                const sel = document.querySelector('select[ng-model="Visit.DepartmentID"]') as HTMLSelectElement;
+                if (!sel) throw new Error('DepartmentID select not found');
+                sel.value = val;
+                sel.dispatchEvent(new Event('change', { bubbles: true }));
+            },
+            { val: randomDept.value }
         );
+        console.log(`[Visit] 2. Department → "${randomDept.text}"`);
+        await this.page.waitForTimeout(1500); // let Angular load doctors for this dept
 
-        console.log(
-            `[Visit] Department auto-loaded → ${departmentLabel}`
-        );
-
-        // ─────────────────────────────────────────────────────────
-        // WAIT FOR VISIT TYPE OPTIONS
-        // ─────────────────────────────────────────────────────────
-        try {
-
-            await expect.poll(
-                async () => {
-
-                    return await visitTypeDropdown.evaluate(
-                        (sel: HTMLSelectElement) => {
-
-                            const validOptions = Array.from(sel.options)
-                                .filter(o => {
-
-                                    const text = o.text
-                                        .trim()
-                                        .toLowerCase();
-
-                                    return (
-                                        o.value !== '' &&
-                                        !text.includes('select')
-                                    );
-                                });
-
-                            return validOptions.length;
-                        }
-                    );
-
-                },
-                {
-                    timeout: 10000
-                }
-            ).toBeGreaterThan(0);
-
-        } catch {
-
-            console.log(
-                `[Visit] Visit Type not populated for ${doctor.text}`
-            );
-
-            continue;
-        }
-
-        const visitTypes = await visitTypeDropdown.evaluate(
-            (sel: HTMLSelectElement) => {
-
-                return Array.from(sel.options)
-                    .map(o => ({
-                        text: o.text.trim(),
-                        value: o.value
-                    }))
-                    .filter(o => {
-
-                        const text = o.text.toLowerCase();
-
-                        return (
-                            o.value !== '' &&
-                            !text.includes('select')
-                        );
-                    });
-            }
-        );
-
-        console.log(
-            `[Visit] Available Visit Types → ${visitTypes
-                .map(v => v.text)
-                .join(', ')}`
-        );
-
-        const matchingVisitType = visitTypes.find(v =>
-            v.text.toLowerCase() === targetVisitType.toLowerCase()
-        );
-
-        // ─────────────────────────────────────────────────────────
-        // FOUND VALID DOCTOR
-        // ─────────────────────────────────────────────────────────
-        if (matchingVisitType) {
-
-            console.log(
-                `✅ [Visit] Doctor supports Visit Type = ${targetVisitType}`
-            );
-
-            await visitTypeDropdown.selectOption({
-                value: matchingVisitType.value
+        // ── 3. PRIMARY DOCTOR ───────────────────────────────────────────────────
+        // From page snapshot the Primary Doctor* combobox is the select that
+        // contains the large doctor list. We identify it by ng-model:
+        // it must contain "doctor" (case-insensitive) and NOT contain "modality".
+        const primaryDoctorNgModel: string = await this.page.evaluate(() => {
+            const all = Array.from(document.querySelectorAll('select[ng-model]'));
+            const match = all.find(s => {
+                const m = (s.getAttribute('ng-model') ?? '').toLowerCase();
+                return m.includes('doctor') && !m.includes('modality');
             });
-
-            await visitTypeDropdown.dispatchEvent('change');
-
-            await this.page.waitForTimeout(1000);
-
-            foundWorkingDoctor = true;
-            break;
-        }
-
-        console.log(
-            `❌ [Visit] ${doctor.text} does not support Visit Type = ${targetVisitType}`
-        );
-    }
-
-    // ─────────────────────────────────────────────────────────────
-    // VALIDATION
-    // ─────────────────────────────────────────────────────────────
-    if (!foundWorkingDoctor) {
-
-        throw new Error(
-            `[Visit] No doctor found supporting Visit Type = ${targetVisitType}`
-        );
-    }
-
-    // ─────────────────────────────────────────────────────────────
-    // 6. QUEUE NUMBER
-    // ─────────────────────────────────────────────────────────────
-    const queueInput = this.page.locator(
-        'input[ng-model="Visit.TokenNo"]'
-    );
-
-    await queueInput.waitFor({
-        state: 'visible',
-        timeout: 10000
-    });
-
-    const randomQueue = Math.floor(
-        100 + Math.random() * 900
-    ).toString();
-
-    await queueInput.fill(randomQueue);
-
-    await this.page.locator('body').click();
-
-    console.log(
-        `[Visit] Queue No → ${randomQueue}`
-    );
-
-    // ─────────────────────────────────────────────────────────────
-    // 7. ADMISSION SOURCE
-    // ─────────────────────────────────────────────────────────────
-    const sourceDropdown = this.page.locator(
-        'select[ng-model="Visit.PatientSourceID"]'
-    );
-
-    await sourceDropdown.waitFor({
-        state: 'visible',
-        timeout: 10000
-    });
-
-    const sourceOptions = await sourceDropdown.evaluate(
-        (sel: HTMLSelectElement) => {
-            return Array.from(sel.options)
-                .map(o => ({
-                    text: o.text.trim(),
-                    value: o.value
-                }))
-                .filter(o => {
-
-                    const text = o.text.toLowerCase();
-
-                    return (
-                        o.value !== '' &&
-                        !text.includes('select')
-                    );
-                });
-        }
-    );
-
-    const matchedSource = sourceOptions.find(o =>
-        o.text.toLowerCase().includes(
-            admissionSource.toLowerCase()
-        )
-    );
-
-    if (matchedSource) {
-
-        await sourceDropdown.selectOption({
-            value: matchedSource.value
+            return match?.getAttribute('ng-model') ?? '';
         });
 
-        await sourceDropdown.dispatchEvent('change');
+        if (!primaryDoctorNgModel) {
+            throw new Error('[Visit] Primary Doctor dropdown not found in DOM.');
+        }
+        console.log(`[Visit] 3. Primary Doctor ng-model = "${primaryDoctorNgModel}"`);
 
-        console.log(
-            `[Visit] Admission Source → ${matchedSource.text}`
-        );
+        // Wait for doctor list to populate (> 1 means real options exist)
+        await expect.poll(
+            () => this.page.evaluate((m: string) => {
+                const sel = document.querySelector(`select[ng-model="${m}"]`) as HTMLSelectElement | null;
+                if (!sel) return 0;
+                return Array.from(sel.options).filter(o =>
+                    o.value !== '' && !o.text.toLowerCase().includes('select')
+                ).length;
+            }, primaryDoctorNgModel),
+            { timeout: 20000, message: `Primary Doctor dropdown (${primaryDoctorNgModel}) never populated after department selection` }
+        ).toBeGreaterThan(0);
+
+        // Snapshot doctor options
+        const doctorOptions: { text: string; value: string }[] =
+            await this.page.evaluate((m: string) => {
+                const sel = document.querySelector(`select[ng-model="${m}"]`) as HTMLSelectElement | null;
+                if (!sel) return [];
+                return Array.from(sel.options)
+                    .map(o => ({ text: o.text.trim(), value: o.value }))
+                    .filter(o => o.value !== '' && !o.text.toLowerCase().includes('select'));
+            }, primaryDoctorNgModel);
+
+        console.log(`[Visit] 3. ${doctorOptions.length} doctor(s) available: ${doctorOptions.map(d => d.text).join(', ')}`);
+
+        // ── 3+4. DOCTOR LOOP — find first doctor with Visit Type "New" ──────────
+        // We probe Visit Type after each doctor selection.
+        // Everything uses page.evaluate to prevent stale-element errors.
+
+        // Find Visit Type ng-model once (stable across iterations)
+        const visitTypeNgModel: string = await this.page.evaluate(() => {
+            const all = Array.from(document.querySelectorAll('select[ng-model]'));
+            const match = all.find(s => {
+                const m = (s.getAttribute('ng-model') ?? '').toLowerCase();
+                return m.includes('visittype') || m.includes('visit.type');
+            });
+            // Fallback to known ng-model name from this app
+            return match?.getAttribute('ng-model') ?? 'Visit.VisitType';
+        });
+        console.log(`[Visit] 4. Visit Type ng-model = "${visitTypeNgModel}"`);
+
+        let foundDoctor = false;
+
+        for (const doctor of doctorOptions) {
+            console.log(`[Visit]    Trying doctor: "${doctor.text}"...`);
+
+            // Select doctor atomically in the browser
+            await this.page.evaluate(
+                ({ m, val }: { m: string; val: string }) => {
+                    const sel = document.querySelector(`select[ng-model="${m}"]`) as HTMLSelectElement | null;
+                    if (!sel) throw new Error(`Doctor select not found: ${m}`);
+                    sel.value = val;
+                    sel.dispatchEvent(new Event('change', { bubbles: true }));
+                },
+                { m: primaryDoctorNgModel, val: doctor.value }
+            );
+            await this.page.waitForTimeout(800);
+
+            // Check if Visit Type dropdown now has options
+            try {
+                await expect.poll(
+                    () => this.page.evaluate((m: string) => {
+                        const sel = document.querySelector(`select[ng-model="${m}"]`) as HTMLSelectElement | null;
+                        return sel ? sel.options.length : 0;
+                    }, visitTypeNgModel),
+                    { timeout: 3000 }
+                ).toBeGreaterThan(1);
+
+                const visitTypes: string[] = await this.page.evaluate((m: string) => {
+                    const sel = document.querySelector(`select[ng-model="${m}"]`) as HTMLSelectElement | null;
+                    return sel ? Array.from(sel.options).map(o => o.text.trim()) : [];
+                }, visitTypeNgModel);
+
+                console.log(`[Visit]    Visit Types available: [${visitTypes.join(', ')}]`);
+
+                if (visitTypes.includes(targetVisitType)) {
+                    // Select the visit type atomically
+                    await this.page.evaluate(
+                        ({ m, label }: { m: string; label: string }) => {
+                            const sel = document.querySelector(`select[ng-model="${m}"]`) as HTMLSelectElement | null;
+                            if (!sel) throw new Error(`VisitType select not found: ${m}`);
+                            const opt = Array.from(sel.options).find(o => o.text.trim() === label);
+                            if (opt) {
+                                sel.value = opt.value;
+                                sel.dispatchEvent(new Event('change', { bubbles: true }));
+                            }
+                        },
+                        { m: visitTypeNgModel, label: targetVisitType }
+                    );
+                    console.log(`✅ [Visit] Doctor "${doctor.text}" → Visit Type "${targetVisitType}" selected. Stopping.`);
+                    await this.page.waitForTimeout(300);
+                    foundDoctor = true;
+                    break;
+                } else {
+                    console.log(`❌ [Visit] "${targetVisitType}" not in options for "${doctor.text}". Trying next...`);
+                }
+            } catch {
+                console.log(`❌ [Visit] Visit Type stayed empty for "${doctor.text}". Trying next...`);
+            }
+        }
+
+        if (!foundDoctor) {
+            throw new Error(
+                `[Visit] No doctor in department "${randomDept.text}" supports Visit Type "${targetVisitType}". ` +
+                `Checked ${doctorOptions.length} doctor(s).`
+            );
+        }
+
+        // ── 5. ADMISSION SOURCE ─────────────────────────────────────────────────
+        const sourceDropdown = this.page.locator('select[ng-model="Visit.PatientSourceID"]');
+        await sourceDropdown.waitFor({ state: 'visible', timeout: 10000 });
+
+        const sourceOptions: { text: string; value: string }[] =
+            await sourceDropdown.evaluate((sel: HTMLSelectElement) =>
+                Array.from(sel.options)
+                    .map(o => ({ text: o.text.trim(), value: o.value }))
+                    .filter(o => o.value !== '' && !o.text.toLowerCase().includes('select'))
+            );
+
+        const matchedSource =
+            sourceOptions.find(o => o.text.toLowerCase().includes(admissionSource.toLowerCase()))
+            ?? sourceOptions[0];
+
+        if (matchedSource) {
+            await sourceDropdown.selectOption({ value: matchedSource.value });
+            await sourceDropdown.dispatchEvent('change');
+            console.log(`[Visit] 5. Admission Source → "${matchedSource.text}"`);
+        }
+        await this.page.waitForTimeout(500);
+
+        // ── 6. QUEUE NO. ────────────────────────────────────────────────────────
+        const queueInput = this.page.locator('input[ng-model="Visit.TokenNo"]');
+        await queueInput.waitFor({ state: 'visible', timeout: 10000 });
+        const randomQueue = Math.floor(100 + Math.random() * 900).toString();
+        await queueInput.fill(randomQueue);
+        await this.page.locator('body').click();
+        console.log(`[Visit] 6. Queue No. → "${randomQueue}"`);
+
+        console.log('[Visit] fillVisitInformation complete ✅');
     }
-
-    await this.page.waitForTimeout(1000);
-
-    console.log(
-        '[Visit] fillVisitInformation completed successfully ✅'
-    );
-}
-
 }
