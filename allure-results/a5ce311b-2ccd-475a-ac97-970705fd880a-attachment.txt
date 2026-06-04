@@ -1,0 +1,19 @@
+✅ Successfully navigated to OP > Registration
+Creating a Female patient with title Mrs.
+Setting Nationality: Malaysian | Race: Chinese
+Setting Address: No. 79, Jalan Automation Testing | Mobile: +60 128451650
+Adding Kin: KIN_AUTOMATION_9626 (Father) | NRIC: 680503512707
+[Visit] 1. Encounter options: [{"text":"Outpatient","value":"number:1"}]
+[Visit] 1. Encounter Type → "Outpatient"
+[Visit] 2. Department options count: 66
+[Visit] 2. Department → "Anaesthesiology & Critical Care"
+[Visit] 3. Primary Doctor ng-model = "Visit.DoctorID"
+[Visit] 3. 56 doctor(s) available: Demo Doctor, Doctor 11, Doctor 112, Doctor 12, Doctor 136, Doctor 137, Doctor 138, Doctor 142, Doctor 150, Doctor 154, Doctor 155, Doctor 156, Doctor 160, Doctor 166, Doctor 169, Doctor 17, Doctor 173, Doctor 174, Doctor 178, Doctor 213 TIEBA, Doctor 26, Doctor 4, Doctor 52, Doctor 54, Doctor 58, Doctor 6, Doctor 74, Doctor 77, Doctor 87, Doctor 91, Doctor Aisya, Doctor hayati, Doctor_Amrita, Doctor_Annie, Doctor_Fikry, Doctor_Firdaus, Doctor_Kabir, Doctor_Natasha, Doctor_Pornima, Doctor_Raihan, Doctor_Shantanu, Doctor_Tieba, Employee 71, Ilham Bin Sirayuddin, keerthana, Medical Officer Aisya, Medical Officer_Amrita, Medical Officer_Annie, Medical Officer_Fikry, Medical Officer_Firdaus, Medical Officer_Kabir, Medical Officer_Natasha, Medical Officer_Raihan, Medical Officer_Tieba, Nor Liza Ariffin, SABARI
+[Visit] 4. Visit Type ng-model = "Visit.VisitTypeID"
+[Visit]    Trying doctor: "Demo Doctor"...
+❌ [Visit] Visit Type stayed empty for "Demo Doctor". Trying next...
+[Visit]    Trying doctor: "Doctor 11"...
+[Visit]    Visit Types available: [--Select--, Follow Up, New, Other]
+✅ [Visit] Doctor "Doctor 11" → Visit Type "New" selected. Stopping.
+❌ [Visit] Visit Type stayed empty for "Doctor 11". Trying next...
+[Visit]    Trying doctor: "Doctor 112"...
