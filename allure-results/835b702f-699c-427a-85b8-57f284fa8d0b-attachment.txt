@@ -1,0 +1,7 @@
+✅ Successfully navigated to OP > Registration
+Creating a Female patient with title Mrs.
+Setting Nationality: Malaysian | Race: Chinese
+Setting Address: No. 81, Jalan Automation Testing | Mobile: +60 123865968
+Adding Kin: KIN_AUTOMATION_6906 (Father) | NRIC: 460514568339
+[Visit] Encounter options: [{"text":"Outpatient","value":"number:1"}]
+[Visit] Encounter Type selected → Outpatient

@@ -1,0 +1,20 @@
+✅ Successfully navigated to OP > Registration
+Creating a Male patient with title Mr.
+Setting Nationality: Malaysian | Race: Indian
+Setting Address: No. 52, Jalan Automation Testing | Mobile: +60 122071405
+Adding Kin: KIN_AUTOMATION_5137 (Father) | NRIC: 940111618634
+[Visit] 1. Encounter options: [{"text":"Outpatient","value":"number:1"}]
+[Visit] 1. Encounter Type → "Outpatient"
+[Visit] 2. Department options count: 66
+[Visit] 2. Department → "Obstetrics & Gynaecology, Fertility"
+[Visit] 3. Primary Doctor ng-model = "Visit.DoctorID"
+[Visit] 3. 44 doctor(s) available: Chong Kuoh Ren, Demo Doctor, Doctor 104, Doctor 11, Doctor 12, Doctor 121, Doctor 145, Doctor 165, Doctor 213 TIEBA, Doctor 28, Doctor 52, Doctor 60, Doctor 62, Doctor 63, Doctor 65, Doctor 70, Doctor 87, Doctor 97, Doctor Aisya, Doctor hayati, Doctor_Amrita, Doctor_Annie, Doctor_Fikry, Doctor_Firdaus, Doctor_Kabir, Doctor_Natasha, Doctor_Pornima, Doctor_Raihan, Doctor_Shantanu, Doctor_Tieba, Employee 71, Ilham Bin Sirayuddin, keerthana, Medical Officer Aisya, Medical Officer_Amrita, Medical Officer_Annie, Medical Officer_Fikry, Medical Officer_Firdaus, Medical Officer_Kabir, Medical Officer_Natasha, Medical Officer_Raihan, Medical Officer_Tieba, Nor Liza Ariffin, SABARI
+[Visit] 4. Visit Type ng-model = "Visit.VisitTypeID"
+[Visit]    Trying doctor: "Chong Kuoh Ren"...
+[Visit]    Visit Types available: [--Select--, Follow Up, New, Other]
+✅ [Visit] Doctor "Chong Kuoh Ren" → Visit Type "New" selected. Stopping.
+[Visit] 5. Admission Source → "Internal"
+[Visit] 6. Queue No. → "905"
+[Visit] fillVisitInformation complete ✅
+Clicking Main Save Button...
+Waiting for Confirmation Popup...

@@ -158,6 +158,6 @@ const targetVisitType = 'New';
     targetVisitType
 );
 
-    // Step K: SAVE REGISTRATION
-    await registrationPage.saveRegistration();
+    // 5. FREEZE TO VERIFY
+    await page.pause();
 });
