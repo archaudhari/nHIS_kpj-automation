@@ -1,0 +1,20 @@
+✅ Successfully navigated to OP > Registration
+Creating a Female patient with title Mrs.
+Setting Nationality: Singaporean | Race: Non-Citizen
+Setting Address: No. 83, Jalan Automation Testing | Mobile: +60 126379823
+Adding Kin: KIN_AUTOMATION_8448 (Father) | NRIC: 830203120111
+[Visit] 1. Encounter options: [{"text":"Outpatient","value":"number:1"}]
+[Visit] 1. Encounter Type → "Outpatient"
+[Visit] 2. Department options count: 66
+[Visit] 2. Department → "Daycare"
+[Visit] 3. Primary Doctor ng-model = "Visit.DoctorID"
+[Visit] 3. 33 doctor(s) available: Aron F, Demo Doctor, Doctor 11, Doctor 12, Doctor 213 TIEBA, Doctor 52, Doctor 87, Doctor Aisya, Doctor hayati, Doctor_Amrita, Doctor_Annie, Doctor_Fikry, Doctor_Firdaus, Doctor_Kabir, Doctor_Natasha, Doctor_Pornima, Doctor_Raihan, Doctor_Shantanu, Doctor_Tieba, Employee 71, Ilham Bin Sirayuddin, keerthana, Medical Officer Aisya, Medical Officer_Amrita, Medical Officer_Annie, Medical Officer_Fikry, Medical Officer_Firdaus, Medical Officer_Kabir, Medical Officer_Natasha, Medical Officer_Raihan, Medical Officer_Tieba, Nor Liza Ariffin, SABARI
+[Visit] 4. Visit Type ng-model = "Visit.VisitTypeID"
+[Visit]    Trying doctor: "Aron F"...
+[Visit]    Visit Types available: [--Select--, Follow Up, New]
+✅ [Visit] Doctor "Aron F" → Visit Type "New" selected. Stopping.
+[Visit] 5. Admission Source → "Internal"
+[Visit] 6. Queue No. → "919"
+[Visit] fillVisitInformation complete ✅
+Clicking Main Save Button...
+Waiting for Confirmation Popup...
